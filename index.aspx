@@ -74,24 +74,24 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                                <div class="span4">
-                                    <img src="img/5.png" style="width:33%;float:left;">
-                                    <img src="img/4.png" style="width:33%" >
-                                    <img src="img/6.png" style="width:33%">
+                                <div>
+                                    <img src="img/5.png" class="wrapping-img">
+                                    <img src="img/4.png" class="wrapping-img">
+                                    <img src="img/6.png" class="wrapping-img">
                                 </div>
                             </div>
                             <div class="item">
-                                 <div class="span4">
-                                    <img src="img/1.png" style="width:33%;float:left;">
-                                    <img src="img/2.png" style="width:33%">
-                                    <img src="img/3.png" style="width:33%">
+                                 <div>
+                                    <img src="img/1.png" class="wrapping-img">
+                                    <img src="img/2.png" class="wrapping-img">
+                                    <img src="img/3.png" class="wrapping-img">
                                 </div>
                             </div>
                             <div class="item">
-                                 <div class="span4">
-                                    <img src="img/7.png" style="width:33%;float:left;">
-                                    <img src="img/8.png" style="width:33%">
-                                    <img src="img/10.png" style="width:33%">
+                                 <div>
+                                    <img src="img/7.png" class="wrapping-img">
+                                    <img src="img/8.png" class="wrapping-img">
+                                    <img src="img/10.png" class="wrapping-img">
                                 </div>
                             </div>
                         </div>
@@ -103,41 +103,40 @@
 
 	                    <div class="container-fluid">
 		  			            <div class="row">
-                                     
 			  				            <div class="app-card col-xs-6" >
                                             <asp:ImageButton ID="appimg0" runat="server" CssClass="app-img"/>
-                                              <asp:Label ID="AppName0" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                              <asp:Label ID="AppInfo0" runat="server" CssClass="col-md-12 caption"></asp:Label>
+                                              <asp:Label ID="AppName0" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                              <asp:Label ID="AppInfo0" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>
 			  				            </div>
 			  			               
 			  			                <div class="app-card col-xs-6">
 			  					            <asp:ImageButton ID="appimg1" runat="server"  CssClass="app-img" />
-			  					            <asp:Label ID="AppName1" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo1" runat="server" CssClass="col-md-12 caption"></asp:Label>		 
+			  					            <asp:Label ID="AppName1" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo1" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>		 
 			  			                </div>
 
 			  			                <div class="app-card col-xs-6">
 			  					            <asp:ImageButton ID="appimg2" runat="server"  CssClass="app-img" />
-			  					            <asp:Label ID="AppName2" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo2" runat="server" CssClass="col-md-12 caption"></asp:Label>	
+			  					            <asp:Label ID="AppName2" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo2" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>	
 			  			                </div>
                                         
                                         <div class="app-card col-xs-6">
 			  					            <asp:ImageButton ID="appimg3" runat="server"  CssClass="app-img" />
-			  					            <asp:Label ID="AppName3" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo3" runat="server" CssClass="col-md-12 caption"></asp:Label>	
+			  					            <asp:Label ID="AppName3" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo3" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>	
 			  			                </div>
 
                                         <div class="app-card col-xs-6">
 			  					            <asp:ImageButton ID="appimg4" runat="server" CssClass="app-img" />
-			  					            <asp:Label ID="AppName4" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo4" runat="server" CssClass="col-md-12 caption"></asp:Label>	
+			  					            <asp:Label ID="AppName4" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo4" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>	
 			  			                </div>
 
                                         <div class="app-card col-xs-6">
 			  					            <asp:ImageButton ID="appimg5" runat="server" CssClass="app-img" />
-			  					            <asp:Label ID="AppName5" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo5" runat="server" CssClass="col-md-12 caption"></asp:Label>	
+			  					            <asp:Label ID="AppName5" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo5" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>	
 			  			                </div>
 
                                   </div>
@@ -147,40 +146,40 @@
 
                          <div class="container-fluid">
 		  			            <div class="row">
-			  				            <div class="app-card">
+			  				            <div class="app-card col-xs-6">
                                             <asp:ImageButton ID="appimg6" runat="server" CssClass="app-img" />
-			  					            <asp:Label ID="AppName6" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo6" runat="server" CssClass="col-md-12 caption"></asp:Label>
+			  					            <asp:Label ID="AppName6" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo6" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>
 			  				            </div>	
 			  			               
-			  			                <div class="app-card">
+			  			                <div class="app-card col-xs-6">
 			  					            <asp:ImageButton ID="appimg7" runat="server" CssClass="app-img" />
-			  					            <asp:Label ID="AppName7" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo7" runat="server" CssClass="col-md-12 caption"></asp:Label>
+			  					            <asp:Label ID="AppName7" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo7" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>
 			  			                </div>
 
-			  			                <div class="app-card">
+			  			                <div class="app-card col-xs-6">
 			  					            <asp:ImageButton ID="appimg8" runat="server" CssClass="app-img" />
-			  					            <asp:Label ID="AppName8" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo8" runat="server" CssClass="col-md-12 caption"></asp:Label>
+			  					            <asp:Label ID="AppName8" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo8" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>
 			  			                </div>
                                         
-                                        <div class="app-card">
+                                        <div class="app-card col-xs-6">
 			  					            <asp:ImageButton ID="appimg9" runat="server" CssClass="app-img" />
-			  					            <asp:Label ID="AppName9" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo9" runat="server" CssClass="col-md-12 caption"></asp:Label>
+			  					            <asp:Label ID="AppName9" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo9" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>
 			  			                </div>
 
-                                        <div class="app-card">
+                                        <div class="app-card col-xs-6">
 			  					            <asp:ImageButton ID="appimg10" runat="server" CssClass="app-img" />
-			  					            <asp:Label ID="AppName10" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo10" runat="server" CssClass="col-md-12 caption"></asp:Label>
+			  					            <asp:Label ID="AppName10" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo10" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>
 			  			                </div>
 
-                                        <div class="app-card">
+                                        <div class="app-card col-xs-6">
 			  					            <asp:ImageButton ID="appimg11" runat="server" CssClass="app-img" />
-			  					            <asp:Label ID="AppName11" runat="server" CssClass="col-md-12 app-name"></asp:Label>
-                                            <asp:Label ID="AppInfo11" runat="server" CssClass="col-md-12 caption"></asp:Label>
+			  					            <asp:Label ID="AppName11" runat="server" CssClass="col-md-12 col-xs-12 app-name"></asp:Label>
+                                            <asp:Label ID="AppInfo11" runat="server" CssClass="col-md-12 col-xs-12 caption"></asp:Label>
 			  			                </div>
 
                                   </div>
