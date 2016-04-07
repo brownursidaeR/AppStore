@@ -38,17 +38,19 @@
                 </div>
                 <div class="col-md-5" style=" border: 1px solid #eeeeee; box-shadow: 0px 2px 2px #888888; background-color:#FAFAFA;padding:15px;">
                <div class="container-fluid">
-                   <div>
-                    <asp:Image runat="server" ID="appimg"  CssClass="app-img" style="width:30%; height:30%;float:left" />
+                   <div class="container-fluid" >
+                   <div class="col-md-2  col-xs-6">
+                    <asp:Image runat="server" ID="appimg"  CssClass="app-img" style="width:100%; height:100%;float:left" />
                     </div>
-                   <div class="col-md-10">
-                    <h3 style="margin-top:30px;">Clipboard</h3>
-                    <h5 >This is App Page</h5>
+                   <div class="col-md-10 col-xs-6">
+
+                    <h3 style="margin-top:30px;" id="AppName">Clipboard</h3>
+                    <h5 id="app descr" >This is App Page</h5>
                     <h6>App review</h6>
                     </div>
+                   </div>
                    
-                   
-                   <div class="col-md-12">
+                   <div class="container-fluid" >
                    <script type="text/javascript" src="js/jquery.min.js"></script>
 	   		       <script type="text/javascript" src="js/bootstrap.min.js"></script>
                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -77,7 +79,8 @@
 
                     </div>
 	   		       </div>
-                    <div class="col-md-12">
+
+                    <div class="container-fluid" >
                         <blockquote class="blockquote-reverse">
                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                              <small>Someone famous in <cite title="Source Title">Source Title</cite></small>

@@ -2,14 +2,14 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head runat="server">
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="theme-color" content="#FAFAFA"/>
-<script src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap.css" />
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css"/>
 <link rel = "Shortcut Icon" href=img/favico.ico> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Register</title>
 </head>
 <body style="background-color: #CFD8DC">

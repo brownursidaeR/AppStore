@@ -5,7 +5,7 @@
 <html lang="en">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="theme-color" content="#FAFAFA">
