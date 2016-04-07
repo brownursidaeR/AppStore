@@ -4,36 +4,42 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<link rel="stylesheet" href="css/bootstrap.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="theme-color" content="#FAFAFA"/>
-<script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css" />
 <link rel = "Shortcut Icon" href=img/favico.ico> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Register</title>
+<title>Register</title>
 </head>
 <body style="background-color: #CFD8DC">
     
-    <form id="form1" runat="server" class="form-horizontal">
-         <nav class="navbar navbar-default navbar-fixed-top">
+   <form id="form1" runat="server" class="form-horizontal">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.aspx">Apple Store</a>
+            </div>
 
-    <div class="navbar-header"">
-      <a class="navbar-brand" href="#">Apple store</a>
-    </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                 <li> <a href="#">Home</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Help</a></li>
+              </ul>
+        </div>
+      </div>
+   </nav>
 
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li> <a href="https://www.baidu.com">Home</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Help</a></li>
-      </ul>
-    </div>
-
-      
-</nav >
-
-   <div class="container-fluid" style="background-color: #CFD8DC">     
+   <div class="container-fluid container-mg" style="background-color: #CFD8DC">     
         <div class="col-md-4"></div>
         <div class="col-md-4" style="background-color: #FAFAFA;border: 1px solid #eeeeee;box-shadow: 0px 2px 2px #888888;">
             <fieldset >

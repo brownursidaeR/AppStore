@@ -21,9 +21,9 @@ body {
   margin: 0;
 }
 
-@media (max-width: 768px) { body { padding-top: 20%;  } }
+/*@media (max-width: 768px) { body { padding-top: 20%;  } }
 @media (min-width: 992px) { body { padding-top: 15%;  } }
-@media (min-width: 1200px) { body { padding-top: 5%;  } }
+@media (min-width: 1200px) { body { padding-top: 5%;  } }*/
 
 article,
 aside,
@@ -7628,7 +7628,7 @@ input[type="checkbox"]:disabled:checked:after,
     background-color: #FAFAFA;
     height:auto;
     }
-      .app-img{
+    .app-img{
       border-radius: 20px;
       width: 60%;
       height: 100%;
@@ -7636,11 +7636,11 @@ input[type="checkbox"]:disabled:checked:after,
       margin-bottom: 15px;
       }
     .app-name {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    color: #666666;
-    text-align: left;
-    font-size:1.3em;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      color: #666666;
+      text-align: left;
+      font-size:1.1em;
     }
    
 }
@@ -7673,9 +7673,27 @@ input[type="checkbox"]:disabled:checked:after,
     .wrapping-img {
     width:100%;
     float:left;
-}
+    display:none;
+    }
 }
 
+@media (max-width:768px) {
+    .container-mg {
+        margin:15% 0px;
+    }
+}
+
+@media (min-width:992px) {
+    .container-mg {
+        margin:12% 0px;
+    }
+}
+
+@media (min-width:1200px) {
+    .container-mg {
+        margin:5% 0px;
+    }
+}
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;

@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link rel="stylesheet" href="css/bootstrap.css" />
 <script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="theme-color" content="#FAFAFA">
 <link rel = "Shortcut Icon" href=img/favico.ico> 
@@ -34,7 +33,7 @@
         </nav >
      
 
-    <div class="container-fluid" style="background-color: #CFD8DC">
+    <div class="container-fluid container-mg" style="background-color: #CFD8DC">
 	            <div class="col-md-3">
                 </div>
                 <div class="col-md-5" style=" border: 1px solid #eeeeee; box-shadow: 0px 2px 2px #888888; background-color:#FAFAFA;padding:15px;">

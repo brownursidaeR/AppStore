@@ -5,9 +5,8 @@
 <html lang="en">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<link rel="stylesheet" href="css/bootstrap.css" />
 <script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="theme-color" content="#FAFAFA">
 <link rel = "Shortcut Icon" href=img/favico.ico> 
@@ -17,41 +16,46 @@
 <body style="background-color: #CFD8DC;" runat="server">
     
 <form runat="server">
-  <nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Apple store</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.aspx">Apple Store</a>
     </div>
 
-    <div class="collapse navbar-collapse">
-       
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li> <a href="#">Home</a></li>
+         <li> <a href="#">Home</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Help</a></li>
       </ul>
-      <div class="col-md-9" role="search">
+         <div class="col-md-9" role="search">
         <div class="form-group" runat="server">
    
-                <div class="col-md-9" style="margin-top: 15px">
+                <div class="col-md-10" style="margin-top: 15px">
 	  		        <asp:TextBox ID="txbSearch" runat="server"  placeholder="Search" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-3" style="margin-top: 15px">
+                <div class="col-md-2" style="margin-top: 15px">
                     <asp:Button ID="btnSearch" runat="server"  Text="Search" CssClass="btn btn-default" />
                 </div>
         </div>
        </div>
-        
-      <ul class="nav navbar-nav navbar-right" style="float:left">
+      <ul class="nav navbar-nav navbar-right">
         <li><asp:HyperLink ID="ResigterLink" runat="server" NavigateUrl="~/Register.aspx">Register</asp:HyperLink></li>
         <li><asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="~/Login.aspx">Login</asp:HyperLink></li>
       </ul>
     </div>
   </div>
 </nav>
-
   
-	  		<div class="container-fluid"  style="background-color: #CFD8DC;">
+	  		<div class="container-fluid container-mg"  style="background-color: #CFD8DC;">
 	            <div class="col-md-2">
                 
 				            <div class="list-group">

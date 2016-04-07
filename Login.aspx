@@ -9,8 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="theme-color" content="#FAFAFA"/>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/Custom.js"></script>
-<script src="js/jquery.min.js"></script>
 <link rel = "Shortcut Icon" href=img/favico.ico> 
     <title>Login</title>
 </head>
@@ -25,7 +23,7 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li> <a href="https://www.baidu.com">Home</a></li>
+        <li> <a href="index.aspx">Home</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Help</a></li>
       </ul>
@@ -34,7 +32,7 @@
       
 </nav >
 
-   <div class="container-fluid" style="background-color: #CFD8DC">     
+   <div class="container-fluid container-mg" style="background-color: #CFD8DC">     
         <div class="col-md-4"></div>
         <div class="col-md-4" style="background-color: #FAFAFA;border: 1px solid #eeeeee;box-shadow: 0px 2px 2px #888888;">
           <fieldset >
