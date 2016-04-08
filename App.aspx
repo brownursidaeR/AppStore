@@ -38,28 +38,40 @@
                 </div>
                 <div class="col-md-5" style=" border: 1px solid #eeeeee; box-shadow: 0px 2px 2px #888888; background-color:#FAFAFA;padding:15px;">
                <div class="container-fluid">
-                   <div class="container-fluid" >
-                   <div class="col-md-2  col-xs-6">
-                    <asp:Image runat="server" ID="appimg"  CssClass="app-img" style="width:100%; height:100%;float:left" />
-                    </div>
-                   <div class="col-md-10 col-xs-6">
-
-                    <h3 style="margin-top:30px;" id="AppName">Clipboard</h3>
-                    <h5 id="app descr" >This is App Page</h5>
-                    <h6>App review</h6>
-                    </div>
+                  <div class="container-fluid" >
+                       <div class="col-md-4  col-xs-6">
+                            <asp:Image runat="server" ID="appimg"  CssClass="app-img" style="width:100%; height:100%;float:left" />
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <asp:Label ID="AppName" runat="server" CssClass="h5 col-md-12 col-xs-12"></asp:Label><br />
+                           <%--Modified font size and detial position--%>
+                            <asp:Label ID="AppInfo" runat="server" CssClass="h6 col-md-12 col-xs-12"></asp:Label>
+                            <asp:Label ID="Appdetail" style="word-break:break-all" runat="server" CssClass="well-sm col-md-12 col-xs-12" ></asp:Label>
+                        </div>
                    </div>
-                   
+                      <div class="divider"><br /></div>
+                       <div class="container-fluid">
+                             <div class="col-md-4  col-xs-4">
+                                 <asp:Button runat="server" ID="btnNotify" CssClass="btn btn-primary" style="float:left;"  Text="Notify"/>
+                             </div>
+                             <div class="col-md-4  col-xs-5">
+                                 <asp:Button runat="server" ID="btnDownload" CssClass="btn btn-warning" style="float:left;"  Text="Download"/>
+                             </div>
+                             <div class="col-md-4  col-xs-3">
+                                 <asp:Button runat="server" ID="btnPush" CssClass="btn btn-success" style="float:left;" Text="Push"/>
+                             </div>
+                       </div>
+
+                    <div class="divider"><br /></div>
                    <div class="container-fluid" >
-                   <script type="text/javascript" src="js/jquery.min.js"></script>
-	   		       <script type="text/javascript" src="js/bootstrap.min.js"></script>
+                       <script type="text/javascript" src="js/jquery.min.js"></script>
+	   		           <script type="text/javascript" src="js/bootstrap.min.js"></script>
                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
                                 <div class="span4">
                                     <img src="img/5.png" style="width:100%;height:auto">
-                                    
                                 </div>
                             </div>
                             <div class="item">
