@@ -19,7 +19,7 @@ public partial class Register : System.Web.UI.Page
         int i;
         string mysql;
         string uid = "";
-        mysql = "select * from tblLogin where fldUsername='" + txbUserID.Text + "'";
+        mysql = "select * from tblUser where fldUsername='" + txbUserID.Text + "'";
         i = db.Rownum(mysql, "test", ref uid);
 
         if (i>0)
@@ -32,7 +32,7 @@ public partial class Register : System.Web.UI.Page
         }
         else
         {
-            mysql = "insert into tblLogin(fldUsername,fldPassword) values('" + txbUserID.Text + "','" + txbPass.Text + "')";
+            mysql = "insert into tblUser(fldUsername,fldPassword) values('" + txbUserID.Text + "','" + txbPass.Text + "')";
             db.ExecuteNonQuery(mysql);
 
         }

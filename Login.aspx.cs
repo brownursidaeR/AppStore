@@ -25,7 +25,7 @@ public partial class Login : System.Web.UI.Page
         string mysql;
         int i;
         string uid = "";
-        mysql = "select * from tblLogin where fldUsername='"+txbUserID.Text+"' and fldPassword ='"+txbPass.Text+"'";
+        mysql = "select * from tblUser where fldUsername='"+txbUserID.Text+"' and fldPassword ='"+txbPass.Text+"'";
         i = db.Rownum(mysql, "test", ref uid);
 
         if (i > 0)

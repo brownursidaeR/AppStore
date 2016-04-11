@@ -49,6 +49,7 @@ public partial class index : System.Web.UI.Page
             {
                 LoginLink.Text = Session["uid"].ToString();
                 ResigterLink.Text = null;
+                LoginLink.Enabled = false;
             }
         }
 
@@ -57,6 +58,12 @@ public partial class index : System.Web.UI.Page
 
     }
 
- 
+    protected void CatLink_Click(object sender, EventArgs e)
+    {
+        LinkButton b = (LinkButton)sender;
+        
+        Label1.Text = "You Click" + b.ID.ToString();
+    }
 
+  
 }

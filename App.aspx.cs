@@ -17,26 +17,25 @@ public partial class App : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Label1.Text = Request.QueryString["ID"];
-        
+
         string temp = Request.QueryString["ID"];
 
         //Convert the query string you captured to an int and store it in an int.
         int i = Convert.ToInt32(temp);
 
-        string mysql, appimgpath, appname, appinfo,appdetail;
+        string mysql, appimgpath, appname, appinfo, appdetail;
         mysql = "select * from tblApp";
         ds = db.ExecuteQuery(mysql, "App");
         appimgpath = ds.Tables["App"].Rows[i][4].ToString();
         appname = ds.Tables["App"].Rows[i][1].ToString();
         appinfo = ds.Tables["App"].Rows[i][2].ToString();
         appdetail = ds.Tables["App"].Rows[i][3].ToString();
-        appimg.ImageUrl = "~/img/"+ appimgpath + "";
+        appimg.ImageUrl = "~/img/" + appimgpath + "";
         AppName.Text = appname;
         AppInfo.Text = appinfo;
         Appdetail.Text = appdetail;
 
-
+        
     }
-    
+
 }
