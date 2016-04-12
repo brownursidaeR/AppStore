@@ -15,6 +15,7 @@
 <body style="background-color: #CFD8DC">
 
     <form id="form1" runat="server" class="form-horizontal">
+        <nav class="navbar navbar-default"></nav>
         <nav class="navbar navbar-default navbar-fixed-top">
 
             <div class="navbar-header">
@@ -31,7 +32,7 @@
         </nav>
 
 
-        <div class="container-fluid container-mg" style="background-color: #CFD8DC">
+        <div class="container-fluid" style="background-color: #CFD8DC">
             <div class="col-md-3">
             </div>
             <div class="col-md-5" style="border: 1px solid #eeeeee; box-shadow: 0px 2px 2px #888888; background-color: #FAFAFA; padding: 15px;">

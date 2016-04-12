@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/custom.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#FAFAFA">
     <link rel="Shortcut Icon" href="img/favico.ico">
@@ -16,6 +17,7 @@
 <body style="background-color: #CFD8DC;" runat="server">
 
     <form runat="server">
+        <nav class="navbar navbar-default"></nav>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -32,19 +34,20 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="index.aspx">Home</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">Help</a></li>
                     </ul>
-                    <div class="col-md-9" role="search">
+                    <div class="col-md-6" role="search">
                         <div class="form-group" runat="server">
-
-                            <div class="col-md-10" style="margin-top: 15px">
+                            <div class="container-fluid">
+                            <div class="col-md-10 col-xs-6" style="margin-top:15px">
                                 <asp:TextBox ID="txbSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
                             </div>
-                            <div class="col-md-2" style="margin-top: 15px">
+                            <div class="col-md-2 col-xs-6" style="margin-top:15px">
                                 <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-default" />
                             </div>
+                           </div>
                         </div>
                     </div>
                     <ul class="nav navbar-nav navbar-right">

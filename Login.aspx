@@ -15,6 +15,7 @@
 <body style="background-color: #CFD8DC">
 
     <form id="form1" runat="server" class="form-horizontal">
+        <nav class="navbar navbar-default"></nav>
         <nav class="navbar navbar-default navbar-fixed-top">
 
             <div class="navbar-header">
@@ -48,9 +49,27 @@
                     <div class="form-group">
                         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txbPass" runat="server" CssClass="form-control" placeholder="Password"></asp:TextBox>
+                            <asp:TextBox ID="txbPass" runat="server" TextMode="Password" CssClass="form-control" placeholder="Password"></asp:TextBox>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                    <label class="col-lg-2 control-label">Type</label>
+                    <div class="col-lg-10">
+                        <div class="radio" style="float:left;margin-right:10px;">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                                Admin
+                            </label>
+                        </div>
+                        <div class="radio" style="float:left">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                User
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
                     <div class="form-group">
                         <div class="col-lg-10">
@@ -58,11 +77,13 @@
                         </div>
 
                         <div class="col-lg-10 col-lg-offset-2">
-                            <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" />
-                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
+                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" style="margin-left: 5px; float: right" OnClick="btnSubmit_Click" />
+                            <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" style="float:right" />
+
                         </div>
                     </div>
                 </fieldset>
+                
             </div>
 
             <div class="col-md-4"></div>

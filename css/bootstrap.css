@@ -7686,7 +7686,7 @@ input[type="checkbox"]:disabled:checked:after,
     }
 }
 
-@media (max-width:768px) {
+/*@media (max-width:768px) {
     .container-mg {
         margin:20% 0px;
     }
@@ -7694,7 +7694,7 @@ input[type="checkbox"]:disabled:checked:after,
 
 @media (min-width:992px) {
     .container-mg {
-        margin:15% 0px;
+        margin:20% 0px;
     }
 }
 
@@ -7702,7 +7702,8 @@ input[type="checkbox"]:disabled:checked:after,
     .container-mg {
         margin:5% 0px;
     }
-}
+}*/
+
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;

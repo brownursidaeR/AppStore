@@ -62,7 +62,6 @@ public partial class index : System.Web.UI.Page
     {
         LinkButton b = (LinkButton)sender;
         
-        Label1.Text = "You Click" + b.ID.ToString();
     }
 
   
