@@ -8,6 +8,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/custom.css" />
     <link rel="Shortcut Icon" href="img/favico.ico">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -43,7 +44,7 @@
 
         <div class="container-fluid container-mg" style="background-color: #CFD8DC">
             <div class="col-md-4"></div>
-            <div class="col-md-4" style="background-color: #FAFAFA; border: 1px solid #eeeeee; box-shadow: 0px 2px 2px #888888;">
+            <div class="col-md-4 cardbackground">
                 <fieldset>
 
                     <div class="col-md-12" style="text-align: center">

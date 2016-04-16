@@ -14,29 +14,49 @@ public partial class index : System.Web.UI.Page
 
     DataSet ds = new DataSet();
 
+    DataTable App = new DataTable();
+
     OleDbDataAdapter da = new OleDbDataAdapter();
 
+    
 
     protected void Page_Load(object sender, EventArgs e)
-    {
-        Label[] AppInfo = new Label[] { AppInfo0, AppInfo1, AppInfo2, AppInfo3, AppInfo4, AppInfo5, AppInfo6, AppInfo7, AppInfo8, AppInfo9, AppInfo10, AppInfo11 };
-        Label[] AppName = new Label[] {AppName0, AppName1, AppName2, AppName3, AppName4, AppName5, AppName6, AppName7, AppName8, AppName9, AppName10, AppName11 };
-        ImageButton[] AppImg = new ImageButton[] { appimg0,appimg1, appimg2, appimg3, appimg4, appimg5, appimg6, appimg7, appimg8, appimg9, appimg10, appimg11 };
-        for (int i = 0; i < 12; i++)
+    { 
+        Label[] AppInfo = new Label[] {  AppInfo1, AppInfo2, AppInfo3, AppInfo4, AppInfo5, AppInfo6, AppInfo7, AppInfo8, AppInfo9, AppInfo10, AppInfo11,AppInfo12 };
+        Label[] AppName = new Label[] { AppName1, AppName2, AppName3, AppName4, AppName5, AppName6, AppName7, AppName8, AppName9, AppName10, AppName11,AppName12 };
+        ImageButton[] AppImg = new ImageButton[] {appimg1, appimg2, appimg3, appimg4, appimg5, appimg6, appimg7, appimg8, appimg9, appimg10, appimg11,appimg12 };
+        Image[] Cover = new Image[] {Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image8, Image9,Image10,Image11,Image12};
+        string mysql;
+
+        mysql = "SELECT tblRes.fldAppID,tblRes.fldAppImgPath,tblRes.fldAppScreenshot,tblRes.fldAppCover,tblApp.fldAppName,tblApp.fldAppInfo,tblApp.fldAppdetail,tblApp.fldPrice FROM tblRes, tblApp WHERE (([tblRes].[fldAppID]=[tblApp].[ID])) ";
+        ds = db.ExecuteQuery(mysql, "App");
+        string appimgpath,appid, appname, appinfo, CoverPath;
+
+        Random rnd = new Random();
+
+        int i = rnd.Next(1, 12);
+        for (i =0; i < 12; i++)
         {
-            string mysql, appimgpath,appname,appinfo;
-            mysql = "select * from tblApp";
-            ds = db.ExecuteQuery(mysql, "App");
-            appimgpath = ds.Tables["App"].Rows[i][4].ToString();
-            appname=ds.Tables["App"].Rows[i][1].ToString();
-            appinfo=ds.Tables["App"].Rows[i][2].ToString();
-            AppImg[i].ImageUrl = "~/img/"+appimgpath+"";
-            AppImg[i].PostBackUrl = "App.aspx?ID=" + i +"";
+            
+            appimgpath = ds.Tables["App"].Rows[i][1].ToString();
+            CoverPath = ds.Tables["App"].Rows[i][2].ToString();
+            appname = ds.Tables["App"].Rows[i][4].ToString();
+            appinfo = ds.Tables["App"].Rows[i][5].ToString();
+            appid = ds.Tables["App"].Rows[i][0].ToString();
+
+            AppImg[i].ImageUrl = "~/img/" + appimgpath + "";
+            Cover[i].ImageUrl = "~/img/" + CoverPath + "";
+            AppImg[i].PostBackUrl = "App.aspx?ID=" + appid + "";
+            AppImg[i].ToolTip = appid;
             AppName[i].Text = appname;
             AppInfo[i].Text = appinfo;
+            
         }
 
-        
+       
+
+
+
 
         if (!IsPostBack)
         {
@@ -58,10 +78,15 @@ public partial class index : System.Web.UI.Page
 
     }
 
+    //protected void AppImg_Click(object sender, EventArgs e) {
+
+    //    Response.Write("<script language='javascript'>alert('"+ appid +"');</script>");
+    //}
+
     protected void CatLink_Click(object sender, EventArgs e)
     {
         LinkButton b = (LinkButton)sender;
-        
+        ds.Tables.Clear();
     }
 
   

@@ -6,6 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/custom.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#FAFAFA" />
     <script src="js/bootstrap.min.js"></script>
@@ -35,7 +36,7 @@
 
         <div class="container-fluid container-mg" style="background-color: #CFD8DC">
             <div class="col-md-4"></div>
-            <div class="col-md-4" style="background-color: #FAFAFA; border: 1px solid #eeeeee; box-shadow: 0px 2px 2px #888888;">
+            <div class="col-md-4 cardbackground">
                 <fieldset>
                     <div class="col-md-12" style="text-align: center">
                         <h2>Login</h2>

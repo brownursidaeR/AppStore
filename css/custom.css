@@ -13,3 +13,9 @@
     }
     
 }
+
+.cardbackground {
+    background-color: #FAFAFA; 
+    border: 1px solid #eeeeee; 
+    box-shadow: 0px 2px 2px #888888;
+}

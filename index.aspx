@@ -41,13 +41,13 @@
                     <div class="col-md-6" role="search">
                         <div class="form-group" runat="server">
                             <div class="container-fluid">
-                            <div class="col-md-10 col-xs-6" style="margin-top:15px">
-                                <asp:TextBox ID="txbSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
+                                <div class="col-md-10 col-xs-6" style="margin-top: 15px">
+                                    <asp:TextBox ID="txbSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <div class="col-md-2 col-xs-6" style="margin-top: 15px">
+                                    
+                                </div>
                             </div>
-                            <div class="col-md-2 col-xs-6" style="margin-top:15px">
-                                <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-default" />
-                            </div>
-                           </div>
                         </div>
                     </div>
                     <ul class="nav navbar-nav navbar-right">
@@ -59,15 +59,15 @@
                 </div>
             </div>
         </nav>
-        
+
         <div class="container-fluid container-mg" style="background-color: #CFD8DC;">
             <div class="col-md-2">
 
                 <div class="list-group">
-                    <asp:LinkButton ID="CatApp" runat="server" CssClass="list-group-item" OnClick="CatLink_Click" ><i class="material-icons">shop_two</i> App</asp:LinkButton>
-                    <asp:LinkButton ID="CatGame" runat="server" CssClass="list-group-item" OnClick="CatLink_Click" ><i class="material-icons">devices</i> Games</asp:LinkButton>
-                    <asp:LinkButton ID="CatMedia" runat="server" CssClass="list-group-item" OnClick="CatLink_Click" ><i class="material-icons">headset</i> Media</asp:LinkButton>
-                    <asp:LinkButton ID="CatTool" runat="server" CssClass="list-group-item" OnClick="CatLink_Click" ><i class="material-icons">verified_user</i> Tools</asp:LinkButton>
+                    <asp:LinkButton ID="CatApp" runat="server" CssClass="list-group-item" OnClick="CatLink_Click"><i class="material-icons">shop_two</i> App</asp:LinkButton>
+                    <asp:LinkButton ID="CatGame" runat="server" CssClass="list-group-item" OnClick="CatLink_Click"><i class="material-icons">devices</i> Games</asp:LinkButton>
+                    <asp:LinkButton ID="CatMedia" runat="server" CssClass="list-group-item" OnClick="CatLink_Click"><i class="material-icons">headset</i> Media</asp:LinkButton>
+                    <asp:LinkButton ID="CatTool" runat="server" CssClass="list-group-item" OnClick="CatLink_Click"><i class="material-icons">verified_user</i> Tools</asp:LinkButton>
                     <asp:HyperLink ID="Account" runat="server" CssClass="list-group-item" NavigateUrl="~/User.aspx"><i class="material-icons">credit_card</i> My account</asp:HyperLink>
                     <asp:HyperLink ID="Setting" runat="server" CssClass="list-group-item" NavigateUrl="#"><i class="material-icons">settings</i> Settings</asp:HyperLink>
                 </div>
@@ -82,31 +82,41 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
                             <div>
-                                <img src="img/5.png" class="wrapping-img">
-                                <img src="img/4.png" class="wrapping-img">
-                                <img src="img/6.png" class="wrapping-img">
+                                <asp:Image ID="Image1" runat="server" CssClass="wrapping-img" />
+                                <asp:Image ID="Image2" runat="server" CssClass="wrapping-img" />
+                                <asp:Image ID="Image3" runat="server" CssClass="wrapping-img" />
+
                             </div>
                         </div>
                         <div class="item">
                             <div>
-                                <img src="img/1.png" class="wrapping-img">
-                                <img src="img/2.png" class="wrapping-img">
-                                <img src="img/3.png" class="wrapping-img">
+                                <asp:Image ID="Image4" runat="server" CssClass="wrapping-img" />
+                                <asp:Image ID="Image5" runat="server" CssClass="wrapping-img" />
+                                <asp:Image ID="Image6" runat="server" CssClass="wrapping-img" />
                             </div>
                         </div>
                         <div class="item">
                             <div>
-                                <img src="img/7.png" class="wrapping-img">
-                                <img src="img/8.png" class="wrapping-img">
-                                <img src="img/10.png" class="wrapping-img">
+                                <asp:Image ID="Image7" runat="server" CssClass="wrapping-img" />
+                                <asp:Image ID="Image8" runat="server" CssClass="wrapping-img" />
+                                <asp:Image ID="Image9" runat="server" CssClass="wrapping-img" />
                             </div>
                         </div>
+
+                        <div class="item">
+                            <div>
+                                <asp:Image ID="Image10" runat="server" CssClass="wrapping-img" />
+                                <asp:Image ID="Image11" runat="server" CssClass="wrapping-img" />
+                                <asp:Image ID="Image12" runat="server" CssClass="wrapping-img"/>
+                            </div>
+                        </div>
+
                     </div>
                     <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
                     <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 
                 </div>
-                <%--<div class="division"><h3>New and update app</h3></div>--%>
+
                 <div class="divider">
                     <h2>New and update app</h2>
                 </div>
@@ -114,13 +124,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="app-card col-xs-12 ">
-                            <asp:ImageButton ID="appimg0" runat="server" CssClass="app-img" />
-                            <asp:Label ID="AppName0" runat="server" CssClass="col-md-12 col-xs-12 app-name tldr"></asp:Label>
-                            <asp:Label ID="AppInfo0" runat="server" CssClass="col-md-12 col-xs-12 caption tldr"></asp:Label>
-                        </div>
-
-                        <div class="app-card col-xs-12">
-                            <asp:ImageButton ID="appimg1" runat="server" CssClass="app-img" />
+                            <asp:ImageButton ID="appimg1" runat="server" CssClass="app-img"/>
                             <asp:Label ID="AppName1" runat="server" CssClass="col-md-12 col-xs-12 app-name tldr"></asp:Label>
                             <asp:Label ID="AppInfo1" runat="server" CssClass="col-md-12 col-xs-12 caption tldr"></asp:Label>
                         </div>
@@ -149,6 +153,12 @@
                             <asp:Label ID="AppInfo5" runat="server" CssClass="col-md-12 col-xs-12 caption tldr"></asp:Label>
                         </div>
 
+                        <div class="app-card col-xs-12">
+                            <asp:ImageButton ID="appimg6" runat="server" CssClass="app-img" />
+                            <asp:Label ID="AppName6" runat="server" CssClass="col-md-12 col-xs-12 app-name tldr"></asp:Label>
+                            <asp:Label ID="AppInfo6" runat="server" CssClass="col-md-12 col-xs-12 caption tldr"></asp:Label>
+                        </div>
+
                     </div>
                 </div>
 
@@ -158,12 +168,6 @@
 
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="app-card col-xs-12">
-                            <asp:ImageButton ID="appimg6" runat="server" CssClass="app-img" />
-                            <asp:Label ID="AppName6" runat="server" CssClass="col-md-12 col-xs-12 app-name tldr"></asp:Label>
-                            <asp:Label ID="AppInfo6" runat="server" CssClass="col-md-12 col-xs-12 caption tldr"></asp:Label>
-                        </div>
-
                         <div class="app-card col-xs-12">
                             <asp:ImageButton ID="appimg7" runat="server" CssClass="app-img" />
                             <asp:Label ID="AppName7" runat="server" CssClass="col-md-12 col-xs-12 app-name tldr"></asp:Label>
@@ -192,6 +196,12 @@
                             <asp:ImageButton ID="appimg11" runat="server" CssClass="app-img" />
                             <asp:Label ID="AppName11" runat="server" CssClass="col-md-12 col-xs-12 app-name tldr"></asp:Label>
                             <asp:Label ID="AppInfo11" runat="server" CssClass="col-md-12 col-xs-12 caption tldr"></asp:Label>
+                        </div>
+
+                        <div class="app-card col-xs-12">
+                            <asp:ImageButton ID="appimg12" runat="server" CssClass="app-img" />
+                            <asp:Label ID="AppName12" runat="server" CssClass="col-md-12 col-xs-12 app-name tldr"></asp:Label>
+                            <asp:Label ID="AppInfo12" runat="server" CssClass="col-md-12 col-xs-12 caption tldr"></asp:Label>
                         </div>
 
                     </div>

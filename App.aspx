@@ -42,9 +42,9 @@
                             <asp:Image runat="server" ID="appimg" CssClass="app-img" Style="width: 100%; height: 100%; float: left" />
                         </div>
                         <div class="col-md-6 col-xs-12">
-                            <asp:Label ID="AppName" runat="server" CssClass="h5 col-md-12 col-xs-12"></asp:Label><br />
+                            <asp:Label ID="AppName" runat="server" CssClass="h4 col-md-12 col-xs-12"></asp:Label><br />
                             <%--Modified font size and detial position--%>
-                            <asp:Label ID="AppInfo" runat="server" CssClass="h6 col-md-12 col-xs-12"></asp:Label>
+                            <asp:Label ID="AppInfo" runat="server" CssClass="h5 col-md-12 col-xs-12"></asp:Label>
                             <asp:Label ID="Appdetail" Style="word-break: break-all" runat="server" CssClass="well-sm col-md-12 col-xs-12"></asp:Label>
                         </div>
                     </div>
@@ -74,17 +74,17 @@
                             <div class="carousel-inner" role="listbox">
                                 <div class="item active">
                                     <div class="span4">
-                                        <img src="img/5.png" style="width: 100%; height: auto">
+                                        <img src="img/screenshot.png" class="screenshot">
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="span4">
-                                        <img src="img/1.png" style="width: 100%; height: auto">
+                                        <img src="img/screenshot.png" class="screenshot">
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="span4">
-                                        <img src="img/7.png" style="width: 100%; height: auto">
+                                        <img src="img/screenshot.png" class="screenshot">
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                     </div>
 
                     <div class="divider">
-                        <h5>User Review</h5>
+                        <h5>&nbsp&nbsp&nbsp Review</h5>
                     </div>
 
                     <div class="container-fluid">
