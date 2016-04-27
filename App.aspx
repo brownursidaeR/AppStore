@@ -67,35 +67,11 @@
                         <br />
                     </div>
                     <div class="container-fluid">
-                        <script type="text/javascript" src="js/jquery.min.js"></script>
-                        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <div class="span4">
-                                        <img src="img/screenshot.png" class="screenshot">
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="span4">
-                                        <img src="img/screenshot.png" class="screenshot">
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="span4">
-                                        <img src="img/screenshot.png" class="screenshot">
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                            <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-
-                        </div>
+                         <img src="img/<%=ds.Tables["App"].Rows[0][2].ToString() %>" class="col-xs-12 screenshot">
                     </div>
 
                     <div class="divider">
-                        <h5>&nbsp&nbsp&nbsp Review</h5>
+                        <h5 class="container-fluid">Review</h5>
                     </div>
 
                     <div class="container-fluid">
@@ -121,7 +97,11 @@
             </div>
         </div>
 
-
+        
+        <footer style="padding-bottom:5%">
+            <div class="modal-footer">
+            </div>
+        </footer>
     </form>
 </body>
 

@@ -56,19 +56,9 @@
 
                     <div class="form-group">
                     <label class="col-lg-2 control-label">Type</label>
-                    <div class="col-lg-10">
-                        <div class="radio" style="float:left;margin-right:10px;">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                                Admin
-                            </label>
-                        </div>
-                        <div class="radio" style="float:left">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                User
-                            </label>
-                        </div>
+                    <div class="col-lg-10" style="margin:0">
+                        <asp:RadioButton GroupName="type" ID="btnA" runat="server" Text="Admin" CssClass="radio" style="float:left;margin-left:30px" />
+                        <asp:RadioButton GroupName="type" ID="btnU" runat="server" Text="User" CssClass="radio" style="float:left;margin-left:30px" />
                     </div>
                 </div>
 

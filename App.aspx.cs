@@ -11,7 +11,7 @@ public partial class App : System.Web.UI.Page
 {
     CommDB db = new CommDB();
 
-    DataSet ds = new DataSet();
+    public DataSet ds = new DataSet();
 
     OleDbDataAdapter da = new OleDbDataAdapter();
 
@@ -25,18 +25,13 @@ public partial class App : System.Web.UI.Page
         string appid = temp;
 
         string mysql, appimgpath, appname, appinfo, appdetail;
-        //mysql = "select * from tblApp";
-        //mysql = "SELECT TOP 13 tblRes.fldAppID,tblRes.fldAppImgPath,tblRes.fldAppScreenshot,tblRes.fldAppCover,tblApp.fldAppName,tblApp.fldAppInfo,tblApp.fldAppdetail,tblApp.fldPrice FROM tblRes, tblApp WHERE (([tblRes].[fldAppID]=[tblApp].[ID])) Order By Rnd([tblApp].[ID])";
-        mysql = "Select * from tblApp where ID=" + appid + "";
+        mysql = "SELECT tblRes.fldAppID,tblRes.fldAppImgPath,tblRes.fldAppScreenshot,tblRes.fldAppCover,tblApp.fldAppName,tblApp.fldAppInfo,tblApp.fldAppdetail,tblApp.fldPrice FROM tblRes, tblApp where [tblRes].[fldAppID]=[tblApp].[ID] and [tblApp].[ID]=" + appid + "";
         ds = db.ExecuteQuery(mysql, "App");
-        appimgpath = ds.Tables["App"].Rows[0][4].ToString();
-        appname = ds.Tables["App"].Rows[0][1].ToString();
-        appinfo = ds.Tables["App"].Rows[0][2].ToString();
-        appdetail = ds.Tables["App"].Rows[0][3].ToString();
-
-        //appimgpath = ds.Tables["App"].Rows[0][1].ToString();
-        //appname = ds.Tables["App"].Rows[0][4].ToString();
-        //appinfo = ds.Tables["App"].Rows[0][5].ToString();
+        appimgpath = ds.Tables["App"].Rows[0][1].ToString();
+        appname = ds.Tables["App"].Rows[0][4].ToString();
+        appinfo = ds.Tables["App"].Rows[0][5].ToString();
+        appdetail = ds.Tables["App"].Rows[0][6].ToString();
+        
         appimg.ImageUrl = "~/img/" + appimgpath + "";
         AppName.Text = appname;
         AppInfo.Text = appinfo;

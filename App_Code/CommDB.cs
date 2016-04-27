@@ -17,7 +17,7 @@ public class CommDB
 
     public CommDB()
     {
-    
+
     }
 
     //***************************************************
@@ -25,19 +25,22 @@ public class CommDB
     //***************************************************
 
     public int Rownum(string sql, string name, ref string username)
-    {   
+    {
+
         int i = 0;
         OleDbConnection cn = new OleDbConnection(); //New connection cn
         cn.ConnectionString = mystr;
         cn.Open();
-        OleDbCommand cd = new OleDbCommand(sql,cn); //New command cd
+        OleDbCommand cd = new OleDbCommand(sql, cn); //New command cd
         OleDbDataReader dr = cd.ExecuteReader();
-        while (dr.Read()) {
+        while (dr.Read())
+        {
             username = dr[0].ToString();
             i++;
         }
         cn.Close();
         return i;
+
     }
 
     //*********************************************************************
@@ -49,7 +52,7 @@ public class CommDB
         OleDbConnection cn = new OleDbConnection(); //New Connection cn
         cn.ConnectionString = mystr;
         cn.Open();
-        OleDbCommand cd = new OleDbCommand(sql,cn);//New Command cd
+        OleDbCommand cd = new OleDbCommand(sql, cn);//New Command cd
         try
         {
             cd.ExecuteNonQuery();
@@ -69,15 +72,15 @@ public class CommDB
     //*  Select Command Operation and return a Dataset                    *
     //*********************************************************************
 
-    public DataSet ExecuteQuery(string sql,string any)
+    public DataSet ExecuteQuery(string sql, string any)
     {
         OleDbConnection cn = new OleDbConnection(); //New connection cn
         cn.ConnectionString = mystr;
         cn.Open();
-        OleDbDataAdapter da = new OleDbDataAdapter(sql,cn);//New DataAdapter da
+        OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);//New DataAdapter da
         DataSet ds = new DataSet();
         //ds.Clear();
-        da.Fill(ds,any);
+        da.Fill(ds, any);
         string i = ds.Tables["App"].Rows[0][0].ToString();
         cn.Close();
         return ds;

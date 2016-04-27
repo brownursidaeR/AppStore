@@ -22,22 +22,42 @@ public partial class Login : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
+
         string mysql;
         int i;
-        string uid = "";
-        mysql = "select * from tblUser where fldUsername='"+txbUserID.Text+"' and fldPassword ='"+txbPass.Text+"'";
-        i = db.Rownum(mysql, "test", ref uid);
 
-        if (i > 0)
+
+        if (btnA.Checked == true)
         {
-            Session["uid"] = txbUserID.Text.Trim(); //Saved userID
-            Response.Redirect("index.aspx");
-            
+            string uid = "";
+            mysql = "select * from tblUser where fldUsername='" + txbUserID.Text + "' and fldPassword ='" + txbPass.Text + "' and fldtype=1";
+            i = db.Rownum(mysql, "test", ref uid);
+
+            if (i > 0)
+            {
+                Session["uid"] = txbUserID.Text.Trim(); //Saved userID
+                Response.Redirect("Manage.aspx");
+            }
+        }
+        else if (btnU.Checked == true)
+        {
+            string uid = "";
+            mysql = "select * from tblUser where fldUsername='" + txbUserID.Text + "' and fldPassword ='" + txbPass.Text + "' and fldtype=0";
+            i = db.Rownum(mysql, "test", ref uid);
+
+            if (i > 0)
+            {
+                Session["uid"] = txbUserID.Text.Trim(); //Saved userID
+                Response.Redirect("index.aspx");
+            }
+        }
+        else
+        { 
+            Response.Write("<script>alert('Wrong')</script>");
         }
 
-        else {
-            Response.Write("Wrong");
-        }
+
+
 
 
     }

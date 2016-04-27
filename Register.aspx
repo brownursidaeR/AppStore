@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txbUserID" CssClass="form-control" placeholder="UserID" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txbUserID" CssClass="form-control" placeholder="UserID" runat="server" ></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/custom.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#FAFAFA" />
-    <script src="js/bootstrap.min.js"></script>
     <link rel="Shortcut Icon" href="img/favico.ico">
     <title>Manage</title>
 </head>
@@ -25,104 +24,62 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="index.aspx">Home</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Help</a></li>
                 </ul>
             </div>
-
-
         </nav>
 
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
         <div class="container-fluid container-mg" style="background-color: #CFD8DC">
             <div class="col-md-2"></div>
             <div class="col-md-8 cardbackground">
-                <fieldset>
-                     <h2>Manage the application</h2>
-                    <table class="table table-striped table-hover ">
-                        <thead>
-                           
-                            <tr>
-                                <th>#</th>
-                                <th>Column heading</th>
-                                <th>Column heading</th>
-                                <th>Column heading</th>
-                                 <th><br /></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td class="btn btn-primary btn-sm">Edit</td>
-                                <td class="btn btn-danger btn-sm">Delete</td>
-                                <td class="btn btn-default btn-sm">Cancel</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td class="btn btn-primary btn-sm">Edit</td>
-                                <td class="btn btn-danger btn-sm">Delete</td>
-                                <td class="btn btn-default btn-sm">Cancel</td>
-                            </tr>
-                            <tr class="info">
-                                <td>3</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td class="btn btn-primary btn-sm">Edit</td>
-                                <td class="btn btn-danger btn-sm">Delete</td>
-                                <td class="btn btn-default btn-sm">Cancel</td>
-                            </tr>
-                            <tr class="success">
-                                <td>4</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td class="btn btn-primary btn-sm">Edit</td>
-                                <td class="btn btn-danger btn-sm">Delete</td>
-                                <td class="btn btn-default btn-sm">Cancel</td>
-                            </tr>
-                            <tr class="danger">
-                                <td>5</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td class="btn btn-primary btn-sm">Edit</td>
-                                <td class="btn btn-danger btn-sm">Delete</td>
-                                <td class="btn btn-default btn-sm">Cancel</td>
-                            </tr>
-                            <tr class="warning">
-                                <td>6</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td class="btn btn-primary btn-sm">Edit</td>
-                                <td class="btn btn-danger btn-sm">Delete</td>
-                                <td class="btn btn-default btn-sm">Cancel</td>
-                            </tr>
+                <ul class="nav nav-tabs">
+                    <li class=""><a href="#Orders" data-toggle="tab" aria-expanded="true">Orders</a></li>
+                    <li class=""><a href="#Application" data-toggle="tab" aria-expanded="false">Application</a></li>
+                    <li class=""><a href="#Pictures" data-toggle="tab" aria-expanded="true">Pictures</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="Orders">
+                        <asp:GridView ID="gv" runat="server" GridLines="None" CssClass="table table-striped table-hover" Width="100%" AutoGenerateColumns="False" DataKeyNames="fldAppID"  OnRowEditing="gv_RowEditing" OnRowDeleting="gv_RowDeleting">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Image">
+                                    <ItemTemplate>
+                                        <asp:Image ID="Image1" runat="server" style="line-height:100%" Height="50%" ImageUrl='<%# "~/img/" + DataBinder.Eval(Container.DataItem, "fldAppImgPath") %>'  />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                               <%-- <asp:BoundField DataField="fldAppID" HeaderText="AppID" SortExpression="fldAppID" />--%>
+                                <asp:BoundField DataField="fldAppScreenshot" HeaderText="Screenshot" SortExpression="fldAppScreenshot" />
+                                <asp:BoundField DataField="fldAppImgPath" HeaderText="Imagepath" SortExpression="fldAppImgPath" />
+                                <asp:BoundField DataField="fldAppCover" HeaderText="AppCover" SortExpression="fldAppCover" />
+                                <asp:CommandField EditText="Edit" ShowEditButton="True"  HeaderText="Edit" ControlStyle-CssClass="btn btn-lg btn-primary" />
+                                <asp:CommandField DeleteText="Delete" HeaderText="Delete" ShowDeleteButton="True"  ControlStyle-CssClass="btn btn-lg btn-danger"/>
 
-                            <tr class="active">
-                                <td>7</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td class="btn btn-primary btn-sm">Edit</td>
-                                <td class="btn btn-danger btn-sm">Delete</td>
-                                <td class="btn btn-default btn-sm">Cancel</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </fieldset>
+                            </Columns>
+                        </asp:GridView>
+
+                     
+                    </div>
+                    <div class="tab-pane fade " id="Application">
+                         <h1>This is application page using for testing</h1>
+                         <h2>This is application page using for testing</h2>
+                         <h3>This is application page using for testing</h3>
+                         <h4>This is application page using for testing</h4>
+                    </div>
+                    <div class="tab-pane fade" id="Pictures">
+                         <h1>This is pictures page using for testing</h1>
+                         <h2>This is pictures page using for testing</h2>
+                         <h3>This is pictures page using for testing</h3>
+                         <h4>This is pictures page using for testing</h4>
+                    </div>
+                </div>
             </div>
-        </div>
         <div class="col-md-2"></div>
+        </div>
+      
+       
 
-
+<script src="js/bootstrap.min.js"></script>
     </form>
 </body>
 </html>
