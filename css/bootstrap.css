@@ -2172,7 +2172,7 @@ pre code {
     width: 25%;
   }
     .app-card {
-        width:15.666666666%;
+        width:15%;
     }
   .col-lg-2 {
     width: 16.66666667%;
@@ -7655,6 +7655,13 @@ input[type="checkbox"]:disabled:checked:after,
    .screenshot {
     width:100%;
     }
+
+   
+.Cropper {
+    width:150%;
+    height:150%;
+}
+
 }
 
 .app-name {
@@ -7694,6 +7701,12 @@ input[type="checkbox"]:disabled:checked:after,
     .screenshot {
     width:100%;
     }
+
+       
+.Cropper {
+    width:120%;
+    height:120%;
+}
 }
 
 

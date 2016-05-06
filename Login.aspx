@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/custom.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#FAFAFA" />
-    <script src="js/bootstrap.min.js"></script>
     <link rel="Shortcut Icon" href="img/favico.ico">
     <title>Login</title>
 </head>
@@ -55,12 +54,12 @@
                     </div>
 
                     <div class="form-group">
-                    <label class="col-lg-2 control-label">Type</label>
-                    <div class="col-lg-10" style="margin:0">
-                        <asp:RadioButton GroupName="type" ID="btnA" runat="server" Text="Admin" CssClass="radio" style="float:left;margin-left:30px" />
-                        <asp:RadioButton GroupName="type" ID="btnU" runat="server" Text="User" CssClass="radio" style="float:left;margin-left:30px" />
+                        <label class="col-lg-2 control-label">Type</label>
+                        <div class="col-lg-10" style="margin: 0">
+                            <asp:RadioButton GroupName="type" ID="btnA" runat="server" Text="Admin" CssClass="radio" Style="float: left; margin-left: 30px" />
+                            <asp:RadioButton GroupName="type" ID="btnU" runat="server" Text="User" CssClass="radio" Style="float: left; margin-left: 30px" />
+                        </div>
                     </div>
-                </div>
 
                     <div class="form-group">
                         <div class="col-lg-10">
@@ -68,13 +67,46 @@
                         </div>
 
                         <div class="col-lg-10 col-lg-offset-2">
-                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" style="margin-left: 5px; float: right" OnClick="btnSubmit_Click" />
-                            <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" style="float:right" />
+                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" Style="margin-left: 5px; float: right" OnClick="btnSubmit_Click" />
+                            <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" Style="float: right" />
 
                         </div>
                     </div>
                 </fieldset>
-                
+                <script type="text/javascript" src="js/jquery.min.js"></script>
+                <script type="text/javascript" src="js/bootstrap.min.js"></script>
+                <script type="text/javascript">
+                    function LoginFail() {
+                        $('#passwordsNoMatchRegister').show();
+                        $('.alert').delay(3000).slideUp(200, function () {
+                            $(this).alert('hide');
+                        });
+                    }
+                    function LoginSuccess() {
+                        $('#LoginSuccess').show();
+                        $('.alert').delay(1000).slideUp(200, function () {
+                            $(this).alert('close');
+                        });
+                    }
+                    function UserTypeNeeded() {
+                        $('#UserTypeNeeded').show();
+                        $('.alert').delay(3000).slideUp(200, function () {
+                            $(this).alert('close');
+                        });
+                    }
+                </script>
+                <div class="alert alert-dismissible alert-success collapse" id="LoginSuccess">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Login Success!</strong>
+                </div>
+                 <div class="alert alert-dismissible alert-warning collapse" id="UserTypeNeeded">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Please Select Your User Type </strong>and try again
+                </div>
+                <div class="alert alert-dismissible alert-danger collapse" id="passwordsNoMatchRegister">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Oh Snap! </strong>It seems like username or password is wrong.
+                </div>
             </div>
 
             <div class="col-md-4"></div>

@@ -79,9 +79,8 @@ public class CommDB
         cn.Open();
         OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);//New DataAdapter da
         DataSet ds = new DataSet();
-        //ds.Clear();
+        ds.Clear();
         da.Fill(ds, any);
-        string i = ds.Tables["App"].Rows[0][0].ToString();
         cn.Close();
         return ds;
 

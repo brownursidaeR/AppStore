@@ -24,17 +24,14 @@ public partial class Register : System.Web.UI.Page
 
         if (i>0)
         {
-            Response.Write("Account already exist");
-        }
-        if (txbPass.Text.ToString()!=txbConfirm.Text.ToString())
-        {
-            Response.Write("Two password don't matched!");
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { AccountExist(); });", true);
         }
         else
         {
             mysql = "insert into tblUser(fldUsername,fldPassword) values('" + txbUserID.Text + "','" + txbPass.Text + "')";
             db.ExecuteNonQuery(mysql);
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { RegisterSuccess(); });", true);
+            Response.AppendHeader("Refresh", "2;url=index.aspx");
         }
     }
     

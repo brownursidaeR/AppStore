@@ -35,51 +35,119 @@
             <div class="col-md-2"></div>
             <div class="col-md-8 cardbackground">
                 <ul class="nav nav-tabs">
-                    <li class=""><a href="#Orders" data-toggle="tab" aria-expanded="true">Orders</a></li>
-                    <li class=""><a href="#Application" data-toggle="tab" aria-expanded="false">Application</a></li>
+                    <li class=""><a href="#Application" data-toggle="tab" aria-expanded="true">Application</a></li>
+                    <li class=""><a href="#Orders" data-toggle="tab" aria-expanded="false">Orders</a></li>
                     <li class=""><a href="#Pictures" data-toggle="tab" aria-expanded="true">Pictures</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade active in" id="Orders">
-                        <asp:GridView ID="gv" runat="server" GridLines="None" CssClass="table table-striped table-hover" Width="100%" AutoGenerateColumns="False" DataKeyNames="fldAppID"  OnRowEditing="gv_RowEditing" OnRowDeleting="gv_RowDeleting">
+                    <div class="tab-pane fade active in" id="Application">
+                        <asp:GridView ID="gv" runat="server" GridLines="None" CssClass="table table-striped table-hover" Width="100%" AutoGenerateColumns="False" DataKeyNames="fldAppID" OnRowEditing="gv_RowEditing" OnRowDeleting="gv_RowDeleting">
                             <Columns>
                                 <asp:TemplateField HeaderText="Image">
                                     <ItemTemplate>
-                                        <asp:Image ID="Image1" runat="server" style="line-height:100%" Height="50%" ImageUrl='<%# "~/img/" + DataBinder.Eval(Container.DataItem, "fldAppImgPath") %>'  />
+                                        <asp:Image ID="Image1" runat="server" Style="line-height: 100%" Height="50%" ImageUrl='<%# "~/img/" + DataBinder.Eval(Container.DataItem, "fldAppImgPath") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                               <%-- <asp:BoundField DataField="fldAppID" HeaderText="AppID" SortExpression="fldAppID" />--%>
-                                <asp:BoundField DataField="fldAppScreenshot" HeaderText="Screenshot" SortExpression="fldAppScreenshot" />
-                                <asp:BoundField DataField="fldAppImgPath" HeaderText="Imagepath" SortExpression="fldAppImgPath" />
-                                <asp:BoundField DataField="fldAppCover" HeaderText="AppCover" SortExpression="fldAppCover" />
-                                <asp:CommandField EditText="Edit" ShowEditButton="True"  HeaderText="Edit" ControlStyle-CssClass="btn btn-lg btn-primary" />
-                                <asp:CommandField DeleteText="Delete" HeaderText="Delete" ShowDeleteButton="True"  ControlStyle-CssClass="btn btn-lg btn-danger"/>
-
+                                <asp:BoundField DataField="fldAppName" HeaderText="Name" SortExpression="fldAppName" />
+                                <asp:BoundField DataField="fldAppImgPath" HeaderText="Image Name" SortExpression="fldAppImgPath" />
+                                <asp:CommandField EditText="Edit" ShowEditButton="True" HeaderText="Edit" ControlStyle-CssClass="btn btn-lg btn-primary" />
+                                <asp:CommandField DeleteText="Delete" HeaderText="Delete" ShowDeleteButton="True" ControlStyle-CssClass="btn btn-lg btn-danger" />
                             </Columns>
                         </asp:GridView>
 
-                     
                     </div>
-                    <div class="tab-pane fade " id="Application">
-                         <h1>This is application page using for testing</h1>
-                         <h2>This is application page using for testing</h2>
-                         <h3>This is application page using for testing</h3>
-                         <h4>This is application page using for testing</h4>
+                    <div class="tab-pane fade " id="Orders">
+                        <asp:GridView ID="gvOrders" runat="server" GridLines="None" CssClass="table table-striped table-hover" Width="100%" AutoGenerateColumns="False" DataKeyNames="fldPurchaseID" OnRowEditing="gvOrders_ConfirmOrders" OnRowDeleting="gvOrders_DeletingOrders" OnRowDataBound="gvOrders_RowDataBound">
+                            <Columns>
+                                <asp:BoundField DataField="fldUsername" HeaderText="User" SortExpression="fldUsername" />
+                                <asp:BoundField DataField="fldPurchaseID" HeaderText="Purchase ID" SortExpression="fldPurchaseID" />
+                                <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+                                <asp:BoundField DataField="fldAppName" HeaderText="App Name" SortExpression="fldAppName" />
+                                <asp:BoundField DataField="fldPrice" HeaderText="Price" SortExpression="fldPrice" />
+                                <asp:BoundField DataField="fldStatus" HeaderText="Status" SortExpression="fldStatus" />
+                                <asp:CommandField EditText="Pass" ShowEditButton="True" HeaderText="Pass" ControlStyle-CssClass="btn btn-lg btn-success" />
+                                <asp:CommandField DeleteText="Delete" HeaderText="Delete" ShowDeleteButton="True" ControlStyle-CssClass="btn btn-lg btn-danger" />
+                            </Columns>
+                        </asp:GridView>
                     </div>
                     <div class="tab-pane fade" id="Pictures">
-                         <h1>This is pictures page using for testing</h1>
-                         <h2>This is pictures page using for testing</h2>
-                         <h3>This is pictures page using for testing</h3>
-                         <h4>This is pictures page using for testing</h4>
+                        <h1>This is pictures page using for testing</h1>
+                        <h2>This is pictures page using for testing</h2>
+                        <h3>This is pictures page using for testing</h3>
+                        <h4>This is pictures page using for testing</h4>
                     </div>
                 </div>
             </div>
-        <div class="col-md-2"></div>
-        </div>
-      
-       
 
-<script src="js/bootstrap.min.js"></script>
+            <div class="col-md-2"></div>
+        </div>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            function DeleteConfirm() {
+                $('#DeletingApplicationRecord').modal({
+                    keyboard: false
+                });
+            }
+
+            function DeleteOrders() {
+                $('#DeletingOrders').modal({
+                    keyboard: false
+                });
+            }
+        </script>
+
+        <!--Modal-->
+        <div class="modal fade" id="DeletingApplicationRecord" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel"><strong>Deleting Application!</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        By clicking Confirm, I agree to Delete this Application.
+          <br />
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <asp:Button ID="btnDelete" runat="server" Text="Confirm" CssClass="btn btn-primary" OnClick="Deleting_App" />
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
+        </div>
+
+        <!--Modal-->
+        <div class="modal fade" id="DeletingOrders" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="ModalLabel"><strong>Deleting Orders!</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        By clicking Confirm, I agree to Delete this Order record.
+                    <br />
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <asp:Button ID="btnDeleteOrders" runat="server" Text="Confirm" CssClass="btn btn-primary" OnClick="Deleting_Orders" />
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
+        </div>
     </form>
 </body>
 </html>

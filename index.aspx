@@ -34,8 +34,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="index.aspx">Home</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Help</a></li>
+                        <li><a href="mailto:someone@example.com?Subject=Contact">Contact</a></li>
+                        <li><a href="mailto:someone@example.com?Subject=I%20need%20help">Help</a></li>
                     </ul>
                     <div class="col-md-6" role="search">
                         <div class="form-group" runat="server">
@@ -44,7 +44,7 @@
                                     <asp:TextBox ID="txbSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <div class="col-md-2 col-xs-6" style="margin-top: 15px">
-                                    <asp:Button ID="Button1" runat="server" Text="Search" CssClass="btn btn-default" />
+                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-default" />
                                 </div>
                             </div>
                         </div>
@@ -63,24 +63,18 @@
 
         <div class="container-fluid container-mg" style="background-color: #CFD8DC;">
             <div class="col-md-2">
-
-
                 <div class="list-group tldr">
                     <asp:LinkButton ID="CatApp" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">shop_two</i> App</asp:LinkButton>
                     <asp:LinkButton ID="CatGame" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">devices</i> Games</asp:LinkButton>
                     <asp:LinkButton ID="CatMedia" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">headset</i> Media</asp:LinkButton>
                     <asp:LinkButton ID="CatTool" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">verified_user</i> Tools</asp:LinkButton>
-                    <asp:HyperLink ID="Account" runat="server" CssClass="list-group-item col-md-12 col-xs-2" NavigateUrl="~/User.aspx"><i class="material-icons">credit_card</i> My account</asp:HyperLink>
+                    <asp:HyperLink ID="Account" runat="server" CssClass="list-group-item col-md-12 col-xs-2"><i class="material-icons">credit_card</i> Account</asp:HyperLink>
                     <asp:HyperLink ID="Setting" runat="server" CssClass="list-group-item col-md-12 col-xs-2" NavigateUrl="#"><i class="material-icons">settings</i> Settings</asp:HyperLink>
                 </div>
+            </div>
 
-          
-        </div>
-             
 
-            <div class="col-md-8" >
-         
-                
+            <div class="col-md-8">
 
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Wrapper for slides -->
@@ -88,8 +82,8 @@
                         <div class="item active">
                             <div>
                                 <asp:Image ID="Image1" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c8.png" />
-                                <asp:Image ID="Image2" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c7.png"/>
-                                <asp:Image ID="Image3" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c3.png"/>
+                                <asp:Image ID="Image2" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c7.png" />
+                                <asp:Image ID="Image3" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c3.png" />
                             </div>
                         </div>
                         <div class="item">
@@ -111,7 +105,7 @@
                             <div>
                                 <asp:Image ID="Image10" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c10.png" />
                                 <asp:Image ID="Image11" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c15.png" />
-                                <asp:Image ID="Image12" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c20.png"/>
+                                <asp:Image ID="Image12" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c20.png" />
                             </div>
                         </div>
 
@@ -124,16 +118,17 @@
                 <div class="divider">
                     <h2>New and update app</h2>
                 </div>
-                            
+
                 <div class="container-fluid">
                     <div class="row">
-                        <% for (int i = 0; i < ds.Tables["App"].Rows.Count && i<6;i++) { %>
-                         <div class="app-card col-xs-12">
-                            <img class="app-img click" id="<%=ds.Tables["App"].Rows[i][0].ToString() %>" src="img/<%=ds.Tables["App"].Rows[i][1].ToString() %>"/>
+                        <% for (int i = 0; i < ds.Tables["App"].Rows.Count && i < 6; i++)
+                            { %>
+                        <div class="app-card col-xs-12">
+                            <img class="app-img click" id="<%=ds.Tables["App"].Rows[i][0].ToString() %>" src="img/<%=ds.Tables["App"].Rows[i][1].ToString() %>" />
                             <small class="col-md-12 col-xs-12 app-name tldr"><%=ds.Tables["App"].Rows[i][4].ToString() %></small>
-                            <cite  class=" col-md-12 col-xs-12 caption tldr"><%=ds.Tables["App"].Rows[i][5].ToString() %></cite>
-                         </div>
-                       <% } %>
+                            <cite class=" col-md-12 col-xs-12 caption tldr"><%=ds.Tables["App"].Rows[i][5].ToString() %></cite>
+                        </div>
+                        <% } %>
                     </div>
                 </div>
 
@@ -142,25 +137,26 @@
                 </div>
 
                 <div class="container-fluid">
-                    <div class="row">  
-                       
-                        <% for (int j = 6; j < ds.Tables["App"].Rows.Count && j<12;j++) { %>
-                         <div class="app-card col-xs-12">
+                    <div class="row">
+
+                        <% for (int j = 6; j < ds.Tables["App"].Rows.Count && j < 12; j++)
+                            { %>
+                        <div class="app-card col-xs-12">
                             <img class="app-img click" id="<%=ds.Tables["App"].Rows[j][0].ToString() %>" src="img/<%=ds.Tables["App"].Rows[j][1].ToString() %>" />
                             <small class="col-md-12 col-xs-12 app-name tldr"><%=ds.Tables["App"].Rows[j][4].ToString() %></small>
-                            <cite  class=" col-md-12 col-xs-12 caption tldr"><%=ds.Tables["App"].Rows[j][5].ToString() %></cite>
-                         </div>
-                       <% } %>
-                        
-                </div>
-                
-           <%-- </div>--%>
+                            <cite class=" col-md-12 col-xs-12 caption tldr"><%=ds.Tables["App"].Rows[j][5].ToString() %></cite>
+                        </div>
+                        <% } %>
+                    </div>
 
+                </div>
+            </div>
             <div class="col-md-1">
-                <div></div>
+                
             </div>
         </div>
                 <script type="text/javascript">
+                    //Rediect on img clicking
                     $(document).ready(function () {
                         $('img.click').click(function () {
                             window.location.href = 'App.aspx?ID=' + this.id;

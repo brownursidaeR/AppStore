@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txbUserID" CssClass="form-control" placeholder="UserID" runat="server" ></asp:TextBox>
+                            <asp:TextBox ID="txbUserID" CssClass="form-control" placeholder="UserID" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
@@ -119,6 +119,28 @@
                         </div>
                     </div>
                 </fieldset>
+                <script type="text/javascript">
+                    function AccountExist() {
+                        $('#AccountExist').show();
+                        $('.alert').delay(1000).slideUp(200, function () {
+                            $(this).alert('close');
+                        });
+                    }
+                    function RegisterSuccess() {
+                        $('#RegisterSuccess').show();
+                        $('.alert').delay(2000).slideUp(200, function () {
+                            $(this).alert('close');
+                        });
+                    }
+                </script>
+                <div class="alert alert-dismissible alert-danger collapse" id="AccountExist">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Account already exist! </strong>please using another username
+                </div>
+                <div class="alert alert-dismissible alert-success collapse" id="RegisterSuccess">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Register Success! </strong>You will soon direct to Index
+                </div>
             </div>
 
             <div class="col-md-4">
@@ -127,7 +149,6 @@
 
 
         <!--Modal-->
-        <%--data-toggle="modal" data-target="#Congrat" data-backdrop="true" --%>
         <div class="modal fade" id="Congrat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
