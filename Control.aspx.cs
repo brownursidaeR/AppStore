@@ -10,29 +10,32 @@ using System.Web.UI.WebControls;
 
 public partial class Control : System.Web.UI.Page
 {
+    //Using method CommDB
     CommDB db = new CommDB();
 
+    //Set up a new dataset
     public DataSet ds = new DataSet();
-
-    OleDbDataAdapter da = new OleDbDataAdapter();
 
     protected void Page_Load(object sender, EventArgs e)
     {
 
         if (!Page.IsPostBack)
         {
-            { bind();}
+            { bind(); }
         }
-        
+
     }
 
 
     protected void Uploader1_FileValidating(object sender, UploaderEventArgs args)
     {
+        //Set up the upload path
         string virpath = "/img/" + args.FileGuid + System.IO.Path.GetExtension(args.FileName);
 
+        //Set up the MapPath
         string savepath = Server.MapPath(virpath);
-        
+
+        //Substring the image path
         string imgpath = virpath.Substring(virpath.LastIndexOf("/") + 1, virpath.LastIndexOf(".") - 1);
 
 
@@ -50,9 +53,13 @@ public partial class Control : System.Web.UI.Page
         Uploader1.SetValidationServerData(virpath);
 
         string appid = Request.QueryString["ID"];
+
         //update imgpath
         string mysql = "UPDATE TBLRES SET FLDAPPIMGPATH='" + imgpath + "' WHERE FLDAPPID =" + appid + "";
+
+        //Execute the Update string
         db.ExecuteNonQuery(mysql);
+
         //refresh page
         bind();
         Response.AddHeader("Refresh", "0");
@@ -60,34 +67,56 @@ public partial class Control : System.Web.UI.Page
 
     protected void Update(object sender, EventArgs e)
     {
+        //Get the Query String
         string appid = Request.QueryString["ID"];
-        string mysql = "UPDATE TBLAPP SET FLDAPPNAME='"+ AppName.Text +"',FLDAPPINFO='"+ AppInfo.Text +"',FLDAPPDETAIL='"+AppDetail.Text+"',FLDPRICE='"+AppPrice.Text+"',FLDTYPE='"+ AppType.SelectedItem.Value.ToString()+"' WHERE ID="+appid+"";
+
+        //Update the textfield properties of the application
+        string mysql = "UPDATE TBLAPP SET FLDAPPNAME='" + AppName.Text + "',FLDAPPINFO='" + AppInfo.Text + "',FLDAPPDETAIL='" + AppDetail.Text + "',FLDPRICE='" + AppPrice.Text + "',FLDTYPE='" + AppType.SelectedItem.Value.ToString() + "' WHERE ID=" + appid + "";
+
+        //Execute the update string
         db.ExecuteNonQuery(mysql);
+
+        //Refresh the page by calling the bind();
         bind();
+
+        //Refresh in 0 sec
         Response.AddHeader("Refresh", "0");
     }
 
     protected void bind()
     {
+        //Get the QueryString
         string appid = Request.QueryString["ID"];
-        string mysql, appimgpath, appname, appinfo, appdetail, price; ;
-        mysql = "SELECT TBLRES.FLDAPPID,TBLRES.FLDAPPIMGPATH,TBLRES.FLDAPPSCREENSHOT,TBLRES.FLDAPPCOVER,TBLAPP.FLDAPPNAME,TBLAPP.FLDAPPINFO,TBLAPP.FLDAPPDETAIL,TBLAPP.FLDPRICE,TBLAPP.FLDTYPE,TBLRES.FLDREVIEW,TBLRES.FLDREVIEWER FROM TBLRES, TBLAPP WHERE [TBLRES].[FLDAPPID]=[TBLAPP].[ID] AND [TBLAPP].[ID]=" + appid + "";
-        ds = db.ExecuteQuery(mysql, "App");
-        appimgpath = ds.Tables["App"].Rows[0][1].ToString();
-        appimgpath = ds.Tables["App"].Rows[0][1].ToString();
-        appname = ds.Tables["App"].Rows[0][4].ToString();
-        appinfo = ds.Tables["App"].Rows[0][5].ToString();
-        appdetail = ds.Tables["App"].Rows[0][6].ToString();
-        price = ds.Tables["App"].Rows[0][7].ToString();
 
+        //String needed
+        string mysql, appimgpath;
+
+        //Query string from 2 tables TBLAPP, TBLRES
+        mysql = "SELECT TBLRES.FLDAPPID,TBLRES.FLDAPPIMGPATH,TBLRES.FLDAPPSCREENSHOT,TBLRES.FLDAPPCOVER,TBLAPP.FLDAPPNAME,TBLAPP.FLDAPPINFO,TBLAPP.FLDAPPDETAIL,TBLAPP.FLDPRICE,TBLAPP.FLDTYPE,TBLRES.FLDREVIEW,TBLRES.FLDREVIEWER FROM TBLRES, TBLAPP WHERE [TBLRES].[FLDAPPID]=[TBLAPP].[ID] AND [TBLAPP].[ID]=" + appid + "";
+
+        //Execute the Query string and Return values
+        ds = db.ExecuteQuery(mysql, "App");
+
+        //Store the application image path
+        appimgpath = ds.Tables["App"].Rows[0][1].ToString();
+
+        //application image url
         appimg.ImageUrl = "~/img/" + appimgpath + "";
-        AppName.Text = appname;
-        AppInfo.Text = appinfo;
-        AppDetail.Text = appdetail;
-        AppPrice.Text = price;
-       
+
+        //Application name
+        AppName.Text = ds.Tables["App"].Rows[0][4].ToString();
+
+        //Application Information
+        AppInfo.Text = ds.Tables["App"].Rows[0][5].ToString();
+
+        //Application detail
+        AppDetail.Text = ds.Tables["App"].Rows[0][6].ToString();
+
+        //Application Price
+        AppPrice.Text = ds.Tables["App"].Rows[0][7].ToString();
+
     }
 
-    
+
 
 }

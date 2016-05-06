@@ -20,32 +20,60 @@ public partial class More : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
         if (!IsPostBack)
         {
             if (Session["uid"] == null)
             {
-                //Response.Write("Not login yet");
+                //Disabled account function if not login
+                Account.Enabled = false;
+
+                //Adjust Account Css
+                Account.CssClass = "list-group-item col-md-12 col-xs-2 disabled";
             }
 
             else
             {
+                //Remember user and enable some function
                 LoginLink.Text = Session["uid"].ToString();
+
+                //Hide Register link
                 ResigterLink.Text = null;
+
+                //Disable Login function
                 LoginLink.Enabled = false;
+
+                //Enable account session
+                Account.Enabled = true;
+
+                //Adjust Account Css
+                Account.CssClass = "list-group-item col-md-12 col-xs-2";
+
+                //Navigate URL
+                Account.NavigateUrl = "User.aspx?=" + Session["uid"].ToString() + "";
             }
         }
+
+        //Store the type in string
         string type = Session["GetType"].ToString();
-        mysql = "SELECT distinct tblRes.fldAppID,tblRes.fldAppImgPath,tblRes.fldAppScreenshot,tblRes.fldAppCover,tblApp.fldAppName,tblApp.fldAppInfo,tblApp.fldAppdetail,tblApp.fldPrice,tblApp.fldType FROM tblRes, tblApp WHERE (([tblRes].[fldAppID]=[tblApp].[ID])) and fldType='"  + type +" ' order by fldAppID desc ";
-        ds = db.ExecuteQuery(mysql,"Type");
-        int z= ds.Tables["Type"].Rows.Count;
+
+        //Query the application by type
+        mysql = "SELECT distinct tblRes.fldAppID,tblRes.fldAppImgPath,tblRes.fldAppScreenshot,tblRes.fldAppCover,tblApp.fldAppName,tblApp.fldAppInfo,tblApp.fldAppdetail,tblApp.fldPrice,tblApp.fldType FROM tblRes, tblApp WHERE (([tblRes].[fldAppID]=[tblApp].[ID])) and fldType='" + type + " ' order by fldAppID desc ";
+
+        //Execute Query String
+        ds = db.ExecuteQuery(mysql, "Type");
 
     }
 
     protected void CatLink_Click(object sender, EventArgs e)
     {
+        //get the type by clicking the linkbutton 
         LinkButton b = (LinkButton)sender;
+
+        //Store the type by using Session
         Session["GetType"] = b.ID.ToString();
+
+        //Redirect page with Type
         Response.Redirect("~/More.aspx?Type=" + b.ID.ToString());
     }
 

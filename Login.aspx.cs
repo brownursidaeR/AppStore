@@ -11,7 +11,7 @@ using System.Data.OleDb;
 public partial class Login : System.Web.UI.Page
 {
 
-
+    //Using CommDB Method
     CommDB db = new CommDB();
 
     protected void Page_Load(object sender, EventArgs e)
@@ -25,21 +25,28 @@ public partial class Login : System.Web.UI.Page
     {
 
         string mysql;
+
         int i;
+
         if (btnA.Checked == true)
         {
             //Give a "" uid
             string uid = "";
+
             //Query string for Administrator
             mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + txbUserID.Text + "' AND FLDPASSWORD ='" + txbPass.Text + "' AND FLDTYPE=1";
+
             //store record in integer i
             i = db.Rownum(mysql, "test", ref uid);
+
             if (i > 0)
             {
                 //Calling the Client Side Script for notifing Login Success
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { LoginSuccess(); });", true);
+
                 //Store the UserID
                 Session["uid"] = txbUserID.Text.Trim();
+
                 //Refresh Page
                 Response.AppendHeader("Refresh", "2;url=Manage.aspx");
             }
@@ -53,16 +60,21 @@ public partial class Login : System.Web.UI.Page
         {
             //Give a "" uid
             string uid = "";
+
             //Query string for User
             mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + txbUserID.Text + "' AND FLDPASSWORD ='" + txbPass.Text + "' AND FLDTYPE=0";
+
             //store record in integer i
             i = db.Rownum(mysql, "test", ref uid);
+
             if (i > 0)
             {
                 //Calling the Client Side Script for notifing Login Success
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { LoginSuccess(); });", true);
+
                 //Store the UserID
                 Session["uid"] = txbUserID.Text.Trim();
+
                 //Refresh Page
                 Response.AppendHeader("Refresh", "2;url=index.aspx");
             }

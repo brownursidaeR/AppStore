@@ -65,7 +65,7 @@
                                 <asp:BoundField DataField="fldAppName" HeaderText="App Name" SortExpression="fldAppName" />
                                 <asp:BoundField DataField="fldPrice" HeaderText="Price" SortExpression="fldPrice" />
                                 <asp:BoundField DataField="fldStatus" HeaderText="Status" SortExpression="fldStatus" />
-                                <asp:CommandField EditText="Pass" ShowEditButton="True" HeaderText="Pass" ControlStyle-CssClass="btn btn-lg btn-success" />
+                                <asp:CommandField EditText="Accepted" ShowEditButton="True" HeaderText="Pass" ControlStyle-CssClass="btn btn-lg btn-success" />
                                 <asp:CommandField DeleteText="Delete" HeaderText="Delete" ShowDeleteButton="True" ControlStyle-CssClass="btn btn-lg btn-danger" />
                             </Columns>
                         </asp:GridView>

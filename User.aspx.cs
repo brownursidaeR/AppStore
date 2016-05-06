@@ -33,7 +33,6 @@ public partial class User : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             // Find the value in the Status column.
-
             string value = e.Row.Cells[5].Text;
 
             if (value == "0")
@@ -42,24 +41,31 @@ public partial class User : System.Web.UI.Page
             }
             else if (value == "1")
             {
-                e.Row.Cells[5].Text = "Passed";
+                e.Row.Cells[5].Text = "Accepted";
             }
         }
     }
 
     private void bind()
     {
+        //Get the userid 
         uid = Session["uid"].ToString();
+
         //DataSet using at the same time
         DataSet ds = new DataSet();
+
         //Query orders from 3 tables 
         string mysqlO = "SELECT TBLUSER.FLDUSERNAME,TBLAPP.FLDAPPNAME, TBLAPP.ID,TBLAPP.FLDPRICE,TBLITEM.FLDPURCHASEID,TBLPURCHASE.FLDSTATUS FROM TBLUSER INNER JOIN ((TBLAPP INNER JOIN TBLITEM ON TBLAPP.ID = TBLITEM.FLDAPPID) INNER JOIN TBLPURCHASE ON (TBLPURCHASE.ID = TBLITEM.FLDPURCHASEID) AND (TBLAPP.ID = TBLPURCHASE.APPID)) ON (TBLUSER.FLDUSERNAME = TBLPURCHASE.FLDPURCHASEUSERNAME) WHERE FLDUSERNAME='"+ uid +"'";
+        
         //Set up the ds2
         ds = db.ExecuteQuery(mysqlO, "Orders");
+
         //DataSoucre from ds2
         gvOrders.DataSource = ds.Tables["Orders"];
+
         //Using the datakey name to bind field
         gvOrders.DataKeyNames = new string[] { "fldPurchaseID" };
+
         //Data binding
         gvOrders.DataBind();
     }

@@ -31,8 +31,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="index.aspx">Home</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Help</a></li>
+                    <li><a href="mailto:someone@example.com?Subject=Contact">Contact</a></li>
+                    <li><a href="mailto:someone@example.com?Subject=I%20need%20help">Help</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -76,7 +76,7 @@
                             }
                         </script>
                         <div class="col-md-6  col-xs-6">
-                            <a href="mailto:someone@example.com?Subject=Here%20is%20the%20new%20App" class="btn btn-success btn-lg" style="float:left" target="_top">Notify</a>
+                            <a href="mailto:someone@example.com?Subject=Here%20is%20the%20new%20App" class="btn btn-success btn-lg" style="float: left" target="_top">Notify</a>
                         </div>
                         <div class="col-md-6  col-xs-6">
                             <asp:Button ID="btnDownload" runat="server" Text="Download" Style="float: right;" CssClass="btn btn-primary btn-lg" OnClick="btnDownload_Click" />

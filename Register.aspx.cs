@@ -19,18 +19,30 @@ public partial class Register : System.Web.UI.Page
         int i;
         string mysql;
         string uid = "";
+
+        //Query if there already had a record
         mysql = "select * from tblUser where fldUsername='" + txbUserID.Text + "'";
+
+        //Store the record in integer i
         i = db.Rownum(mysql, "test", ref uid);
 
         if (i>0)
         {
+            //Call out the Client Side Script for Account Exist
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { AccountExist(); });", true);
         }
         else
         {
+            //Insert a new user record
             mysql = "insert into tblUser(fldUsername,fldPassword) values('" + txbUserID.Text + "','" + txbPass.Text + "')";
+
+            //Execute the insert
             db.ExecuteNonQuery(mysql);
+
+            //Call out the Client Side Script for Register Success
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { RegisterSuccess(); });", true);
+
+            //Refresh and redirect to Home page
             Response.AppendHeader("Refresh", "2;url=index.aspx");
         }
     }
