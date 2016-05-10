@@ -44,7 +44,7 @@
                                     <asp:TextBox ID="txbSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <div class="col-md-2 col-xs-6" style="margin-top: 15px">
-                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-default" />
+                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-default" OnClick="btnSearch_Click" />
                                 </div>
                             </div>
                         </div>
@@ -165,8 +165,7 @@
                 </script>
 
         <footer style="padding-bottom:5%">
-            <div class="modal-footer">
-            </div>
+          
         </footer>
     </form>
 </body>

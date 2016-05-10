@@ -3,24 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Apple store", "..\Apple Store", "{03BE6315-AB92-45DE-9033-51E85C9BB93C}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Apple Store(1)", ".", "{9481F529-76EF-410D-8076-FCEB61CE9FA9}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_34574"
-		Debug.AspNetCompiler.PhysicalPath = "D:\Development\Website\Apple Store\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_34574\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_5278"
+		Debug.AspNetCompiler.PhysicalPath = "..\Apple Store\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5278\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_34574"
-		Release.AspNetCompiler.PhysicalPath = "D:\Development\Website\Apple Store\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_34574\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_5278"
+		Release.AspNetCompiler.PhysicalPath = "..\Apple Store\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5278\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "34574"
+		VWDPort = "5278"
+		SlnRelativePath = "..\Apple Store\"
 	EndProjectSection
 EndProject
 Global
@@ -28,8 +29,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{03BE6315-AB92-45DE-9033-51E85C9BB93C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03BE6315-AB92-45DE-9033-51E85C9BB93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9481F529-76EF-410D-8076-FCEB61CE9FA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9481F529-76EF-410D-8076-FCEB61CE9FA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

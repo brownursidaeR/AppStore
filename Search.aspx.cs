@@ -1,37 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.OleDb;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-public partial class More : System.Web.UI.Page
+public partial class Search : System.Web.UI.Page
 {
+    //Using method CommDB
     CommDB db = new CommDB();
 
+    //Set up a new dataset
     public DataSet ds = new DataSet();
 
-    OleDbDataAdapter da = new OleDbDataAdapter();
-
-    string mysql;
+    //mysql string
+    string mysql,search;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (!IsPostBack)
         {
             if (Session["uid"] == null)
             {
                 //Disabled account function if not login
                 Account.Enabled = false;
-
-                //Adjust Account Css
                 Account.CssClass = "list-group-item col-md-12 col-xs-2 disabled";
             }
-
             else
             {
                 //Remember user and enable some function
@@ -52,22 +47,27 @@ public partial class More : System.Web.UI.Page
                 //Navigate URL
                 Account.NavigateUrl = "User.aspx?=" + Session["uid"].ToString() + "";
             }
+           
         }
-        Type_Query();
-
+        
+        //Store the type in string
+        search = Session["Search"].ToString();
+        Search_Query();
     }
 
 
-    private void Type_Query()
+    private void Search_Query()
     {
-        //Store the type in string
-        string type = Session["GetType"].ToString();
+        ds.Clear();
+
+        
 
         //Query the application by type
-        mysql = "SELECT distinct tblRes.fldAppID,tblRes.fldAppImgPath,tblRes.fldAppScreenshot,tblRes.fldAppCover,tblApp.fldAppName,tblApp.fldAppInfo,tblApp.fldAppdetail,tblApp.fldPrice,tblApp.fldType FROM tblRes, tblApp WHERE (([tblRes].[fldAppID]=[tblApp].[ID])) and fldType='" + type + " ' order by fldAppID desc ";
+        mysql = "SELECT DISTINCT TBLRES.FLDAPPID,TBLRES.FLDAPPIMGPATH,TBLRES.FLDAPPSCREENSHOT,TBLRES.FLDAPPCOVER,TBLAPP.FLDAPPNAME,TBLAPP.FLDAPPINFO,TBLAPP.FLDAPPDETAIL,TBLAPP.FLDPRICE,TBLAPP.FLDTYPE FROM TBLRES, TBLAPP WHERE (([TBLRES].[FLDAPPID]=[TBLAPP].[ID])) AND FLDAPPNAME LIKE '%%"+ search +"%%'";
 
         //Execute Query String
-        ds = db.ExecuteQuery(mysql, "Type");
+        ds = db.ExecuteQuery(mysql, "Query");
+
     }
 
     protected void CatLink_Click(object sender, EventArgs e)
@@ -82,10 +82,10 @@ public partial class More : System.Web.UI.Page
         Response.Redirect("~/More.aspx?Type=" + b.ID.ToString());
     }
 
-
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        Session["Search"] = txbSearch.Text;
-        Response.Redirect("Search.aspx?=" + txbSearch.Text);
+        Session["NewQuery"] = txbSearch.Text;
+        search = Session["NewQuery"].ToString();
+        Search_Query();
     }
 }

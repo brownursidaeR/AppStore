@@ -11,6 +11,15 @@
     <meta name="theme-color" content="#FAFAFA" />
     <link rel="Shortcut Icon" href="img/favico.ico">
     <title>Account</title>
+    <style>
+        @media (max-width:768px) {
+            .table-hover > tbody > tr,
+            .table-hover > tbody > tr > th,
+            .table-hover > tbody > tr > td {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body style="background-color: #CFD8DC">
     <form id="form1" runat="server" class="form-horizontal">
@@ -34,19 +43,26 @@
         <div class="container-fluid container-mg" style="background-color: #CFD8DC">
             <div class="col-md-2"></div>
             <div class="col-md-8 cardbackground">
-                 <asp:GridView ID="gvOrders" runat="server" GridLines="None" CssClass="table table-striped table-hover" Width="100%" AutoGenerateColumns="False" DataKeyNames="fldPurchaseID" OnRowDataBound="gvOrders_RowDataBound" >
-                            <Columns>
-                                <asp:BoundField DataField="fldUsername" HeaderText="User" SortExpression="fldUsername" />
-                                <asp:BoundField DataField="fldPurchaseID" HeaderText="Purchase ID" SortExpression="fldPurchaseID" />
-                                <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
-                                <asp:BoundField DataField="fldAppName" HeaderText="App Name" SortExpression="fldAppName" />
-                                <asp:BoundField DataField="fldPrice" HeaderText="Price" SortExpression="fldPrice" />
-                                <asp:BoundField DataField="fldStatus" HeaderText="Status" SortExpression="fldStatus" />
-                            </Columns>
-                        </asp:GridView>
+                <asp:GridView ID="gvOrders" runat="server" GridLines="None" CssClass="table table-striped table-hover" Width="100%" AutoGenerateColumns="False" DataKeyNames="fldPurchaseID" OnRowDataBound="gvOrders_RowDataBound">
+                    <Columns>
+                        <asp:BoundField DataField="fldUsername" HeaderText="User" SortExpression="fldUsername" />
+                        <asp:TemplateField HeaderText="Icon">
+                            <ItemTemplate>
+                                <asp:Image ID="Image1" runat="server" Style="line-height: 100%" Height="50%" ImageUrl='<%# "~/img/" + DataBinder.Eval(Container.DataItem, "fldAppImgPath") %>' />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="fldPurchaseID" HeaderText="Purchase ID" SortExpression="fldPurchaseID" />
+                        <asp:BoundField DataField="fldAppName" HeaderText="App Name" SortExpression="fldAppName" />
+                        <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+                        <asp:BoundField DataField="fldPrice" HeaderText="Price" SortExpression="fldPrice" />
+                        <asp:BoundField DataField="fldStatus" HeaderText="Status" SortExpression="fldStatus" />
+                    </Columns>
+                </asp:GridView>
             </div>
             <div class="col-md-2"></div>
         </div>
+        <footer style="padding-bottom: 5%">
+        </footer>
     </form>
 </body>
 </html>

@@ -25,8 +25,8 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="index.aspx">Home</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Help</a></li>
+                    <li><a href="mailto:someone@example.com?Subject=Contact">Contact</a></li>
+                    <li><a href="mailto:someone@example.com?Subject=I%20need%20help">Help</a></li>
                 </ul>
             </div>
 
@@ -99,7 +99,7 @@
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>Login Success!</strong>
                 </div>
-                 <div class="alert alert-dismissible alert-warning collapse" id="UserTypeNeeded">
+                <div class="alert alert-dismissible alert-warning collapse" id="UserTypeNeeded">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>Please Select Your User Type </strong>and try again
                 </div>

@@ -21,7 +21,13 @@ public partial class Manage : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            { bind(); }
+            {
+                if (Session["uid"] == null)
+                {
+                    Response.Redirect("404.html");
+                }
+                bind();
+            }
         }
     }
 
@@ -85,6 +91,9 @@ public partial class Manage : System.Web.UI.Page
             else if (value == "1")
             {
                 e.Row.Cells[5].Text = "Accepted";
+                e.Row.Cells[6].Enabled = false;
+                e.Row.Cells[6].CssClass = "btn btn-success disabled";
+                e.Row.Cells[6].ToolTip = "Already passed";
             }
         }
     }

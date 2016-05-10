@@ -52,9 +52,14 @@ public partial class index : System.Web.UI.Page
             }
         }
 
+        index_Query();
+    }
+
+    private void index_Query()
+    {
         //query string of the app
-        mysql = "SELECT distinct tblRes.fldAppID,tblRes.fldAppImgPath,tblRes.fldAppScreenshot,tblRes.fldAppCover,tblApp.fldAppName,tblApp.fldAppInfo,tblApp.fldAppdetail,tblApp.fldPrice,tblApp.fldType FROM tblRes, tblApp WHERE (([tblRes].[fldAppID]=[tblApp].[ID])) order by fldAppID desc ";
-        
+        mysql = "SELECT DISTINCT TBLRES.FLDAPPID,TBLRES.FLDAPPIMGPATH,TBLRES.FLDAPPSCREENSHOT,TBLRES.FLDAPPCOVER,TBLAPP.FLDAPPNAME,TBLAPP.FLDAPPINFO,TBLAPP.FLDAPPDETAIL,TBLAPP.FLDPRICE,TBLAPP.FLDTYPE FROM TBLRES, TBLAPP WHERE (([TBLRES].[FLDAPPID]=[TBLAPP].[ID])) ORDER BY FLDAPPID DESC";
+
         //Back up the query string
         Session["QueryAppSQL"] = mysql;
 
@@ -75,4 +80,10 @@ public partial class index : System.Web.UI.Page
     }
 
 
+
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        Session["Search"] = txbSearch.Text;
+        Response.Redirect("Search.aspx?="+ txbSearch.Text);
+    }
 }

@@ -11,6 +11,15 @@
     <meta name="theme-color" content="#FAFAFA" />
     <link rel="Shortcut Icon" href="img/favico.ico">
     <title>Manage</title>
+    <style>
+        @media (max-width:768px) {
+            .table-hover > tbody > tr,
+            .table-hover > tbody > tr > th,
+            .table-hover > tbody > tr > td {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body style="background-color: #CFD8DC">
     <form id="form1" runat="server" class="form-horizontal">
@@ -148,6 +157,8 @@
             </div>
             <!-- /.modal -->
         </div>
+        <footer style="padding-bottom: 5%">
+        </footer>
     </form>
 </body>
 </html>
