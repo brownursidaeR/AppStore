@@ -11,10 +11,14 @@ public partial class App : System.Web.UI.Page
 {
     //Using method CommDB
     CommDB db = new CommDB();
+
     //Set up a new DataSet
     public DataSet ds = new DataSet();
+
+    public DataSet ds2 = new DataSet();
+
     //String announcement
-    string mysql, appid, uid;
+    string mysql, appid, uid, type;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -23,17 +27,41 @@ public partial class App : System.Web.UI.Page
         {
             if (Session["uid"] == null)
             {
-
+                //Disabled account function if not login
+                Account.Enabled = false;
+                Account.CssClass = "list-group-item col-md-12 col-xs-2 disabled";
             }
 
             else
             {
-                //Login Validation
+                //Remember user and enable some function
                 LoginLink.Text = Session["uid"].ToString();
+
+                //Hide Register link
                 ResigterLink.Text = null;
+
+                //Disable Login function
                 LoginLink.Enabled = false;
+
+                //Enable account session
+                Account.Enabled = true;
+
+                //Adjust Account Css
+                Account.CssClass = "list-group-item col-md-12 col-xs-2";
+
+                //Navigate URL
+                Account.NavigateUrl = "User.aspx?=" + Session["uid"].ToString() + "";
             }
         }
+
+        App_Query();
+    }
+
+
+
+    private void App_Query()
+    {
+
 
         //Request the ID and store into appid
         appid = Request.QueryString["ID"];
@@ -51,6 +79,8 @@ public partial class App : System.Web.UI.Page
 
         //Store the price as string
         price = ds.Tables["App"].Rows[0][7].ToString();
+
+        type = ds.Tables["App"].Rows[0][8].ToString();
 
         //Convert the price into Integer for comparsion
         int Priceint = Convert.ToInt32(price);
@@ -102,6 +132,27 @@ public partial class App : System.Web.UI.Page
             }
 
         }
+
+
+
+        //Query the application by type
+        mysql = "SELECT distinct tblRes.fldAppID,tblRes.fldAppImgPath,tblRes.fldAppScreenshot,tblRes.fldAppCover,tblApp.fldAppName,tblApp.fldAppInfo,tblApp.fldAppdetail,tblApp.fldPrice,tblApp.fldType FROM tblRes, tblApp WHERE (([tblRes].[fldAppID]=[tblApp].[ID])) and fldType='" + type + " ' order by fldAppID desc ";
+
+        //Execute Query String
+        ds2 = db.ExecuteQuery(mysql, "Type");
+
+    }
+
+    protected void CatLink_Click(object sender, EventArgs e)
+    {
+        //get the type by clicking the linkbutton 
+        LinkButton b = (LinkButton)sender;
+
+        //Store the type by using Session
+        Session["GetType"] = b.ID.ToString();
+
+        //Redirect page with Type
+        Response.Redirect("~/More.aspx?Type=" + b.ID.ToString());
     }
 
 

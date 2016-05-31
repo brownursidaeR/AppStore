@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OleDb;
 using System.Data;
+using CuteWebUI;
+
+
 
 
 public partial class Manage : System.Web.UI.Page
@@ -90,10 +93,12 @@ public partial class Manage : System.Web.UI.Page
             }
             else if (value == "1")
             {
-                e.Row.Cells[5].Text = "Accepted";
+                e.Row.Cells[5].Text = "Permitted";
                 e.Row.Cells[6].Enabled = false;
-                e.Row.Cells[6].CssClass = "btn btn-success disabled";
+                e.Row.Cells[6].CssClass = "btn btn-default disabled";
                 e.Row.Cells[6].ToolTip = "Already passed";
+                e.Row.Cells[7].CssClass = "disabled";
+                e.Row.Cells[7].Enabled = false;
             }
         }
     }
@@ -176,6 +181,44 @@ public partial class Manage : System.Web.UI.Page
 
     }
 
+    protected void Uploader1_FileValidating(object sender, UploaderEventArgs args)
+    {
+        //Set up the upload path
+        string virpath = "/img/" + args.FileGuid + System.IO.Path.GetExtension(args.FileName);
 
+        //Set up the MapPath
+        string savepath = Server.MapPath(virpath);
+
+        //Substring the image path
+        string imgpath = virpath.Substring(virpath.LastIndexOf("/") + 1, virpath.LastIndexOf(".") - 1);
+
+
+        //TEXT: never override existing file unless it's uploaded by same people.
+        if (System.IO.File.Exists(savepath))
+            return;
+
+        string folder = System.IO.Path.GetDirectoryName(savepath);
+        if (!System.IO.Directory.Exists(folder)) System.IO.Directory.CreateDirectory(folder);
+
+        //now copy the file instead of 
+        args.CopyTo(savepath);
+
+        //send server information to client side.
+        Uploader1.SetValidationServerData(virpath);
+        
+        //insert imgpath
+        string mysql = "INSERT INTO TBLRES SET FLDAPPIMGPATH='" + imgpath + "' WHERE FLDAPPID =" + appid + "";
+
+        //Execute the Update string
+        db.ExecuteNonQuery(mysql);
+
+        //refresh page
+        bind();
+        Response.AddHeader("Refresh", "0");
+    }
+
+    protected void Add_Application(object sender, EventArgs e) {
+        
+    }
 
 }

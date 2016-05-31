@@ -34,8 +34,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="index.aspx">Home</a></li>
-                        <li><a href="mailto:someone@example.com?Subject=Contact">Contact</a></li>
-                        <li><a href="mailto:someone@example.com?Subject=I%20need%20help">Help</a></li>
+                       <li><a href="mailto:brownursidae@gmail.com?Subject=Contact">Contact</a></li>
+                        <li><a href="mailto:brownursidae@gmail.com?Subject=I%20need%20help">Help</a></li>
                     </ul>
                     <div class="col-md-6" role="search">
                         <div class="form-group" runat="server">
@@ -66,7 +66,7 @@
                     <asp:LinkButton ID="CatMedia" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">headset</i> Media</asp:LinkButton>
                     <asp:LinkButton ID="CatTool" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">verified_user</i> Tools</asp:LinkButton>
                     <asp:HyperLink ID="Account" runat="server" CssClass="list-group-item col-md-12 col-xs-2" NavigateUrl="~/User.aspx"><i class="material-icons">credit_card</i> Account</asp:HyperLink>
-                    <asp:HyperLink ID="Setting" runat="server" CssClass="list-group-item col-md-12 col-xs-2" NavigateUrl="#"><i class="material-icons">settings</i> Settings</asp:HyperLink>
+                    <asp:HyperLink ID="Setting" runat="server" CssClass="list-group-item col-md-12 col-xs-2" NavigateUrl="#"><i class="material-icons">settings</i> Setting</asp:HyperLink>
                 </div>
             </div>
             <div class="col-md-8">

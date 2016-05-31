@@ -27,7 +27,9 @@ public partial class index : System.Web.UI.Page
             {
                 //Disabled account function if not login
                 Account.Enabled = false;
-                Account.CssClass = "list-group-item col-md-12 col-xs-2 disabled"; 
+                Account.CssClass = "list-group-item col-md-12 col-xs-2 disabled";
+                Logout.Enabled = false;
+                Logout.Text = null;
             }
 
             else
@@ -49,6 +51,11 @@ public partial class index : System.Web.UI.Page
 
                 //Navigate URL
                 Account.NavigateUrl = "User.aspx?="+Session["uid"].ToString() + "";
+
+                Logout.Enabled = true;
+
+                Logout.Text = "Log out";
+                
             }
         }
 
@@ -81,9 +88,16 @@ public partial class index : System.Web.UI.Page
 
 
 
+
     protected void btnSearch_Click(object sender, EventArgs e)
     {
         Session["Search"] = txbSearch.Text;
         Response.Redirect("Search.aspx?="+ txbSearch.Text);
+    }
+
+    protected void Logout_Click(object sender, EventArgs e)
+    {
+        Session["uid"] = null;
+        Response.Redirect("~/index.aspx");
     }
 }

@@ -34,8 +34,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="index.aspx">Home</a></li>
-                        <li><a href="mailto:someone@example.com?Subject=Contact">Contact</a></li>
-                        <li><a href="mailto:someone@example.com?Subject=I%20need%20help">Help</a></li>
+                        <li><a href="mailto:brownursidae@gmail.com?Subject=Contact">Contact</a></li>
+                        <li><a href="mailto:brownursidae@gmail.com?Subject=I%20need%20help">Help</a></li>
                     </ul>
                     <div class="col-md-6" role="search">
                         <div class="form-group" runat="server">
@@ -54,6 +54,8 @@
                             <asp:HyperLink ID="ResigterLink" runat="server" NavigateUrl="~/Register.aspx">Register</asp:HyperLink></li>
                         <li>
                             <asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="~/Login.aspx">Login</asp:HyperLink></li>
+                         <li>
+                            <asp:LinkButton ID="Logout" runat="server" OnClick="Logout_Click"></asp:LinkButton>
                     </ul>
                 </div>
             </div>
@@ -61,15 +63,15 @@
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-        <div class="container-fluid container-mg" style="background-color: #CFD8DC;">
+        <div class="container-fluid container-mg" style="background-color: #CFD8DC;margin-bottom:5%">
             <div class="col-md-2">
-                <div class="list-group tldr">
+                <div class="list-group tldr"> 
                     <asp:LinkButton ID="CatApp" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">shop_two</i> App</asp:LinkButton>
                     <asp:LinkButton ID="CatGame" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">devices</i> Games</asp:LinkButton>
                     <asp:LinkButton ID="CatMedia" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">headset</i> Media</asp:LinkButton>
                     <asp:LinkButton ID="CatTool" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">verified_user</i> Tools</asp:LinkButton>
                     <asp:HyperLink ID="Account" runat="server" CssClass="list-group-item col-md-12 col-xs-2"><i class="material-icons">credit_card</i> Account</asp:HyperLink>
-                    <asp:HyperLink ID="Setting" runat="server" CssClass="list-group-item col-md-12 col-xs-2" NavigateUrl="#"><i class="material-icons">settings</i> Settings</asp:HyperLink>
+                    <asp:HyperLink ID="Setting" runat="server" CssClass="list-group-item col-md-12 col-xs-2" NavigateUrl="#"><i class="material-icons">settings</i> Setting</asp:HyperLink>
                 </div>
             </div>
 
@@ -151,7 +153,7 @@
 
                 </div>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 
             </div>
         </div>
@@ -164,8 +166,21 @@
                     });
                 </script>
 
-        <footer style="padding-bottom:5%">
+        <footer class="container-fluid" style="padding-bottom:5%;background-color:azure" >
           
+              <div class="col-md-2" style="line-height:100%;">
+                 
+              </div>
+             <div class="col-md-10" style="line-height:100%;">
+                 <h1>This is a <strong>footer</strong> and nothing</h1>
+                 <h2>This is a <strong>footer</strong> and nothing</h2>
+                 <h3>This is a <strong>footer</strong> and nothing</h3>
+                 <a href="mailto:brownursidae@gmail.com?Subject=Contact"><h4>This is a <strong>Email</strong> link</h4></a>
+              </div>
+             <div class="col-md-2" style="line-height:100%;">
+                 
+              </div>
+         
         </footer>
     </form>
 </body>

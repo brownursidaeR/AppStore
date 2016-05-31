@@ -27,7 +27,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
 
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Apple store</a>
+                <a class="navbar-brand" href="index.aspx">Apple store</a>
             </div>
 
             <div class="collapse navbar-collapse">
@@ -61,7 +61,10 @@
             </div>
             <div class="col-md-2"></div>
         </div>
-        <footer style="padding-bottom: 5%">
+        
+        <footer>
+         
+         
         </footer>
     </form>
 </body>
