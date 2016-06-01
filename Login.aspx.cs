@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.OleDb;
 
-
 public partial class Login : System.Web.UI.Page
 {
 
@@ -95,4 +94,5 @@ public partial class Login : System.Web.UI.Page
     {
         return Session["uid"].ToString();
     }
+
 }

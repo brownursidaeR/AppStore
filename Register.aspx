@@ -9,6 +9,7 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/custom.css" />
+    <script src="js/recaptcha.js"></script>
     <link rel="Shortcut Icon" href="img/favico.ico">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -69,7 +70,11 @@
                             <asp:TextBox ID="txbConfirm" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confrim Password"></asp:TextBox>
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                             <div class="g-recaptcha col-lg-offset-2" data-sitekey="6Ld5dCETAAAAAEGVZxwc7DhTldNdE_mjfG2SYU9L"></div>
+                        </div>
+                    </div>
                     <div class="form-group">
 
                         <div class="col-lg-10">
@@ -176,7 +181,8 @@
             </div>
             <!-- /.modal -->
         </div>
-        
+       <footer style="padding-bottom: 5%">
+        </footer> 
 
     </form>
 

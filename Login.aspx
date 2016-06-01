@@ -7,6 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/custom.css" />
+    <script src="js/recaptcha.js"></script>
+    <link type="text/css" rel="Stylesheet" href="StyleSheet.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#FAFAFA" />
     <link rel="Shortcut Icon" href="img/favico.ico">
@@ -63,9 +65,11 @@
 
                     <div class="form-group">
                         <div class="col-lg-10">
-                            <br>
+                             <div class="g-recaptcha col-lg-offset-2" data-sitekey="6Ld5dCETAAAAAEGVZxwc7DhTldNdE_mjfG2SYU9L"></div>
                         </div>
+                    </div>
 
+                    <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" Style="margin-left: 5px; float: right" OnClick="btnSubmit_Click" />
                             <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" Style="float: right" />
@@ -111,7 +115,8 @@
 
             <div class="col-md-4"></div>
         </div>
-
+        <footer style="padding-bottom: 5%">
+        </footer>
     </form>
 
 </body>

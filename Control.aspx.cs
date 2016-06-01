@@ -21,7 +21,32 @@ public partial class Control : System.Web.UI.Page
 
         if (!Page.IsPostBack)
         {
-            { bind(); }
+            {
+                if (Session["uid"] == null)
+                {
+                    Response.Redirect("404.html");
+                }
+                else
+                {
+                    //Get Session type
+                    string uid = Session["uid"].ToString();
+
+                    //Query string for Administrator
+                    string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=1";
+
+                    //store record in integer i
+                    int i = db.Rownum(mysql, "test", ref uid);
+
+                    if (i > 0)
+                    {
+                        bind();
+                    }
+                    else
+                    {
+                        Response.Redirect("404.html");
+                    }
+                }
+            }
         }
 
     }

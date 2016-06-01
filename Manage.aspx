@@ -97,7 +97,6 @@
                             </div>
                         </div>
 
-
                         <div class="form-group">
                             <label class="col-lg-2 control-label">Info</label>
                             <div class="col-lg-10">
@@ -225,6 +224,31 @@
             <!-- /.modal -->
            
         </div> 
+
+        <!-- /.modal -->
+         <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" style="width: 670px">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Crop and upload</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="imagecropper" style="width: 640px; height: 640px; position: relative;">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" onclick="StartUpload();return false;" id="submitbutton">Upload</button>
+                                    <button class="btn btn-default" onclick="ResetUpload();return false;" data-dismiss="modal">Cancel</button>
+
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+
                     <CuteWebUI:Uploader runat="server" ManualStartUpload="true" ID="Uploader1" ShowQueueTable="false"
                         InsertButtonID="panelbody1" DropZoneID="panelbody1" OnFileValidating="Uploader1_FileValidating">
                         <ValidateOption MaxSizeKB="10240" />

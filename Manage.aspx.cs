@@ -17,7 +17,7 @@ public partial class Manage : System.Web.UI.Page
     CommDB db = new CommDB();
 
     //String announcement
-    public string appid, orderid;
+    public string appid, orderid,imgpath,mysql;
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -29,7 +29,27 @@ public partial class Manage : System.Web.UI.Page
                 {
                     Response.Redirect("404.html");
                 }
-                bind();
+                else
+                {
+                    //Get Session type
+                    string uid = Session["uid"].ToString();
+
+                    //Query string for Administrator
+                    string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=1";
+
+                    //store record in integer i
+                    int i = db.Rownum(mysql, "test", ref uid);
+
+                    if (i > 0)
+                    {
+                        bind();
+                    }
+                    else
+                    {
+                        Response.Redirect("404.html");
+                    }
+                }
+
             }
         }
     }
@@ -42,7 +62,7 @@ public partial class Manage : System.Web.UI.Page
         //Call method bind()
         bind();
     }
-   
+
     //Application Tab
 
     protected void gv_RowEditing(object sender, GridViewEditEventArgs e)
@@ -104,12 +124,12 @@ public partial class Manage : System.Web.UI.Page
     }
 
     protected void gvOrders_ConfirmOrders(object sender, GridViewEditEventArgs e)
-    { 
+    {
         //Using datakeys as appid
         ID = gvOrders.DataKeys[e.NewEditIndex].Value.ToString();
 
         //Update Orders status
-        string mysqlS = "UPDATE TBLPURCHASE SET FLDSTATUS=1 WHERE ID="+ ID +"";
+        string mysqlS = "UPDATE TBLPURCHASE SET FLDSTATUS=1 WHERE ID=" + ID + "";
 
         db.ExecuteNonQuery(mysqlS);
 
@@ -140,7 +160,7 @@ public partial class Manage : System.Web.UI.Page
         //Refresh Orders by calling bind();
         bind();
     }
-    
+
 
     private void bind()
     {
@@ -166,16 +186,16 @@ public partial class Manage : System.Web.UI.Page
 
         //Query orders from 2 tables 
         string mysqlO = "SELECT TBLUSER.FLDUSERNAME,TBLAPP.FLDAPPNAME, TBLAPP.ID,TBLAPP.FLDPRICE,TBLITEM.FLDPURCHASEID,TBLPURCHASE.FLDSTATUS FROM TBLUSER INNER JOIN ((TBLAPP INNER JOIN TBLITEM ON TBLAPP.ID = TBLITEM.FLDAPPID) INNER JOIN TBLPURCHASE ON (TBLPURCHASE.ID = TBLITEM.FLDPURCHASEID) AND (TBLAPP.ID = TBLPURCHASE.APPID)) ON (TBLUSER.FLDUSERNAME = TBLPURCHASE.FLDPURCHASEUSERNAME);";
-        
+
         //Set up the ds2
         ds2 = db.ExecuteQuery(mysqlO, "Orders");
-        
+
         //DataSoucre from ds2
         gvOrders.DataSource = ds2.Tables["Orders"];
-        
+
         //Using the datakey name to bind field
         gvOrders.DataKeyNames = new string[] { "fldPurchaseID" };
-        
+
         //Data binding
         gvOrders.DataBind();
 
@@ -190,7 +210,7 @@ public partial class Manage : System.Web.UI.Page
         string savepath = Server.MapPath(virpath);
 
         //Substring the image path
-        string imgpath = virpath.Substring(virpath.LastIndexOf("/") + 1, virpath.LastIndexOf(".") - 1);
+        imgpath = virpath.Substring(virpath.LastIndexOf("/") + 1, virpath.LastIndexOf(".") - 1);
 
 
         //TEXT: never override existing file unless it's uploaded by same people.
@@ -205,20 +225,30 @@ public partial class Manage : System.Web.UI.Page
 
         //send server information to client side.
         Uploader1.SetValidationServerData(virpath);
+
+        //last appid
+        mysql = "SELECT MAX(ID) FROM TBLAPP";
         
-        //insert imgpath
-        string mysql = "INSERT INTO TBLRES SET FLDAPPIMGPATH='" + imgpath + "' WHERE FLDAPPID =" + appid + "";
+        DataSet ds3 = new DataSet();
+
+        ds3 = db.ExecuteQuery(mysql, "ID");
+
+        appid = ds3.Tables["ID"].Rows[0][0].ToString()+1;
+
+        
 
         //Execute the Update string
         db.ExecuteNonQuery(mysql);
 
-        //refresh page
-        bind();
-        Response.AddHeader("Refresh", "0");
+        //image preview
+        
+       
     }
 
-    protected void Add_Application(object sender, EventArgs e) {
-        
+    protected void Add_Application(object sender, EventArgs e)
+    {
+        //insert imgpath
+        mysql = "INSERT INTO TBLRES(FLDAPPIMGPATH,FLDAPPID) VALUES FLDAPPIMGPATH='" + imgpath + "' WHERE FLDAPPID =" + appid + "";
     }
 
 }
