@@ -36,8 +36,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="index.aspx">Home</a></li>
-                        <li><a href="mailto:someone@example.com?Subject=Contact">Contact</a></li>
-                        <li><a href="mailto:someone@example.com?Subject=I%20need%20help">Help</a></li>
+                        <li><a href="mailto:brownursidae@example.com?Subject=Contact">Contact</a></li>
+                        <li><a href="mailto:brownursidae@example.com?Subject=I%20need%20help">Help</a></li>
                     </ul>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                         <h2>Register</h2>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                        <label for="inputEmail" class="col-lg-2 control-label">Username</label>
                         <div class="col-lg-10">
                             <asp:TextBox ID="txbUserID" CssClass="form-control" placeholder="UserID" runat="server"></asp:TextBox>
                         </div>
@@ -72,7 +72,9 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10">
-                             <div class="g-recaptcha col-lg-offset-2" data-sitekey="6Ld5dCETAAAAAEGVZxwc7DhTldNdE_mjfG2SYU9L"></div>
+                            <div class="g-recaptcha col-lg-offset-2" data-sitekey="6Ld5dCETAAAAAEGVZxwc7DhTldNdE_mjfG2SYU9L"></div>
+                            <asp:Label runat="server" CssClass="col-lg-offset-2" ID="lblForMessage"></asp:Label>
+                            <asp:Button OnClick="btnValidateReCaptcha_Click" CssClass="btn btn-success col-md-12 col-lg-offset-2" Text="I AM NOT A ROBOT" ID="btnValidateReCaptcha" runat="server" />
                         </div>
                     </div>
                     <div class="form-group">

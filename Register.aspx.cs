@@ -4,6 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Net;
+using System.Runtime.Serialization.Json;
+using System.IO;
 
 public partial class Register : System.Web.UI.Page
 {
@@ -11,7 +16,103 @@ public partial class Register : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        btnSubmit.Enabled = false;
+    }
 
+    protected void btnValidateReCaptcha_Click(object sender, EventArgs e)
+    {
+        //start building recaptch api call
+        var sb = new StringBuilder();
+        sb.Append("https://www.google.com/recaptcha/api/siteverify?secret=");
+
+        //my secret key
+        var secretKey = "6Ld5dCETAAAAANSUKTD7cS40GruobELKIRZiFew-";
+        sb.Append(secretKey);
+
+        //response from recaptch control
+        sb.Append("&");
+        sb.Append("response=");
+        var reCaptchaResponse = Request["g-recaptcha-response"];
+        sb.Append(reCaptchaResponse);
+
+        //client ip address
+
+        sb.Append("&");
+        sb.Append("remoteip=");
+        var clientIpAddress = GetUserIp();
+        sb.Append(clientIpAddress);
+
+        //make the api call and determine validity
+        using (var client = new WebClient())
+        {
+            var uri = sb.ToString();
+            var json = client.DownloadString(uri);
+            var serializer = new DataContractJsonSerializer(typeof(RecaptchaApiResponse));
+            var ms = new MemoryStream(Encoding.Unicode.GetBytes(json));
+            var result = serializer.ReadObject(ms) as RecaptchaApiResponse;
+
+            // Check if we are able to call api or not.
+            if (result == null)
+            {
+                lblForMessage.Text = "Captcha was unable to make the api call";
+            }
+            else // If Yes
+            {
+                //api call contains errors
+                if (result.ErrorCodes != null)
+                {
+                    if (result.ErrorCodes.Count > 0)
+                    {
+                        foreach (var error in result.ErrorCodes)
+                        {
+                            lblForMessage.Text = "reCAPTCHA Error: " + error;
+                        }
+                    }
+                }
+                else //api does not contain errors
+                {
+                    if (!result.Success) //captcha was unsuccessful for some reason
+                    {
+                        lblForMessage.Text = "Captcha did not pass, please try again.";
+                    }
+                    else //---- If successfully verified. Do your rest of logic.
+                    {
+                        lblForMessage.Text = "Yes";
+                        btnSubmit.Enabled = true;
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    [DataContract]
+    public class RecaptchaApiResponse
+    {
+        [DataMember(Name = "success")]
+        public bool Success;
+
+        [DataMember(Name = "error-codes")]
+        public List<string> ErrorCodes;
+    }
+
+    // To get user IP
+
+    private string GetUserIp()
+    {
+        var visitorsIpAddr = string.Empty;
+
+        if (Request.ServerVariables["HTTP_X_FORWARDED_FOR"] != null)
+        {
+            visitorsIpAddr = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+        }
+        else if (!string.IsNullOrEmpty(Request.UserHostAddress))
+        {
+            visitorsIpAddr = Request.UserHostAddress;
+        }
+
+        return visitorsIpAddr;
     }
 
     protected void btnSubmit_Click(object sender, EventArgs e)
@@ -26,7 +127,7 @@ public partial class Register : System.Web.UI.Page
         //Store the record in integer i
         i = db.Rownum(mysql, "test", ref uid);
 
-        if (i>0)
+        if (i > 0)
         {
             //Call out the Client Side Script for Account Exist
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { AccountExist(); });", true);
@@ -46,5 +147,6 @@ public partial class Register : System.Web.UI.Page
             Response.AppendHeader("Refresh", "2;url=index.aspx");
         }
     }
-    
+
+
 }

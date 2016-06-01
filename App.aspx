@@ -10,19 +10,20 @@
     <meta name="theme-color" content="#FAFAFA">
     <link rel="Shortcut Icon" href="img/favico.ico">
     <title>App Store</title>
-     <style>
+    <style>
         @media(max-width:768px) {
-         .app-img {
-             width:30%;
-             float:left;
-         }
+            .app-img {
+                width: 30%;
+                float: left;
+            }
         }
-         @media(max-width:992px) {
-             .app-img {
-                 width:40%;
-                 float:left;
-             }
-         }
+
+        @media(max-width:992px) {
+            .app-img {
+                width: 40%;
+                float: left;
+            }
+        }
     </style>
 </head>
 <body style="background-color: #CFD8DC">
@@ -46,7 +47,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.aspx">Home</a></li>
                     <li><a href="mailto:brownursidae@gmail.com?Subject=Contact">Contact</a></li>
-                        <li><a href="mailto:brownursidae@gmail.com?Subject=I%20need%20help">Help</a></li>
+                    <li><a href="mailto:brownursidae@gmail.com?Subject=I%20need%20help">Help</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -60,7 +61,7 @@
 
         <div class="container-fluid" style="background-color: #CFD8DC">
             <div class="col-md-2">
-                 <div class="list-group tldr"> 
+                <div class="list-group tldr">
                     <asp:LinkButton ID="CatApp" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">shop_two</i> App</asp:LinkButton>
                     <asp:LinkButton ID="CatGame" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">devices</i> Games</asp:LinkButton>
                     <asp:LinkButton ID="CatMedia" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">headset</i> Media</asp:LinkButton>
@@ -132,15 +133,15 @@
             <div class="col-md-1"></div>
             <div class="col-md-3">
                 <h4>Guess you may like</h4>
-             <%for (int i = 0; i < 3; i++)
+                <%for (int i = 0; i < 3; i++)
                     {%>
                 <div class="app-card tldr" style="width: 100%;">
                     <div class="col-md-6">
                         <img class="app-img click" id="<%=ds2.Tables["Type"].Rows[i][0].ToString() %>" src="img/<%=ds2.Tables["Type"].Rows[i][1].ToString() %>" />
                     </div>
                     <div class="col-md-6">
-                        <small class="col-md-12 col-xs-6 app-name tldr" style="margin-bottom:5px;"><strong><%=ds2.Tables["Type"].Rows[i][4].ToString() %></strong></small>
-                        <cite class=" col-md-12 col-xs-6 caption tldr" style="margin-bottom:5px;"><%=ds2.Tables["Type"].Rows[i][5].ToString() %></cite>
+                        <small class="col-md-12 col-xs-6 app-name tldr" style="margin-bottom: 5px;"><strong><%=ds2.Tables["Type"].Rows[i][4].ToString() %></strong></small>
+                        <cite class=" col-md-12 col-xs-6 caption tldr" style="margin-bottom: 5px;"><%=ds2.Tables["Type"].Rows[i][5].ToString() %></cite>
                         <small class=" col-md-12 col-xs-6 tldr"><%=ds2.Tables["Type"].Rows[i][8].ToString() %></small>
                     </div>
 
@@ -173,14 +174,14 @@
         </div>
         <!-- /.modal -->
 
-         <script type="text/javascript">
-                    //Rediect on img clicking
-                    $(document).ready(function () {
-                        $('img.click').click(function () {
-                            window.location.href = 'App.aspx?ID=' + this.id;
-                        });
-                    });
-                </script>
+        <script type="text/javascript">
+            //Rediect on img clicking
+            $(document).ready(function () {
+                $('img.click').click(function () {
+                    window.location.href = 'App.aspx?ID=' + this.id;
+                });
+            });
+        </script>
         <footer style="padding-bottom: 5%">
         </footer>
     </form>

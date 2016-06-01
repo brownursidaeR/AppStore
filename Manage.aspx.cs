@@ -17,7 +17,7 @@ public partial class Manage : System.Web.UI.Page
     CommDB db = new CommDB();
 
     //String announcement
-    public string appid, orderid,imgpath,mysql;
+    public string appid, orderid, imgpath, mysql;
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -228,27 +228,27 @@ public partial class Manage : System.Web.UI.Page
 
         //last appid
         mysql = "SELECT MAX(ID) FROM TBLAPP";
-        
+
         DataSet ds3 = new DataSet();
 
         ds3 = db.ExecuteQuery(mysql, "ID");
 
-        appid = ds3.Tables["ID"].Rows[0][0].ToString()+1;
+        //appid max + 1
+        appid = ds3.Tables["ID"].Rows[0][0].ToString() + 1;
 
-        
+
+        //insert imgpath
+        mysql = "INSERT INTO TBLRES(FLDAPPIMGPATH,FLDAPPID) VALUES FLDAPPIMGPATH='" + imgpath + "' WHERE FLDAPPID =" + appid + "";
 
         //Execute the Update string
         db.ExecuteNonQuery(mysql);
 
-        //image preview
-        
-       
+
     }
 
     protected void Add_Application(object sender, EventArgs e)
     {
-        //insert imgpath
-        mysql = "INSERT INTO TBLRES(FLDAPPIMGPATH,FLDAPPID) VALUES FLDAPPIMGPATH='" + imgpath + "' WHERE FLDAPPID =" + appid + "";
+
     }
 
 }
