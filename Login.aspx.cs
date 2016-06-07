@@ -20,8 +20,16 @@ public partial class Login : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Write("<script>alert('Check the robot validation first');</script>");
-        btnSubmit.Enabled = false;
+        if (!IsPostBack)
+        {
+            Response.Write("<script>alert('Check the robot validation first');</script>");
+            btnSubmit.Enabled = false;
+            btnSubmit.ToolTip = "Please check the validation then click 'I am not a robot'";
+            txbUserID.Enabled = false;
+            txbUserID.ToolTip = "Please check the validation then click 'I am not a robot'";
+            txbPass.Enabled = false;
+            txbPass.ToolTip = "Please check the validation then click 'I am not a robot'";
+        }
     }
 
     protected void btnValidateReCaptcha_Click(object sender, EventArgs e)
@@ -82,8 +90,11 @@ public partial class Login : System.Web.UI.Page
                     }
                     else //---- If successfully verified. Do your rest of logic.
                     {
-                        lblForMessage.Text = "Yes";
+                        btnValidateReCaptcha.Visible = false;
+                        recaptcha.Visible = false;
                         btnSubmit.Enabled = true;
+                        txbUserID.Enabled = true;
+                        txbPass.Enabled = true;
                     }
                 }
 
@@ -154,6 +165,7 @@ public partial class Login : System.Web.UI.Page
             {
                 //Calling the Client Side Script for notifing Login Failed
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { LoginFail(); });", true);
+                Response.AppendHeader("Refresh", "2;url=login.aspx");
             }
         }
         else if (btnU.Checked == true)
@@ -182,12 +194,15 @@ public partial class Login : System.Web.UI.Page
             {
                 //Calling the Client Side Script for notifing Login Failed
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { LoginFail(); });", true);
+                Response.AppendHeader("Refresh", "2;url=login.aspx");
             }
         }
         else
         {
             //Calling the Client Side Script for notifing User type selected needed
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { UserTypeNeeded(); });", true);
+            //Refresh page
+            Response.AppendHeader("Refresh", "2;url=login.aspx");
         }
     }
 

@@ -201,54 +201,12 @@ public partial class Manage : System.Web.UI.Page
 
     }
 
-    protected void Uploader1_FileValidating(object sender, UploaderEventArgs args)
+
+
+
+
+    protected void Upload_Click(object sender, EventArgs e)
     {
-        //Set up the upload path
-        string virpath = "/img/" + args.FileGuid + System.IO.Path.GetExtension(args.FileName);
-
-        //Set up the MapPath
-        string savepath = Server.MapPath(virpath);
-
-        //Substring the image path
-        imgpath = virpath.Substring(virpath.LastIndexOf("/") + 1, virpath.LastIndexOf(".") - 1);
-
-
-        //TEXT: never override existing file unless it's uploaded by same people.
-        if (System.IO.File.Exists(savepath))
-            return;
-
-        string folder = System.IO.Path.GetDirectoryName(savepath);
-        if (!System.IO.Directory.Exists(folder)) System.IO.Directory.CreateDirectory(folder);
-
-        //now copy the file instead of 
-        args.CopyTo(savepath);
-
-        //send server information to client side.
-        Uploader1.SetValidationServerData(virpath);
-
-        //last appid
-        mysql = "SELECT MAX(ID) FROM TBLAPP";
-
-        DataSet ds3 = new DataSet();
-
-        ds3 = db.ExecuteQuery(mysql, "ID");
-
-        //appid max + 1
-        appid = ds3.Tables["ID"].Rows[0][0].ToString() + 1;
-
-
-        //insert imgpath
-        mysql = "INSERT INTO TBLRES(FLDAPPIMGPATH,FLDAPPID) VALUES FLDAPPIMGPATH='" + imgpath + "' WHERE FLDAPPID =" + appid + "";
-
-        //Execute the Update string
-        db.ExecuteNonQuery(mysql);
-
-
+        Response.Redirect("App.aspx");
     }
-
-    protected void Add_Application(object sender, EventArgs e)
-    {
-
-    }
-
 }

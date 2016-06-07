@@ -16,7 +16,16 @@ public partial class Register : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        btnSubmit.Enabled = false;
+        if (!IsPostBack)
+        {
+            Response.Write("<script>alert('Check the robot validation first');</script>");
+            btnSubmit.Enabled = false;
+            btnSubmit.ToolTip = "Please check the validation then click 'I am not a robot'";
+            txbUserID.Enabled = false;
+            txbUserID.ToolTip = "Please check the validation then click 'I am not a robot'";
+            txbPass.Enabled = false;
+            txbPass.ToolTip = "Please check the validation then click 'I am not a robot'";
+        }
     }
 
     protected void btnValidateReCaptcha_Click(object sender, EventArgs e)
@@ -77,8 +86,11 @@ public partial class Register : System.Web.UI.Page
                     }
                     else //---- If successfully verified. Do your rest of logic.
                     {
-                        lblForMessage.Text = "Yes";
+                        btnValidateReCaptcha.Visible = false;
+                        recaptcha.Visible = false;
                         btnSubmit.Enabled = true;
+                        txbUserID.Enabled = true;
+                        txbPass.Enabled = true;
                     }
                 }
 

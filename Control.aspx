@@ -111,7 +111,17 @@
 
                     <div class="col-md-3"></div>
 
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                   
+
+
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-xs-12">
+                    <!--Sidebar content-->
+                </div>
+            </div>
+        </div>
+         <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
                         <div class="modal-dialog" style="width: 670px">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -247,16 +257,6 @@
                             window.history.back();
                         }
                     </script>
-
-
-                </div>
-
-                <div class="col-lg-2 col-md-2 col-xs-12">
-                    <!--Sidebar content-->
-                </div>
-            </div>
-        </div>
-
     </form>
 </body>
 </html>

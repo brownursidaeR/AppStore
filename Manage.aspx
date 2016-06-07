@@ -21,6 +21,26 @@
                 display: block;
             }
         }
+        .back-to-top {
+            background: none;
+            margin: 15px;
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            padding: 1px 1px;
+            border-radius: 50%;
+            box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+            width: 56px;
+            height: 56px;
+            z-index: 100;
+            display: none;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #ff9000;
+        }
+            .back-to-top i {
+                font-size: 60px;
+            }
     </style>
 </head>
 <body style="background-color: #CFD8DC">
@@ -47,9 +67,8 @@
             <div class="col-md-8 cardbackground">
                 <ul class="nav nav-tabs">
                     <li class=""><a href="#Application" data-toggle="tab" aria-expanded="true">Application</a></li>
-                    <li class=""><a href="#Upload" data-toggle="tab" aria-expanded="true">Upload</a></li>
                     <li class=""><a href="#Orders" data-toggle="tab" aria-expanded="false">Orders</a></li>
-                    
+                    <li class=""><a href="#Upload" data-toggle="tab" aria-expanded="false">Upload</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade active in" id="Application">
@@ -66,7 +85,6 @@
                                 <asp:CommandField DeleteText="Delete" HeaderText="Delete" ShowDeleteButton="True" ControlStyle-CssClass="btn btn-lg btn-danger" />
                             </Columns>
                         </asp:GridView>
-
                     </div>
                     <div class="tab-pane fade " id="Orders">
                         <asp:GridView ID="gvOrders" runat="server" GridLines="None" CssClass="table table-striped table-hover" Width="100%" AutoGenerateColumns="False" DataKeyNames="fldPurchaseID" OnRowEditing="gvOrders_ConfirmOrders" OnRowDeleting="gvOrders_DeletingOrders" OnRowDataBound="gvOrders_RowDataBound">
@@ -82,80 +100,24 @@
                             </Columns>
                         </asp:GridView>
                     </div>
-                    <div class="tab-pane fade" id="Upload">
-                        <h1>Upload a application</h1>
-                         <div class="col-md-3"></div>
-                    <div class="col-md-6">
-                        <div class="form-group col-md-12 col-xs-12" style="padding-bottom: 10px;">
-                            <asp:Image runat="server" ID="appimg" CssClass="app-img col-xs-12" Style="width: 50%; height: 300px; float: left; border: dashed 3px gray; padding: 5px;" />
-                            <button id="panelbody1" class="col-xs-12 btn btn-primary btn-lg">Cick here to change photos</button>
+                    <div class="tab-pane fade " id="Upload">
+                        <div class="col-md-2">
+                            <br />
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">Name</label>
-                            <div class="col-lg-10">
-                                <asp:TextBox ID="AppName" CssClass="form-control" runat="server" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"></asp:TextBox>
-                            </div>
+                        <div class="col-md-8" style="padding-top: 5%; padding-bottom: 5%;">
+                            <asp:Button runat="server" Text="Upload application here" OnClick="Upload_Click" CssClass="btn btn-primary col-md-12" />
                         </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">Info</label>
-                            <div class="col-lg-10">
-                                <asp:TextBox ID="AppInfo" runat="server" CssClass="form-control" ></asp:TextBox>
-                            </div>
+                        <div class="col-md-2">
+                            <br />
                         </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">Detail</label>
-                            <div class="col-lg-10">
-                                <asp:TextBox ID="AppDetail" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">Price</label>
-                            <div class="col-lg-10">
-                                <asp:TextBox ID="AppPrice" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">Type</label>
-                            <div class="col-lg-10">
-                                <asp:DropDownList ID="AppType" CssClass="form-control" runat="server">
-                                    <asp:ListItem Value="CatApp">App</asp:ListItem>
-                                    <asp:ListItem Value="CatGame">Game</asp:ListItem>
-                                    <asp:ListItem Value="CatMedia">Media</asp:ListItem>
-                                    <asp:ListItem Value="CatTool">Tool</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                         <div class="form-group">
-                        <div class="col-lg-10">
-                            <%--<button type="button" class="btn btn-primary btn-lg">Click</button>--%>
-                            <asp:Button runat="server" CssClass="btn btn-primary btn-lg" Text="Add" OnClick="Add_Application" />
-                            <button type="button" class="btn btn-default btn-lg" onclick="goBack()">Close</button>
-                        </div>
-                    </div>
-
-
-                        <div class="form-group">
-                            <div class="col-lg-10">
-                                <br>
-                            </div>
-
-                            <div class="col-lg-10 col-lg-offset-2">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3"></div>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-2"></div>
         </div>
+
+
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript">
@@ -222,149 +184,31 @@
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal -->
-           
-        </div> 
-
-        <!-- /.modal -->
-         <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" style="width: 670px">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Crop and upload</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div id="imagecropper" style="width: 640px; height: 640px; position: relative;">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" onclick="StartUpload();return false;" id="submitbutton">Upload</button>
-                                    <button class="btn btn-default" onclick="ResetUpload();return false;" data-dismiss="modal">Cancel</button>
-
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
-                    <!-- /.modal -->
-
-                    <CuteWebUI:Uploader runat="server" ManualStartUpload="true" ID="Uploader1" ShowQueueTable="false"
-                        InsertButtonID="panelbody1" DropZoneID="panelbody1" OnFileValidating="Uploader1_FileValidating">
-                        <ValidateOption MaxSizeKB="10240" />
-                    </CuteWebUI:Uploader>
-
-                    <div id="uploadlinks" style="padding-left: 12px;"></div>
-
-                    <script>
-                        //prevent the default handling by cancelling the event
-                        document.ondragover = document.ondragenter = document.ondrop = function (e) {
-                            e.preventDefault();
-                            return false;
-                        }
-
-                        var uploader;
-                        function CuteWebUI_AjaxUploader_OnInitialize() {
-                            uploader = this;//get uploader object
-                            uploader.internalobject.SetDialogAccept("image/*");
-                        }
-
-                        var uploadlinks = document.getElementById("uploadlinks");
-
-                        //Fires after all uploads are complete and submit the form
-                        function CuteWebUI_AjaxUploader_OnPostback() {
-                            var files = uploader.getitems();
-                            for (var i = 0; i < files.length; i++) {
-                                var task = files[i];
-                                //Get the information from server
-                                var virpath = task.ServerData;
-                                var link = document.createElement("A");
-                                link.target = "_blank";
-                                link.href = virpath;
-                                link.innerHTML = "Upload Success" + task.FileName + " at " + virpath;
-                                link.style.display = "block";
-                                uploadlinks.appendChild(link);
-                            }
-                            ResetUpload();
-
-                            //return false to cancel the default form submission
-                            return false;
-                        }
-
-                        function StartUpload() {
-                            uploader.startupload();//Start the upload of all queued files
-                            uploadlinks.innerHTML = "";
-                        }
-                        function ResetUpload() {
-                            //Clear file queue of uploader in the client side
-                            uploader.reset();
-                            $("#panelbody1").show();
-                            $('#myModal').modal("hide")
-                        }
-
-                        //Fires when new information about the upload progress for a specific file is available.
-                        function CuteWebUI_AjaxUploader_OnProgress(isuploading, filename, startTime, sentLen, totalLen) {
-                            if (isuploading) {
-                                $("#submitbutton").html(Math.floor(sentLen * 100 / totalLen) + "%");
-                            }
-                            return false;//hide the default progress bar
-                        }
-
-                        //Fires when files are selected successfully.
-                        function CuteWebUI_AjaxUploader_OnSelect(files) {
-                            var task = files[0];
-                            //Retrieve a list of file items defined by HTML5 <input type=file/>
-                            var srcfile = task.GetDomFile();
-                            if (!srcfile || srcfile.type.indexOf("image/") != 0)
-                                return;
-
-                            //if the browse don't support
-                            if (!window.Uint8Array || !window.ArrayBuffer)
-                                return;
-
-                            $('#myModal').modal({})
-                            $("#submitbutton").html("Upload");
-
-                            
-                            var div = document.getElementById("imagecropper");
-                            div.style.display = "block";
-                            div.innerHTML = "";
-
-                            var option = {};
-                            //specify a file object for <input type=file/>
-                            option.file = srcfile;
-                            //specify an element for UI container 
-                            option.container = div;
-                            //specify the container padding
-                            option.padding = 5;
-                            //When square is set to false, uploader will use rectangular crop-area.
-                            option.square = true;
-                            //set the minimum width of an element
-                            option.minWidth = 64;
-                            //set the minimum height of an element
-                            option.minHeight = 64;
-                            //set the maximum height of an element
-                            option.maxHeight = 170;
-                            //set the maximum height of an element
-                            option.maxWidth = 170;
-
-                            //Fires after a file gets processed
-                            option.onchange = function (newfile, dataurl, width, height) {
-
-                                //use this function to overwrite the uploader file
-                                task.OverrideDomFile(newfile);
-
-                                //document.title = width + "x" + height + "," + newfile.size + " bytes";
-                            }
-                            uploader.cropper(option);
-                        }
-                        function goBack() {
-                            window.history.back();
-                        }
-                    </script>
-
+        </div>
         <footer style="padding-bottom: 5%">
         </footer>
+       <a class="back-to-top" style="display: inline;">
+           <i class="material-icons">arrow_drop_up</i>
+       </a>
+        <script>
+            jQuery(document).ready(function () {
+                var offset = 250;
+                var duration = 300;
+                jQuery(window).scroll(function () {
+                    if (jQuery(this).scrollTop() > offset) {
+                        jQuery('.back-to-top').fadeIn(duration);
+                    } else {
+                        jQuery('.back-to-top').fadeOut(duration);
+                    }
+                });
+                jQuery('.back-to-top').click(function (event) {
+                    event.preventDefault();
+                    jQuery('html, body').animate({ scrollTop: 0 }, duration);
+                    return false;
+                })
+            });
+        </script>
     </form>
+
 </body>
 </html>

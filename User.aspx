@@ -19,6 +19,26 @@
                 display: block;
             }
         }
+          .back-to-top {
+            background: none;
+            margin: 15px;
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            padding: 1px 1px;
+            border-radius: 50%;
+            box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+            width: 56px;
+            height: 56px;
+            z-index: 100;
+            display: none;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #ff9000;
+        }
+            .back-to-top i {
+                font-size: 60px;
+            }
     </style>
 </head>
 <body style="background-color: #CFD8DC">
@@ -62,10 +82,30 @@
             <div class="col-md-2"></div>
         </div>
         
-        <footer>
-         
+        <footer  style="padding-bottom: 5%">
          
         </footer>
+         <a class="back-to-top" style="display: inline;">
+           <i class="material-icons">arrow_drop_up</i>
+       </a>
+        <script>
+            jQuery(document).ready(function () {
+                var offset = 250;
+                var duration = 300;
+                jQuery(window).scroll(function () {
+                    if (jQuery(this).scrollTop() > offset) {
+                        jQuery('.back-to-top').fadeIn(duration);
+                    } else {
+                        jQuery('.back-to-top').fadeOut(duration);
+                    }
+                });
+                jQuery('.back-to-top').click(function (event) {
+                    event.preventDefault();
+                    jQuery('html, body').animate({ scrollTop: 0 }, duration);
+                    return false;
+                })
+            });
+        </script>
     </form>
 </body>
 </html>

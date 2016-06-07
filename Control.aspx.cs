@@ -84,10 +84,13 @@ public partial class Control : System.Web.UI.Page
 
         //Execute the Update string
         db.ExecuteNonQuery(mysql);
+        
+        //Refresh in 0 sec
+        Response.AddHeader("Refresh", "1");
 
         //refresh page
         bind();
-        Response.AddHeader("Refresh", "0");
+
     }
 
     protected void Update(object sender, EventArgs e)
@@ -100,12 +103,12 @@ public partial class Control : System.Web.UI.Page
 
         //Execute the update string
         db.ExecuteNonQuery(mysql);
+       
+        //Refresh in 0 sec
+        Response.AddHeader("Refresh", "1");
 
         //Refresh the page by calling the bind();
         bind();
-
-        //Refresh in 0 sec
-        Response.AddHeader("Refresh", "0");
     }
 
     protected void bind()
@@ -139,6 +142,7 @@ public partial class Control : System.Web.UI.Page
 
         //Application Price
         AppPrice.Text = ds.Tables["App"].Rows[0][7].ToString();
+
 
     }
 

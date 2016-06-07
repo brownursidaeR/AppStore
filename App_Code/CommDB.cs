@@ -12,9 +12,9 @@ using System.Data;
 /// All the common operation would presented here
 public class CommDB
 {
-    public static readonly string mystr = System.Configuration.ConfigurationManager.AppSettings["mcstring"].ToString() + System.Web.HttpContext.Current.Server.MapPath(ConfigurationManager.AppSettings["dbPath"]) + ";";
     //Connection string saved in webconfig which can be encrypt on the server
-
+    public static readonly string mystr = System.Configuration.ConfigurationManager.AppSettings["mcstring"].ToString() + System.Web.HttpContext.Current.Server.MapPath(ConfigurationManager.AppSettings["dbPath"]) + ";";
+    
     public CommDB()
     {
 
