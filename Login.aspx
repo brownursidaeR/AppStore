@@ -65,7 +65,7 @@
 
                     <div class="form-group">
                         <div class="col-lg-10">
-                            <div class="g-recaptcha col-lg-offset-2" data-sitekey="6Ld5dCETAAAAAEGVZxwc7DhTldNdE_mjfG2SYU9L" runat="server" id="recaptcha"></div>
+                            <div class="g-recaptcha col-lg-12 col-lg-offset-2" data-sitekey="6Ld5dCETAAAAAEGVZxwc7DhTldNdE_mjfG2SYU9L" runat="server" id="recaptcha"></div>
                             <asp:Label runat="server" CssClass="col-lg-offset-2" ID="lblForMessage"></asp:Label>
                             <asp:Button OnClick="btnValidateReCaptcha_Click" CssClass="btn btn-success col-md-12 col-lg-offset-2" Text="I AM NOT A ROBOT" ID="btnValidateReCaptcha" runat="server" />
                         </div>
@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <br />
                         <div class="col-lg-10 col-lg-offset-2">
-                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" Style="margin-left: 5px; float: right" OnClick="btnSubmit_Click" />
+                            <asp:Button ID="btnSubmit" runat="server" Text="Login" CssClass="btn btn-primary" Style="margin-left: 5px; float: right" OnClick="btnSubmit_Click" />
                             <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" Style="float: right" />
 
                         </div>

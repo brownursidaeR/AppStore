@@ -34,7 +34,10 @@ public partial class index : System.Web.UI.Page
 
             else
             {
+                //Get Session type
+                string uid = Session["uid"].ToString();
                 //Remember user and enable some function
+
                 LoginLink.Text = Session["uid"].ToString();
 
                 //Hide Register link
@@ -55,7 +58,24 @@ public partial class index : System.Web.UI.Page
                 Logout.Enabled = true;
 
                 Logout.Text = "Log out";
+
                 
+
+                //Query string for Administrator
+                string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=1";
+
+                //store record in integer i
+                int i = db.Rownum(mysql, "test", ref uid);
+
+                if (i > 0)
+                {
+                    string style = "<i class=\"material-icons\">build</i> Manage";
+
+                    Account.Text = style;
+                    
+                    Account.NavigateUrl = "Manage.aspx";
+                }
+               
             }
         }
 

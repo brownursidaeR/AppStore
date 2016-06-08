@@ -12,9 +12,16 @@
     <meta name="theme-color" content="#FAFAFA">
     <link rel="Shortcut Icon" href="img/favico.ico">
     <title>App Store</title>
+    <style>
+        @media (max-width:768px) {
+            a.list-group-item {
+                font-size:0px;
+            }
+        }
+    </style>
 </head>
 
-<body style="background-color: #CFD8DC;" runat="server">
+<body style="background-color: #CFD8DC;" runat="server" >
     <form runat="server">
         <nav class="navbar navbar-default"></nav>
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -44,7 +51,7 @@
                                     <asp:TextBox ID="txbSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <div class="col-md-2 col-xs-6" style="margin-top: 15px">
-                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-default" OnClick="btnSearch_Click" />
+                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-default" />
                                 </div>
                             </div>
                         </div>
@@ -173,8 +180,6 @@
               </div>
              <div class="col-md-10" style="line-height:100%;">
                  <h1>This is a <strong>footer</strong> and nothing</h1>
-                 <h2>This is a <strong>footer</strong> and nothing</h2>
-                 <h3>This is a <strong>footer</strong> and nothing</h3>
                  <a href="mailto:brownursidae@gmail.com?Subject=Contact"><h4>This is a <strong>Email</strong> link</h4></a>
               </div>
              <div class="col-md-2" style="line-height:100%;">
@@ -183,5 +188,5 @@
          
         </footer>
     </form>
-</body>
+</body >
 </html>

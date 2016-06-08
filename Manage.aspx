@@ -52,16 +52,33 @@
                 <a class="navbar-brand" href="index.aspx">Apple store</a>
             </div>
 
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.aspx">Home</a></li>
-                </ul>
-            </div>
+             <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.aspx">Home</a></li>
+                        <li><a href="mailto:brownursidae@gmail.com?Subject=Contact">Contact</a></li>
+                    </ul>
+                    <div class="col-md-6" role="search">
+                        <div class="form-group" runat="server">
+                            <div class="container-fluid">
+                                <div class="col-md-10 col-xs-6" style="margin-top: 15px">
+                                    <asp:TextBox ID="txbSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
+                                    <button id="go" class="btn btn-default" type="button"
+                                        onclick="document.getElementById('searchForm').submit(); return false;">
+                                    </button>
+                                </div>
+                                <div class="col-md-2 col-xs-6" style="margin-top: 15px">
+                                    <asp:Button ID="btnSearch" runat="server" Text="Search"CssClass="btn btn-default" OnClick="Search_Click"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
         </nav>
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
+       
         <div class="container-fluid container-mg" style="background-color: #CFD8DC">
             <div class="col-md-2"></div>
             <div class="col-md-8 cardbackground">

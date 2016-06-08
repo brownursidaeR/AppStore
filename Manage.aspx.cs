@@ -201,7 +201,9 @@ public partial class Manage : System.Web.UI.Page
 
     }
 
+    protected void Search_Click(object sender, EventArgs e) {
 
+    }
 
 
 
