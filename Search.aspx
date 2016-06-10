@@ -12,6 +12,13 @@
     <meta name="theme-color" content="#FAFAFA">
     <link rel="Shortcut Icon" href="img/favico.ico">
     <title>App Store</title>
+    <style>
+        @media (max-width:768px) {
+            a.list-group-item {
+                font-size:0px;
+            }
+        }
+    </style>
 </head>
 
 <body style="background-color: #CFD8DC;" runat="server">

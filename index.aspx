@@ -47,11 +47,11 @@
                     <div class="col-md-6" role="search">
                         <div class="form-group" runat="server">
                             <div class="container-fluid">
-                                <div class="col-md-10 col-xs-6" style="margin-top: 15px">
+                                <div class="col-md-10 col-xs-6" style="margin-top: 20px">
                                     <asp:TextBox ID="txbSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <div class="col-md-2 col-xs-6" style="margin-top: 15px">
-                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-default" />
+                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-default" OnClick="btnSearch_Click" />
                                 </div>
                             </div>
                         </div>

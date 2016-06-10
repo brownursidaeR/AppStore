@@ -97,7 +97,7 @@ public partial class App : System.Web.UI.Page
         //Appliacation detail on Client Side
         Appdetail.Text = ds.Tables["App"].Rows[0][6].ToString();
 
-        if (uid == "" || uid == null)
+        if ( Session["uid"] == null)
         {
             //User not login yet
         }
@@ -121,7 +121,7 @@ public partial class App : System.Web.UI.Page
                 {
                     //Change the Download button
                     Price.Text = "$ " + price.ToString();
-                    btnDownload.Text = "Purchased";
+                    btnDownload.Text = "Purchase";
                 }
                 else
                 {
@@ -189,6 +189,8 @@ public partial class App : System.Web.UI.Page
 
                 //Notify the user for about checking their account
                 Response.Write("<script language=javascript>alert('Order sumbit! Please check your account for more detail');</script>");
+
+                Response.Redirect("Account.aspx");
             }
             catch (InvalidCastException ex)
             {

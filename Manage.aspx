@@ -7,6 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/custom.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -47,10 +48,17 @@
     <form id="form1" runat="server" class="form-horizontal">
         <nav class="navbar navbar-default"></nav>
         <nav class="navbar navbar-default navbar-fixed-top">
-
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.aspx">Apple store</a>
-            </div>
+             <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.aspx">Apple Store</a>
+                </div>
+            
 
              <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -61,14 +69,17 @@
                     <div class="col-md-6" role="search">
                         <div class="form-group" runat="server">
                             <div class="container-fluid">
-                                <div class="col-md-10 col-xs-6" style="margin-top: 15px">
-                                    <asp:TextBox ID="txbSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
-                                    <button id="go" class="btn btn-default" type="button"
-                                        onclick="document.getElementById('searchForm').submit(); return false;">
-                                    </button>
+                                <div class="col-md-2 col-xs-2" style="margin-top: 20px">
+                                <asp:DropDownList ID="DropDown" CssClass="dropdown"  runat="server">
+                                    <asp:ListItem>App</asp:ListItem>
+                                    <asp:ListItem>Order</asp:ListItem>
+                                </asp:DropDownList>
                                 </div>
-                                <div class="col-md-2 col-xs-6" style="margin-top: 15px">
-                                    <asp:Button ID="btnSearch" runat="server" Text="Search"CssClass="btn btn-default" OnClick="Search_Click"/>
+                                <div class="col-md-8 col-xs-6" style="margin-top: 15px">
+                                    <asp:TextBox ID="txbSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <div class="col-md-2 col-xs-4" style="margin-top: 15px"> 
+                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-default" OnClick="btnSearch_Click" />
                                 </div>
                             </div>
                         </div>
@@ -112,7 +123,7 @@
                                 <asp:BoundField DataField="fldAppName" HeaderText="App Name" SortExpression="fldAppName" />
                                 <asp:BoundField DataField="fldPrice" HeaderText="Price" SortExpression="fldPrice" />
                                 <asp:BoundField DataField="fldStatus" HeaderText="Status" SortExpression="fldStatus" />
-                                <asp:CommandField EditText="Permit" ShowEditButton="True" HeaderText="Pass" ControlStyle-CssClass="btn btn-lg btn-success" />
+                                <asp:CommandField EditText="Pass" ShowEditButton="True" HeaderText="Pass" ControlStyle-CssClass="btn btn-lg btn-success" />
                                 <asp:CommandField DeleteText="Delete" HeaderText="Delete" ShowDeleteButton="True" ControlStyle-CssClass="btn btn-lg btn-danger" />
                             </Columns>
                         </asp:GridView>

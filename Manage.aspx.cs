@@ -113,7 +113,7 @@ public partial class Manage : System.Web.UI.Page
             }
             else if (value == "1")
             {
-                e.Row.Cells[5].Text = "Permitted";
+                e.Row.Cells[5].Text = "Passed";
                 e.Row.Cells[6].Enabled = false;
                 e.Row.Cells[6].CssClass = "btn btn-default disabled";
                 e.Row.Cells[6].ToolTip = "Already passed";
@@ -201,14 +201,62 @@ public partial class Manage : System.Web.UI.Page
 
     }
 
-    protected void Search_Click(object sender, EventArgs e) {
 
-    }
 
 
 
     protected void Upload_Click(object sender, EventArgs e)
     {
-        Response.Redirect("App.aspx");
+        Response.Redirect("Add.aspx");
+    }
+
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        if (DropDown.SelectedValue == "App") {
+
+            gv.DataSource = null;
+            
+            DataSet ds = new DataSet();
+
+            //Query app
+            string mysql = "SELECT DISTINCT TBLRES.FLDAPPID,TBLRES.FLDAPPIMGPATH,TBLRES.FLDAPPSCREENSHOT,TBLRES.FLDAPPCOVER,TBLAPP.FLDAPPNAME,TBLAPP.FLDAPPINFO,TBLAPP.FLDAPPDETAIL,TBLAPP.FLDPRICE,TBLAPP.FLDTYPE FROM TBLRES, TBLAPP WHERE (([TBLRES].[FLDAPPID]=[TBLAPP].[ID])) AND FLDAPPNAME LIKE '%%" + txbSearch.Text.ToString() + "%%'";
+
+            //Set up the ds
+            ds = db.ExecuteQuery(mysql, "AppQ");
+
+            //DataSoucre from ds
+            gv.DataSource = ds.Tables["AppQ"];
+
+            //Using the datakey name to bind field
+            gv.DataKeyNames = new string[] { "fldAppID" };
+
+            //Data binding
+            gv.DataBind();
+
+        } else if (DropDown.SelectedValue == "Order") {
+
+            gvOrders.DataSource = null;
+
+            //DataSet using at the same time
+            DataSet ds2 = new DataSet();
+
+            //Query orders from 2 tables 
+            string mysqlO = "SELECT DISTINCT TBLUSER.FLDUSERNAME,TBLRES.FLDAPPIMGPATH,TBLAPP.FLDAPPNAME, TBLAPP.ID,TBLAPP.FLDPRICE,TBLITEM.FLDPURCHASEID,TBLPURCHASE.FLDSTATUs FROM TBLUSER INNER JOIN(((TBLAPP INNER JOIN tblItem ON TBLAPP.ID = TBLITEM.FLDAPPID) INNER JOIN TBLPURCHASE ON (TBLPURCHASE.ID = TBLITEM.FLDPURCHASEID) AND (TBLAPP.ID = TBLPURCHASE.APPID)) INNER JOIN TBLRES ON (TBLITEM.FLDAPPID = TBLRES.FLDAPPID) AND(TBLAPP.ID = TBLRES.FLDAPPID)) ON (TBLUSER.FLDUSERNAME = TBLPURCHASE.FLDPURCHASEUSERNAME) WHERE FLDPURCHASEUSERNAME LIKE '%%" + txbSearch.Text.ToString() + "%%' ";
+
+            //Set up the ds2
+            ds2 = db.ExecuteQuery(mysqlO, "OrdersQ");
+
+            //DataSoucre from ds2
+            gvOrders.DataSource = ds2.Tables["OrdersQ"];
+
+            //Using the datakey name to bind field
+            gvOrders.DataKeyNames = new string[] { "fldPurchaseID" };
+
+            //Data binding
+            gvOrders.DataBind();
+        }
+        else {
+
+        }
     }
 }
