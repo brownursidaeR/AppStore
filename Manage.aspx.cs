@@ -42,7 +42,9 @@ public partial class Manage : System.Web.UI.Page
 
                     if (i > 0)
                     {
+                        adminuid.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
                         bind();
+                        
                     }
                     else
                     {
@@ -114,11 +116,11 @@ public partial class Manage : System.Web.UI.Page
             else if (value == "1")
             {
                 e.Row.Cells[5].Text = "Passed";
-                e.Row.Cells[6].Enabled = false;
-                e.Row.Cells[6].CssClass = "btn btn-default disabled";
-                e.Row.Cells[6].ToolTip = "Already passed";
-                e.Row.Cells[7].CssClass = "disabled";
                 e.Row.Cells[7].Enabled = false;
+                e.Row.Cells[7].CssClass = "btn btn-default disabled";
+                e.Row.Cells[7].ToolTip = "Already passed";
+                e.Row.Cells[8].CssClass = "disabled";
+                e.Row.Cells[8].Enabled = false;
             }
         }
     }
@@ -185,7 +187,7 @@ public partial class Manage : System.Web.UI.Page
         DataSet ds2 = new DataSet();
 
         //Query orders from 2 tables 
-        string mysqlO = "SELECT TBLUSER.FLDUSERNAME,TBLAPP.FLDAPPNAME, TBLAPP.ID,TBLAPP.FLDPRICE,TBLITEM.FLDPURCHASEID,TBLPURCHASE.FLDSTATUS FROM TBLUSER INNER JOIN ((TBLAPP INNER JOIN TBLITEM ON TBLAPP.ID = TBLITEM.FLDAPPID) INNER JOIN TBLPURCHASE ON (TBLPURCHASE.ID = TBLITEM.FLDPURCHASEID) AND (TBLAPP.ID = TBLPURCHASE.APPID)) ON (TBLUSER.FLDUSERNAME = TBLPURCHASE.FLDPURCHASEUSERNAME);";
+        string mysqlO = "SELECT TBLUSER.FLDUSERNAME,TBLAPP.FLDAPPNAME, TBLAPP.ID,TBLAPP.FLDPRICE,TBLITEM.FLDPURCHASEID,TBLPURCHASE.FLDSTATUS,TBLPURCHASE.FLDTIME FROM TBLUSER INNER JOIN ((TBLAPP INNER JOIN TBLITEM ON TBLAPP.ID = TBLITEM.FLDAPPID) INNER JOIN TBLPURCHASE ON (TBLPURCHASE.ID = TBLITEM.FLDPURCHASEID) AND (TBLAPP.ID = TBLPURCHASE.APPID)) ON (TBLUSER.FLDUSERNAME = TBLPURCHASE.FLDPURCHASEUSERNAME);";
 
         //Set up the ds2
         ds2 = db.ExecuteQuery(mysqlO, "Orders");
@@ -203,7 +205,11 @@ public partial class Manage : System.Web.UI.Page
 
 
 
-
+    protected void Logout_Click(object sender, EventArgs e)
+    {
+        Session["uid"] = null;
+        Response.Redirect("~/index.aspx");
+    }
 
     protected void Upload_Click(object sender, EventArgs e)
     {
@@ -241,7 +247,7 @@ public partial class Manage : System.Web.UI.Page
             DataSet ds2 = new DataSet();
 
             //Query orders from 2 tables 
-            string mysqlO = "SELECT DISTINCT TBLUSER.FLDUSERNAME,TBLRES.FLDAPPIMGPATH,TBLAPP.FLDAPPNAME, TBLAPP.ID,TBLAPP.FLDPRICE,TBLITEM.FLDPURCHASEID,TBLPURCHASE.FLDSTATUs FROM TBLUSER INNER JOIN(((TBLAPP INNER JOIN tblItem ON TBLAPP.ID = TBLITEM.FLDAPPID) INNER JOIN TBLPURCHASE ON (TBLPURCHASE.ID = TBLITEM.FLDPURCHASEID) AND (TBLAPP.ID = TBLPURCHASE.APPID)) INNER JOIN TBLRES ON (TBLITEM.FLDAPPID = TBLRES.FLDAPPID) AND(TBLAPP.ID = TBLRES.FLDAPPID)) ON (TBLUSER.FLDUSERNAME = TBLPURCHASE.FLDPURCHASEUSERNAME) WHERE FLDPURCHASEUSERNAME LIKE '%%" + txbSearch.Text.ToString() + "%%' ";
+            string mysqlO = "SELECT DISTINCT TBLUSER.FLDUSERNAME,TBLRES.FLDAPPIMGPATH,TBLAPP.FLDAPPNAME, TBLAPP.ID,TBLAPP.FLDPRICE,TBLITEM.FLDPURCHASEID,TBLPURCHASE.FLDSTATUS,TBLPURCHASE.FLDTIME FROM TBLUSER INNER JOIN(((TBLAPP INNER JOIN tblItem ON TBLAPP.ID = TBLITEM.FLDAPPID) INNER JOIN TBLPURCHASE ON (TBLPURCHASE.ID = TBLITEM.FLDPURCHASEID) AND (TBLAPP.ID = TBLPURCHASE.APPID)) INNER JOIN TBLRES ON (TBLITEM.FLDAPPID = TBLRES.FLDAPPID) AND(TBLAPP.ID = TBLRES.FLDAPPID)) ON (TBLUSER.FLDUSERNAME = TBLPURCHASE.FLDPURCHASEUSERNAME) WHERE FLDPURCHASEUSERNAME LIKE '%%" + txbSearch.Text.ToString() + "%%' ";
 
             //Set up the ds2
             ds2 = db.ExecuteQuery(mysqlO, "OrdersQ");

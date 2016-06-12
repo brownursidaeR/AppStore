@@ -30,7 +30,7 @@ public partial class Search : System.Web.UI.Page
             else
             {
                 //Remember user and enable some function
-                LoginLink.Text = Session["uid"].ToString();
+                LoginLink.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
 
                 //Hide Register link
                 ResigterLink.Text = null;

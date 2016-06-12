@@ -52,21 +52,21 @@
                         <h2>Register</h2>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail" class="col-lg-2 control-label">Username</label>
-                        <div class="col-lg-10">
+                        <label for="inputEmail" class="col-lg-3 control-label"><i class="material-icons">account_circle</i> Username</label>
+                        <div class="col-lg-9">
                             <asp:TextBox ID="txbUserID" CssClass="form-control" placeholder="UserID" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                        <div class="col-lg-10">
+                        <label for="inputPassword" class="col-lg-3 control-label"><i class="material-icons">https</i> Password</label>
+                        <div class="col-lg-9">
                             <asp:TextBox ID="txbPass" runat="server" CssClass="form-control" TextMode="Password" placeholder="Password"></asp:TextBox>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="inputPassword" class="col-lg-2 control-label">Confirm</label>
-                        <div class="col-lg-10">
+                        <label for="inputPassword" class="col-lg-3 control-label"><i class="material-icons">https</i> Confirmed</label>
+                        <div class="col-lg-9">
                             <asp:TextBox ID="txbConfirm" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confrim Password"></asp:TextBox>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                             </script>
 
                             <%--RequiredFieldValidation--%>
-                            <button type="button" id="sumbit" class="btn btn-primary" onclick="checkInput()" style="margin-left: 5px; float: right">Sumbit</button>
+                            <button type="button" id="sumbit" class="btn btn-primary" onclick="checkInput()" style="margin-left: 5px; float: right">Submit</button>
                             <%--call out the Modal if pass the Validation--%>
                             <button type="button" id="btncancel" class="btn btn-default" style="float: right">Cancel</button>
                         </div>
@@ -129,7 +129,7 @@
                 <script type="text/javascript">
                     function AccountExist() {
                         $('#AccountExist').show();
-                        $('.alert').delay(1000).slideUp(200, function () {
+                        $('.alert').delay(2000).slideUp(200, function () {
                             $(this).alert('close');
                         });
                     }
@@ -173,7 +173,6 @@
                         <a href="www.baidu.com" style="margin-right: 5px">Terms of Service</a>
                         <a href="www.baidu.com">Privacy Policy</a>
                     </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <asp:Button ID="btnSubmit" runat="server" Text="Confirm" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
@@ -183,8 +182,42 @@
             </div>
             <!-- /.modal -->
         </div>
-       <footer style="padding-bottom: 5%">
-        </footer> 
+
+        <!--Modal-->
+        <div class="modal fade" id="Robotic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="Order">Robotic Validation</h4>
+                    </div>
+                    <div class="modal-body">
+                        Always Pass the Robotic Validation and click the <strong style="color: green">Green</strong>  button!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            function Robotic() {
+                $('#Robotic').modal({
+                    keyboard: false
+                });
+            }
+        </script>
+
+
+        <footer style="padding-bottom: 5%">
+        </footer>
 
     </form>
 

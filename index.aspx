@@ -62,7 +62,7 @@
                         <li>
                             <asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="~/Login.aspx">Login</asp:HyperLink></li>
                          <li>
-                            <asp:LinkButton ID="Logout" runat="server" OnClick="Logout_Click"></asp:LinkButton>
+                            <asp:LinkButton ID="Logout" runat="server" OnClick="Logout_Click"></asp:LinkButton></li>
                     </ul>
                 </div>
             </div>
@@ -90,21 +90,21 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
                             <div>
-                                <asp:Image ID="Image1" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c8.png" />
-                                <asp:Image ID="Image2" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c7.png" />
-                                <asp:Image ID="Image3" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c3.png" />
+                                <asp:Image ID="Image1" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c12.png"/>
+                                <asp:Image ID="Image2" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c24.png" />
+                                <asp:Image ID="Image3" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c21.png" />
                             </div>
                         </div>
                         <div class="item">
                             <div>
-                                <asp:Image ID="Image4" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c12.png" />
+                                <asp:Image ID="Image4" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c26.png" />
                                 <asp:Image ID="Image5" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c14.png" />
-                                <asp:Image ID="Image6" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c6.png" />
+                                <asp:Image ID="Image6" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c23.png" />
                             </div>
                         </div>
                         <div class="item">
                             <div>
-                                <asp:Image ID="Image7" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c11.png" />
+                                <asp:Image ID="Image7" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c21.png" />
                                 <asp:Image ID="Image8" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c16.png" />
                                 <asp:Image ID="Image9" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c9.png" />
                             </div>
@@ -171,6 +171,9 @@
                             window.location.href = 'App.aspx?ID=' + this.id;
                         });
                     });
+                    function goBack() {
+                        window.history.back();
+                    }
                 </script>
 
         <footer class="container-fluid" style="padding-bottom:5%;background-color:azure" >

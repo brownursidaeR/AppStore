@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="App.aspx.cs" Inherits="App" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -32,7 +31,6 @@
     </style>
 </head>
 <body style="background-color: #CFD8DC">
-
     <form id="form1" runat="server" class="form-horizontal">
         <nav class="navbar navbar-default"></nav>
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -100,6 +98,11 @@
                         <script type="text/javascript">
                             function LoginFirst() {
                                 $('#LoginFail').modal({
+                                    keyboard: false
+                                });
+                            }
+                            function Ordersubmit() {
+                                $('#Ordersumbit').modal({
                                     keyboard: false
                                 });
                             }
@@ -178,6 +181,33 @@
             <!-- /.modal-content -->
         </div>
         <!-- /.modal -->
+
+
+        <!--Modal-->
+        <div class="modal fade" id="Ordersumbit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="Order">Order submit</h4>
+                    </div>
+                    <div class="modal-body">
+                       <strong>Order submit!</strong> You can check your order on your account page!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <a href="User.aspx" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+
+
 
         <script type="text/javascript">
             //Rediect on img clicking

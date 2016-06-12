@@ -5,11 +5,14 @@ using System.Web;
 using System.Data.OleDb;
 using System.Configuration;
 using System.Data;
+using System.Text;
+using System.Security.Cryptography;
+using System.IO;
 
 /// <summary>
-/// CommDB 的摘要说明
+/// CommDB
 /// </summary>
-/// All the common operation would presented here
+/// All the command operation would presented here
 public class CommDB
 {
     //Connection string saved in webconfig which can be encrypt on the server
@@ -58,9 +61,10 @@ public class CommDB
             cd.ExecuteNonQuery();
             cn.Close();
         }
-        catch
+        catch(Exception ex)
         {
             cn.Close();
+            Console.WriteLine(ex);
             return false;
         }
 
@@ -84,6 +88,63 @@ public class CommDB
         cn.Close();
         return ds;
 
+    }
+
+
+    //*********************************************************************
+    //*  Password encryption and decryption written on my own             *
+    //*********************************************************************
+
+    public string Encrypt(string clearText)
+    {
+        string EncryptionKey = "MAKV2SPBNI99212";
+        byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
+        using (Aes encryptor = Aes.Create())
+        {
+            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+            encryptor.Key = pdb.GetBytes(32);
+            encryptor.IV = pdb.GetBytes(16);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                {
+                    cs.Write(clearBytes, 0, clearBytes.Length);
+                    cs.Close();
+                }
+                clearText = Convert.ToBase64String(ms.ToArray());
+            }
+        }
+        return clearText;
+    }
+
+    public string Decrypt(string cipherText)
+    {
+        string EncryptionKey = "MAKV2SPBNI99212";
+        byte[] cipherBytes = Convert.FromBase64String(cipherText);
+        using (Aes encryptor = Aes.Create())
+        {
+            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+            encryptor.Key = pdb.GetBytes(32);
+            encryptor.IV = pdb.GetBytes(16);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                {
+                    try
+                    {
+                        cs.Write(cipherBytes, 0, cipherBytes.Length);
+                        cs.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+
+                    }
+                }
+                cipherText = Encoding.Unicode.GetString(ms.ToArray());
+            }
+        }
+        return cipherText;
     }
 
 }

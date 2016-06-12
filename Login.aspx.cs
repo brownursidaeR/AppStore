@@ -22,7 +22,11 @@ public partial class Login : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Response.Write("<script>alert('Check the robot validation first');</script>");
+            
+
+            //Notify the user for checking robotic validation first
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { Robotic(); });", true);
+
             btnSubmit.Enabled = false;
             btnSubmit.ToolTip = "Please check the validation then click 'I am not a robot'";
             txbUserID.Enabled = false;
@@ -144,8 +148,10 @@ public partial class Login : System.Web.UI.Page
             //Give a "" uid
             string uid = "";
 
+            string EncryptedPassword = db.Encrypt(txbPass.Text.Trim());
+
             //Query string for Administrator
-            mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + txbUserID.Text + "' AND FLDPASSWORD ='" + txbPass.Text + "' AND FLDTYPE=1";
+            mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + txbUserID.Text + "' AND FLDPASSWORD ='" + EncryptedPassword + "' AND FLDTYPE=1";
 
             //store record in integer i
             i = db.Rownum(mysql, "test", ref uid);
@@ -173,8 +179,11 @@ public partial class Login : System.Web.UI.Page
             //Give a "" uid
             string uid = "";
 
+            //Encrypt Password
+            string EncryptedPassword = db.Encrypt(txbPass.Text.Trim());
+
             //Query string for User
-            mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + txbUserID.Text + "' AND FLDPASSWORD ='" + txbPass.Text + "' AND FLDTYPE=0";
+            mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + txbUserID.Text + "' AND FLDPASSWORD ='" + EncryptedPassword + "' AND FLDTYPE=0";
 
             //store record in integer i
             i = db.Rownum(mysql, "test", ref uid);

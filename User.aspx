@@ -76,6 +76,7 @@
                         <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                         <asp:BoundField DataField="fldPrice" HeaderText="Price" SortExpression="fldPrice" />
                         <asp:BoundField DataField="fldStatus" HeaderText="Status" SortExpression="fldStatus" />
+                        <asp:BoundField DataField="fldTime" HeaderText="Time" SortExpression="fldTime" />
                     </Columns>
                 </asp:GridView>
             </div>

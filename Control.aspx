@@ -92,9 +92,9 @@
                         </div>
                          <div class="form-group">
                         <div class="col-lg-10">
-                            <%--<button type="button" class="btn btn-primary btn-lg">Click</button>--%>
                             <asp:Button runat="server" CssClass="btn btn-primary btn-lg" Text="Click" OnClick="Update" />
-                            <button type="button" class="btn btn-default btn-lg" onclick="goBack()">Close</button>
+                            <a href="Manage.aspx" class="btn btn-default btn-lg" >Close</a>
+                          <%--  <button type="button" class="btn btn-default btn-lg">Close</button>--%>
                         </div>
                     </div>
 
@@ -252,9 +252,6 @@
                                 //document.title = width + "x" + height + "," + newfile.size + " bytes";
                             }
                             uploader.cropper(option);
-                        }
-                        function goBack() {
-                            window.history.back();
                         }
                     </script>
     </form>

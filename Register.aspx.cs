@@ -18,7 +18,9 @@ public partial class Register : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Response.Write("<script>alert('Check the robot validation first');</script>");
+            //Notify the user for checking robotic validation first
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { Robotic(); });", true);
+
             btnSubmit.Enabled = false;
             btnSubmit.ToolTip = "Please check the validation then click 'I am not a robot'";
             txbUserID.Enabled = false;
@@ -143,17 +145,24 @@ public partial class Register : System.Web.UI.Page
         {
             //Call out the Client Side Script for Account Exist
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { AccountExist(); });", true);
+
+            Response.AppendHeader("Refresh", "2;url=Register.aspx");
         }
         else
         {
+            //Encrypt Password
+            string EncryptedPassword = db.Encrypt(txbPass.Text.Trim());
+
             //Insert a new user record
-            mysql = "insert into tblUser(fldUsername,fldPassword) values('" + txbUserID.Text + "','" + txbPass.Text + "')";
+            mysql = "insert into tblUser(fldUsername,fldPassword) values('" + txbUserID.Text + "','" + EncryptedPassword + "')";
 
             //Execute the insert
             db.ExecuteNonQuery(mysql);
 
             //Call out the Client Side Script for Register Success
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { RegisterSuccess(); });", true);
+
+            Session["uid"] = txbUserID.Text;
 
             //Refresh and redirect to Home page
             Response.AppendHeader("Refresh", "2;url=index.aspx");

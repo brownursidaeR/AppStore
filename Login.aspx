@@ -43,14 +43,14 @@
                         <h2>Login</h2>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail" class="col-lg-2 control-label">Username</label>
-                        <div class="col-lg-10">
+                        <label for="inputEmail" class="col-lg-3 control-label"><i class="material-icons">account_circle</i> Username</label>
+                        <div class="col-lg-9">
                             <asp:TextBox ID="txbUserID" CssClass="form-control" placeholder="UserID" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                        <div class="col-lg-10">
+                        <label for="inputPassword" class="col-lg-3 control-label"><i class="material-icons">https</i> Password</label>
+                        <div class="col-lg-9">
                             <asp:TextBox ID="txbPass" runat="server" TextMode="Password" CssClass="form-control" placeholder="Password"></asp:TextBox>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                         <br />
                         <div class="col-lg-10 col-lg-offset-2">
                             <asp:Button ID="btnSubmit" runat="server" Text="Login" CssClass="btn btn-primary" Style="margin-left: 5px; float: right" OnClick="btnSubmit_Click" />
-                            <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" Style="float: right" />
+                            <button id="back" style="float: right" onclick="history.go(-1);" class="btn btn-default">Cancel</button>
 
                         </div>
                     </div>
@@ -108,11 +108,11 @@
                 </div>
                 <div class="alert alert-dismissible alert-warning collapse" id="UserTypeNeeded">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Please Select Your User Type </strong>and try again
+                    <i class="material-icons">warning</i> <strong>Please Select Your User Type </strong>and try again
                 </div>
                 <div class="alert alert-dismissible alert-danger collapse" id="passwordsNoMatchRegister">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Oh Snap! </strong>It seems like username or password is wrong.
+                    <i class="material-icons">warning</i> <strong>Oh Snap! </strong>It seems like username or password is wrong.
                 </div>
             </div>
 
@@ -120,6 +120,38 @@
         </div>
         <footer style="padding-bottom: 5%">
         </footer>
+
+        <!--Modal-->
+        <div class="modal fade" id="Robotic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="Order">Robotic Validation</h4>
+                    </div>
+                    <div class="modal-body">
+                        Always Pass the Robotic Validation and click the <strong style="color: green">Green</strong>  button!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            function Robotic() {
+                $('#Robotic').modal({
+                    keyboard: false
+                });
+            }
+        </script>
     </form>
 
 </body>

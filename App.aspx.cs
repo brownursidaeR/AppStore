@@ -35,7 +35,7 @@ public partial class App : System.Web.UI.Page
             else
             {
                 //Remember user and enable some function
-                LoginLink.Text = Session["uid"].ToString();
+                LoginLink.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
 
                 //Hide Register link
                 ResigterLink.Text = null;
@@ -54,7 +54,13 @@ public partial class App : System.Web.UI.Page
             }
         }
 
-        App_Query();
+        try {
+
+            App_Query();
+        }
+        catch (Exception ex) {
+            Response.Write(ex.Message);
+        }
     }
 
 
@@ -174,9 +180,12 @@ public partial class App : System.Web.UI.Page
 
             try
             {
+                DateTime dt = DateTime.Now; // Or whatever
+
+                string s = string.Format("{0:yyyyMMddHHmmss}", dt);
 
                 //Insert a record into database for new purchase order
-                mysql = "INSERT INTO TBLPURCHASE (FLDPURCHASEUSERNAME,APPID,FLDSTATUS) VALUES ('" + uid + "'," + appid + ",0)";
+                mysql = "INSERT INTO TBLPURCHASE (FLDPURCHASEUSERNAME,APPID,FLDSTATUS,FLDTIME) VALUES ('" + uid + "'," + appid + ",0,'"+ s +"')";
 
                 //Execute the insert string
                 db.ExecuteNonQuery(mysql);
@@ -188,18 +197,18 @@ public partial class App : System.Web.UI.Page
                 db.ExecuteNonQuery(mysqlitem);
 
                 //Notify the user for about checking their account
-                Response.Write("<script language=javascript>alert('Order sumbit! Please check your account for more detail');</script>");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { Ordersubmit(); });", true);
 
-                Response.Redirect("Account.aspx");
+
             }
             catch (InvalidCastException ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-
-
         }
     }
+
+    
 
 }
