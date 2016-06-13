@@ -21,17 +21,13 @@ public partial class Register : System.Web.UI.Page
             //Notify the user for checking robotic validation first
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { Robotic(); });", true);
 
-            btnSubmit.Enabled = false;
-            btnSubmit.ToolTip = "Please check the validation then click 'I am not a robot'";
-            txbUserID.Enabled = false;
-            txbUserID.ToolTip = "Please check the validation then click 'I am not a robot'";
-            txbPass.Enabled = false;
-            txbPass.ToolTip = "Please check the validation then click 'I am not a robot'";
         }
     }
 
+
     protected void btnValidateReCaptcha_Click(object sender, EventArgs e)
     {
+        
         //start building recaptch api call
         var sb = new StringBuilder();
         sb.Append("https://www.google.com/recaptcha/api/siteverify?secret=");
@@ -88,11 +84,9 @@ public partial class Register : System.Web.UI.Page
                     }
                     else //---- If successfully verified. Do your rest of logic.
                     {
-                        btnValidateReCaptcha.Visible = false;
+                        
                         recaptcha.Visible = false;
-                        btnSubmit.Enabled = true;
-                        txbUserID.Enabled = true;
-                        txbPass.Enabled = true;
+                        btnSubmit_Click();
                     }
                 }
 
@@ -129,7 +123,7 @@ public partial class Register : System.Web.UI.Page
         return visitorsIpAddr;
     }
 
-    protected void btnSubmit_Click(object sender, EventArgs e)
+    protected void btnSubmit_Click()
     {
         int i;
         string mysql;
@@ -168,6 +162,8 @@ public partial class Register : System.Web.UI.Page
             Response.AppendHeader("Refresh", "2;url=index.aspx");
         }
     }
+
+
 
 
 }

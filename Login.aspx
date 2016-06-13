@@ -66,15 +66,15 @@
                     <div class="form-group">
                         <div class="col-lg-10">
                             <div class="g-recaptcha col-lg-12 col-lg-offset-2" data-sitekey="6Ld5dCETAAAAAEGVZxwc7DhTldNdE_mjfG2SYU9L" runat="server" id="recaptcha"></div>
-                            <asp:Label runat="server" CssClass="col-lg-offset-2" ID="lblForMessage"></asp:Label>
-                            <asp:Button OnClick="btnValidateReCaptcha_Click" CssClass="btn btn-success col-md-12 col-lg-offset-2" Text="I AM NOT A ROBOT" ID="btnValidateReCaptcha" runat="server" />
+                            <asp:Label runat="server" CssClass="col-lg-offset-2" ID="lblForMessage" style="color:red;font-size:1.5em;"></asp:Label>
+                          <%--  <asp:Button OnClick="btnValidateReCaptcha_Click" CssClass="btn btn-success col-md-12 col-lg-offset-2" Text="I AM NOT A ROBOT" ID="btnValidateReCaptcha" runat="server" />--%>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <br />
                         <div class="col-lg-10 col-lg-offset-2">
-                            <asp:Button ID="btnSubmit" runat="server" Text="Login" CssClass="btn btn-primary" Style="margin-left: 5px; float: right" OnClick="btnSubmit_Click" />
+                            <asp:Button ID="btnSubmit" runat="server" Text="Login" CssClass="btn btn-primary" Style="margin-left: 5px; float: right" OnClick="btnValidateReCaptcha_Click" />
                             <button id="back" style="float: right" onclick="history.go(-1);" class="btn btn-default">Cancel</button>
 
                         </div>
@@ -133,7 +133,7 @@
                         <h4 class="modal-title" id="Order">Robotic Validation</h4>
                     </div>
                     <div class="modal-body">
-                        Always Pass the Robotic Validation and click the <strong style="color: green">Green</strong>  button!
+                        Don't forget the robotic validation!
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -152,6 +152,8 @@
                 });
             }
         </script>
+                <footer style="padding-bottom: 5%">
+        </footer>
     </form>
 
 </body>

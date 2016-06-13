@@ -46,42 +46,56 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <div class="form-group col-md-12 col-xs-12" style="padding-bottom: 10px;">
-                            <asp:Image runat="server" ID="appimg" CssClass="app-img col-xs-12" Style="width: 50%; height: 50%; float: left; border: dashed 3px gray; padding: 5px;" />
-                            <button id="panelbody1" class="col-xs-12 btn btn-primary btn-lg">Cick here to change photos</button>
+                            
+                            <asp:Image runat="server" ID="appimg" CssClass="app-img col-xs-12" Style="width: 50%; height: 50%; border: dashed 3px gray; padding: 5px;" />
+                            <button id="panelbody1" class="col-xs-12 btn btn-primary btn-lg"><i class="material-icons">insert_emoticon</i> Cick here to change photos</button>
                         </div>
                         <div class="form-group">
+                            <div class="col-lg-1"><i class="material-icons">bookmark_border</i></div>
                             <label class="col-lg-2 control-label">Name</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-9">
                                 <asp:TextBox ID="AppName" CssClass="form-control" runat="server" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"></asp:TextBox>
                             </div>
                         </div>
 
 
                         <div class="form-group">
+                             <div class="col-lg-1"><i class="material-icons">subtitles</i></div>
                             <label class="col-lg-2 control-label">Info</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-9">
                                 <asp:TextBox ID="AppInfo" runat="server" CssClass="form-control" ></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
+                             <div class="col-lg-1"><i class="material-icons">library_books</i></div>
                             <label class="col-lg-2 control-label">Detail</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-9">
                                 <asp:TextBox ID="AppDetail" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
+                            <div class="col-lg-1"><i class="material-icons">account_balance_wallet</i></div>
                             <label class="col-lg-2 control-label">Price</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-9">
                                 <asp:TextBox ID="AppPrice" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
+                         <div class="form-group">
+                             <div class="col-lg-1"><i class="material-icons">border_color</i></div>
+                            <label for="textArea" class="col-lg-2 control-label">Review</label>
+                            <div class="col-lg-9">
+                                <asp:TextBox CssClass="form-control" Rows="3" runat="server"  ID="AppReview"></asp:TextBox>
+                                <span class="help-block">The review would link to you account and display to the customers.</span>
+                            </div>
+                        </div>
 
                         <div class="form-group">
+                             <div class="col-lg-1"><i class="material-icons">bubble_chart</i></div>
                             <label class="col-lg-2 control-label">Type</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-9">
                                 <asp:DropDownList ID="AppType" CssClass="form-control" runat="server">
                                     <asp:ListItem Value="CatApp">App</asp:ListItem>
                                     <asp:ListItem Value="CatGame">Game</asp:ListItem>
@@ -90,11 +104,25 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
+
+                          <div class="form-group">
+                              <div class="col-lg-1"><i class="material-icons">insert_photo</i></div>
+                            <label class="col-lg-2 control-label">Screenshot</label>
+                            <div class="col-lg-2">
+                                <asp:FileUpload ID="ScreenshotU" CssClass="btn-default" runat="server" />
+                            </div>
+                            <div class="col-lg-7">
+                                 <asp:button runat="server" CssClass="btn btn-primary btn-lg" style="float:right" Text="upload" OnClick="btnScreenshot_Click"/>
+                            </div>
+                            <div class="col-lg-12">
+                                <asp:Label runat="server" ID="StatusLabel"  CssClass="control-label"></asp:Label>
+                            </div>
+                        </div>
+
                          <div class="form-group">
-                        <div class="col-lg-10">
+                        <div class="col-lg-12">
                             <asp:Button runat="server" CssClass="btn btn-primary btn-lg" Text="Click" OnClick="Update" />
-                            <a href="Manage.aspx" class="btn btn-default btn-lg" >Close</a>
-                          <%--  <button type="button" class="btn btn-default btn-lg">Close</button>--%>
+                            <a href="Manage.aspx" style="float:right" class="btn btn-default btn-lg" >Close</a>
                         </div>
                     </div>
 
@@ -254,6 +282,8 @@
                             uploader.cropper(option);
                         }
                     </script>
+                <footer style="padding-bottom: 5%">
+        </footer>
     </form>
 </body>
 </html>

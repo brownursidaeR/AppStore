@@ -22,17 +22,9 @@ public partial class Login : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            
-
             //Notify the user for checking robotic validation first
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { Robotic(); });", true);
-
-            btnSubmit.Enabled = false;
-            btnSubmit.ToolTip = "Please check the validation then click 'I am not a robot'";
-            txbUserID.Enabled = false;
-            txbUserID.ToolTip = "Please check the validation then click 'I am not a robot'";
-            txbPass.Enabled = false;
-            txbPass.ToolTip = "Please check the validation then click 'I am not a robot'";
+            
         }
     }
 
@@ -82,7 +74,8 @@ public partial class Login : System.Web.UI.Page
                     {
                         foreach (var error in result.ErrorCodes)
                         {
-                            lblForMessage.Text = "reCAPTCHA Error: " + error;
+                            lblForMessage.Text = "Robotic Validation Failed";
+                            //lblForMessage.Text = "reCAPTCHA Error: " + error;
                         }
                     }
                 }
@@ -92,13 +85,9 @@ public partial class Login : System.Web.UI.Page
                     {
                         lblForMessage.Text = "Captcha did not pass, please try again.";
                     }
-                    else //---- If successfully verified. Do your rest of logic.
+                    else //---- If successfully verified. Execute rest of logic.
                     {
-                        btnValidateReCaptcha.Visible = false;
-                        recaptcha.Visible = false;
-                        btnSubmit.Enabled = true;
-                        txbUserID.Enabled = true;
-                        txbPass.Enabled = true;
+                        btnSubmit_Click();
                     }
                 }
 
@@ -136,7 +125,7 @@ public partial class Login : System.Web.UI.Page
     }
 
 
-    protected void btnSubmit_Click(object sender, EventArgs e)
+    protected void btnSubmit_Click()
     {
 
         string mysql;

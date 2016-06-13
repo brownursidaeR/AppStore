@@ -45,36 +45,49 @@
                     <div class="col-md-6">
 
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">Name</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-1"><i class="material-icons">bookmark_border</i></div>
+                            <label class="col-lg-2 control-label"> Name</label>
+                            <div class="col-lg-9">
                                 <asp:TextBox MaxLength="20" ID="AppName" CssClass="form-control" runat="server" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">
+                            <div class="col-lg-1"><i class="material-icons">subtitles</i></div>
                             <label class="col-lg-2 control-label">Info</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-9">
                                 <asp:TextBox MaxLength="50" ID="AppInfo" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
+                            <div class="col-lg-1"><i class="material-icons">library_books</i></div>
                             <label class="col-lg-2 control-label">Detail</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-9">
                                 <asp:TextBox ID="AppDetail" MaxLength="80" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
+                            <div class="col-lg-1"><i class="material-icons">account_balance_wallet</i></div>
                             <label class="col-lg-2 control-label">Price</label>
-                            <div class="col-lg-10">
-                                <asp:TextBox ID="AppPrice" runat="server" type='text' onkeypress='return isNumberKey(event);'  CssClass="form-control"></asp:TextBox>
+                            <div class="col-lg-9">
+                                <asp:TextBox ID="AppPrice" runat="server" type='text' onkeypress='return isNumberKey(event);' CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <div class="col-lg-1"><i class="material-icons">border_color</i></div>
+                            <label for="textArea" class="col-lg-2 control-label">Review</label>
+                            <div class="col-lg-9">
+                                <asp:TextBox CssClass="form-control" Rows="3" runat="server" ID="AppReview"></asp:TextBox>
+                                <span class="help-block">The review would link to you account and display to the customers.</span>
+                            </div>
+                        </div>
 
                         <div class="form-group">
+                            <div class="col-lg-1"><i class="material-icons">bubble_chart</i></div>
                             <label class="col-lg-2 control-label">Type</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-9">
                                 <asp:DropDownList ID="AppType" CssClass="form-control" runat="server">
                                     <asp:ListItem Value="CatApp">App</asp:ListItem>
                                     <asp:ListItem Value="CatGame">Game</asp:ListItem>
@@ -84,10 +97,27 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="form-group col-md-12 col-xs-12" style="padding-bottom: 10px;">
-                                <asp:Image runat="server" ID="appimg" CssClass="app-img col-xs-12" Style="width: 50%; height: 50%; float: left; border: dashed 3px gray; padding: 5px;" />
-                                <button id="panelbody1" class="col-xs-12 btn btn-primary btn-lg">Click here to sumbit all</button>
+                            <div class="col-lg-1"><i class="material-icons">insert_photo</i></div>
+                            <label class="col-lg-2 control-label">Picture</label>
+                            <div class="col-lg-2">
+                                <asp:FileUpload ID="ScreenshotU" CssClass="btn-default" runat="server" />
                             </div>
+                            <div class="col-lg-7">
+                                 <asp:button runat="server" CssClass="btn btn-primary" style="float:right" Text="Upload Screenshot" OnClick="btnScreenshot_Click"  />
+                            </div>
+                            <div class="col-lg-12">
+                                <asp:Label runat="server" ID="StatusLabel"  CssClass="control-label"></asp:Label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-1"><i class="material-icons">insert_emoticon</i></div>
+                            <label class="col-lg-2 control-label">Icon</label>
+                            <div class="col-lg-6">
+                                <asp:Image runat="server" ID="appimg" CssClass="app-img col-xs-12" Style="width: 50%; height: 50%; border: dashed 3px gray; padding: 5px;" />
+                                <button id="panelbody1" class="col-xs-12 btn btn-primary btn-lg">Submit image and data</button>
+                            </div>
+                             <div class="col-lg-3"></div>
                         </div>
 
 
@@ -108,6 +138,7 @@
                 <div class="col-md-2 col-md-2 col-xs-12"></div>
             </div>
         </div>
+
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" style="width: 670px">
                 <div class="modal-content">
@@ -130,6 +161,7 @@
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
+
 
         <CuteWebUI:Uploader runat="server" ManualStartUpload="true" ID="Uploader1" ShowQueueTable="false"
             InsertButtonID="panelbody1" DropZoneID="panelbody1" OnFileValidating="Uploader1_FileValidating">
@@ -244,10 +276,10 @@
                 }
                 uploader.cropper(option);
             }
-            function goBack() {
-                window.history.back();
-            }
+
         </script>
+        <footer style="padding-bottom: 5%">
+        </footer>
     </form>
 </body>
 </html>

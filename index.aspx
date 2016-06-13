@@ -15,13 +15,13 @@
     <style>
         @media (max-width:768px) {
             a.list-group-item {
-                font-size:0px;
+                font-size: 0px;
             }
         }
     </style>
 </head>
 
-<body style="background-color: #CFD8DC;" runat="server" >
+<body style="background-color: #CFD8DC;" runat="server">
     <form runat="server">
         <nav class="navbar navbar-default"></nav>
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -61,7 +61,7 @@
                             <asp:HyperLink ID="ResigterLink" runat="server" NavigateUrl="~/Register.aspx">Register</asp:HyperLink></li>
                         <li>
                             <asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="~/Login.aspx">Login</asp:HyperLink></li>
-                         <li>
+                        <li>
                             <asp:LinkButton ID="Logout" runat="server" OnClick="Logout_Click"></asp:LinkButton></li>
                     </ul>
                 </div>
@@ -70,9 +70,9 @@
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-        <div class="container-fluid container-mg" style="background-color: #CFD8DC;margin-bottom:5%">
+        <div class="container-fluid container-mg" style="background-color: #CFD8DC; margin-bottom: 5%">
             <div class="col-md-2">
-                <div class="list-group tldr"> 
+                <div class="list-group tldr">
                     <asp:LinkButton ID="CatApp" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">shop_two</i> App</asp:LinkButton>
                     <asp:LinkButton ID="CatGame" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">devices</i> Games</asp:LinkButton>
                     <asp:LinkButton ID="CatMedia" runat="server" CssClass="list-group-item col-md-12 col-xs-2" OnClick="CatLink_Click"><i class="material-icons">headset</i> Media</asp:LinkButton>
@@ -90,7 +90,7 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
                             <div>
-                                <asp:Image ID="Image1" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c12.png"/>
+                                <asp:Image ID="Image1" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c12.png" />
                                 <asp:Image ID="Image2" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c24.png" />
                                 <asp:Image ID="Image3" runat="server" CssClass="wrapping-img" ImageUrl="~/img/c21.png" />
                             </div>
@@ -161,35 +161,22 @@
                 </div>
             </div>
             <div class="col-md-2">
-                
             </div>
         </div>
-                <script type="text/javascript">
-                    //Rediect on img clicking
-                    $(document).ready(function () {
-                        $('img.click').click(function () {
-                            window.location.href = 'App.aspx?ID=' + this.id;
-                        });
-                    });
-                    function goBack() {
-                        window.history.back();
-                    }
-                </script>
-
-        <footer class="container-fluid" style="padding-bottom:5%;background-color:azure" >
+        <script type="text/javascript">
+            //Rediect on img clicking
+            $(document).ready(function () {
+                $('img.click').click(function () {
+                    window.location.href = 'App.aspx?ID=' + this.id;
+                });
+            });
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+        <footer style="padding-bottom: 5%">
           
-              <div class="col-md-2" style="line-height:100%;">
-                 
-              </div>
-             <div class="col-md-10" style="line-height:100%;">
-                 <h1>This is a <strong>footer</strong> and nothing</h1>
-                 <a href="mailto:brownursidae@gmail.com?Subject=Contact"><h4>This is a <strong>Email</strong> link</h4></a>
-              </div>
-             <div class="col-md-2" style="line-height:100%;">
-                 
-              </div>
-         
         </footer>
     </form>
-</body >
+</body>
 </html>

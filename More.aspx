@@ -15,7 +15,7 @@
     <style>
         @media (max-width:768px) {
             a.list-group-item {
-                font-size:0px;
+                font-size: 0px;
             }
         }
     </style>
@@ -41,7 +41,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="index.aspx">Home</a></li>
-                       <li><a href="mailto:brownursidae@gmail.com?Subject=Contact">Contact</a></li>
+                        <li><a href="mailto:brownursidae@gmail.com?Subject=Contact">Contact</a></li>
                         <li><a href="mailto:brownursidae@gmail.com?Subject=I%20need%20help">Help</a></li>
                     </ul>
                     <div class="col-md-6" role="search">
@@ -102,20 +102,7 @@
                 });
             });
         </script>
-         <footer class="container-fluid" style="padding-bottom:5%;background-color:azure" >
-          
-              <div class="col-md-2" style="line-height:100%;">
-                 
-              </div>
-             <div class="col-md-10" style="line-height:100%;">
-                 <h1>This is a <strong>footer</strong> and nothing</h1>
-                 <a href="mailto:brownursidae@gmail.com?Subject=Contact"><h4>This is a <strong>Email</strong> link</h4></a>
-              </div>
-             <div class="col-md-2" style="line-height:100%;">
-                 
-              </div>
-         
-        </footer>
+
     </form>
 
 </body>

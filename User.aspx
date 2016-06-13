@@ -107,6 +107,8 @@
                 })
             });
         </script>
+                <footer style="padding-bottom: 5%">
+        </footer>
     </form>
 </body>
 </html>

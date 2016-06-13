@@ -102,19 +102,7 @@
                 });
             });
         </script>
-
-        <footer class="container-fluid" style="padding-bottom: 5%; background-color: azure">
-
-            <div class="col-md-2" style="line-height: 100%;">
-            </div>
-            <div class="col-md-10" style="line-height: 100%;">
-                <h1>This is a <strong>footer</strong> and nothing</h1>
-                <a href="mailto:brownursidae@gmail.com?Subject=Contact">
-                    <h4>This is a <strong>Email</strong> link</h4>
-                </a>
-            </div>
-            <div class="col-md-2" style="line-height: 100%;">
-            </div>
+                <footer style="padding-bottom: 5%">
         </footer>
     </form>
 

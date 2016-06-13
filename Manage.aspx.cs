@@ -24,34 +24,36 @@ public partial class Manage : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
+            CheckLogin();
+        }
+    }
+
+    private void CheckLogin()
+    {
+        if (Session["uid"] == null)
+        {
+            Response.Redirect("404.html");
+        }
+        else
+        {
+            //Get Session type
+            string uid = Session["uid"].ToString();
+
+            //Query string for Administrator
+            string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=1";
+
+            //store record in integer i
+            int i = db.Rownum(mysql, "test", ref uid);
+
+            if (i > 0)
             {
-                if (Session["uid"] == null)
-                {
-                    Response.Redirect("404.html");
-                }
-                else
-                {
-                    //Get Session type
-                    string uid = Session["uid"].ToString();
+                adminuid.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
+                bind();
 
-                    //Query string for Administrator
-                    string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=1";
-
-                    //store record in integer i
-                    int i = db.Rownum(mysql, "test", ref uid);
-
-                    if (i > 0)
-                    {
-                        adminuid.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
-                        bind();
-                        
-                    }
-                    else
-                    {
-                        Response.Redirect("404.html");
-                    }
-                }
-
+            }
+            else
+            {
+                Response.Redirect("404.html");
             }
         }
     }
@@ -166,6 +168,7 @@ public partial class Manage : System.Web.UI.Page
 
     private void bind()
     {
+       
         DataSet ds = new DataSet();
 
         //Re-Using the QueryAppSQL

@@ -74,7 +74,7 @@
                         <div class="col-lg-10">
                             <div class="g-recaptcha col-lg-offset-2" data-sitekey="6Ld5dCETAAAAAEGVZxwc7DhTldNdE_mjfG2SYU9L" runat="server" id="recaptcha"></div>
                             <asp:Label runat="server" CssClass="col-lg-offset-2" ID="lblForMessage"></asp:Label>
-                            <asp:Button OnClick="btnValidateReCaptcha_Click" CssClass="btn btn-success col-md-12 col-lg-offset-2" Text="I AM NOT A ROBOT" ID="btnValidateReCaptcha" runat="server" />
+                            <%--                            <asp:Button OnClick="btnValidateReCaptcha_Click" CssClass="btn btn-success col-md-12 col-lg-offset-2" Text="I AM NOT A ROBOT" ID="btnValidateReCaptcha" runat="server" />--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -95,32 +95,34 @@
                                     var strMsg = "";
                                     var userName = document.getElementById("<%=txbUserID.ClientID%>").value;
                                     var password = document.getElementById("<%=txbPass.ClientID%>").value;
-                                    var confirm = document.getElementById("<%=txbConfirm.ClientID%>").value;
-                                    if (userName == "" || userName == null) {
-                                        strMsg = "username"
-                                    }
-                                    if (password == "" || password == null) {
-                                        strMsg += " password"
-                                    }
-                                    if (strMsg != "") {
-                                        alert(strMsg + " can not be null");
-                                        return false;
-                                    }
-                                    if (password != confirm) {
-                                        alert("two password don't match");
-                                    }
-                                    else {
-                                        $(function () {
-                                            $("#Congrat").modal({
-                                                keyboard: false
-                                            });
-                                        });
-                                    }
-                                }
+                                   var confirm = document.getElementById("<%=txbConfirm.ClientID%>").value;
+                                   if (userName == "" || userName == null) {
+                                       strMsg = "username"
+                                   }
+                                   if (password == "" || password == null) {
+                                       strMsg += " password"
+                                   }
+                                   if (strMsg != "") {
+                                       alert(strMsg + " can not be null");
+                                   }
+                                   if (password != confirm) {
+                                       alert("two password don't match");
+                                       return false;
+                                   }
+                                   else {
+                                       //$(function () {
+
+                                       //    $("#Congrat").modal({
+                                       //        keyboard: false
+                                       //    });
+                                       //});
+                                   }
+
+                               }
                             </script>
 
                             <%--RequiredFieldValidation--%>
-                            <button type="button" id="sumbit" class="btn btn-primary" onclick="checkInput()" style="margin-left: 5px; float: right">Submit</button>
+                            <asp:Button runat="server" Text="Submit" CssClass="btn btn-primary" OnClientClick="checkInput()" Style="margin-left: 5px; float: right" OnClick="btnValidateReCaptcha_Click" />
                             <%--call out the Modal if pass the Validation--%>
                             <button type="button" id="btncancel" class="btn btn-default" style="float: right">Cancel</button>
                         </div>
@@ -140,6 +142,7 @@
                         });
                     }
                 </script>
+
                 <div class="alert alert-dismissible alert-danger collapse" id="AccountExist">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>Account already exist! </strong>please using another username
@@ -155,35 +158,6 @@
         </div>
 
 
-        <!--Modal-->
-        <div class="modal fade" id="Congrat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close"
-                            data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Creating account
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        By clicking Confirm, I agree to the Terms of Service and Privacy Policy.
-          <br />
-                        <a href="www.baidu.com" style="margin-right: 5px">Terms of Service</a>
-                        <a href="www.baidu.com">Privacy Policy</a>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <asp:Button ID="btnSubmit" runat="server" Text="Confirm" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal -->
-        </div>
-
-        <!--Modal-->
         <div class="modal fade" id="Robotic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -192,13 +166,17 @@
                             data-dismiss="modal" aria-hidden="true">
                             &times;
                         </button>
-                        <h4 class="modal-title" id="Order">Robotic Validation</h4>
+                        <h4 class="modal-title" id="Order">Register</h4>
                     </div>
                     <div class="modal-body">
-                        Always Pass the Robotic Validation and click the <strong style="color: green">Green</strong>  button!
+                        By clicking Confirm, I agree to the Terms of Service and Privacy Policy.
+                            <br />
+                        <a href="TOS.html" style="margin-right: 5px">Terms of Service</a>
+                        <a href="TOS.html">Privacy Policy</a>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
                     </div>
                 </div>
             </div>
@@ -215,10 +193,8 @@
             }
         </script>
 
-
         <footer style="padding-bottom: 5%">
         </footer>
-
     </form>
 
 

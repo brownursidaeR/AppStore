@@ -21,32 +21,7 @@ public partial class Search : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (Session["uid"] == null)
-            {
-                //Disabled account function if not login
-                Account.Enabled = false;
-                Account.CssClass = "list-group-item col-md-12 col-xs-2 disabled";
-            }
-            else
-            {
-                //Remember user and enable some function
-                LoginLink.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
-
-                //Hide Register link
-                ResigterLink.Text = null;
-
-                //Disable Login function
-                LoginLink.Enabled = false;
-
-                //Enable account session
-                Account.Enabled = true;
-
-                //Adjust Account Css
-                Account.CssClass = "list-group-item col-md-12 col-xs-2";
-
-                //Navigate URL
-                Account.NavigateUrl = "User.aspx?=" + Session["uid"].ToString() + "";
-            }
+            CheckLogin();
            
         }
         
@@ -55,6 +30,35 @@ public partial class Search : System.Web.UI.Page
         Search_Query();
     }
 
+    private void CheckLogin()
+    {
+        if (Session["uid"] == null)
+        {
+            //Disabled account function if not login
+            Account.Enabled = false;
+            Account.CssClass = "list-group-item col-md-12 col-xs-2 disabled";
+        }
+        else
+        {
+            //Remember user and enable some function
+            LoginLink.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
+
+            //Hide Register link
+            ResigterLink.Text = null;
+
+            //Disable Login function
+            LoginLink.Enabled = false;
+
+            //Enable account session
+            Account.Enabled = true;
+
+            //Adjust Account Css
+            Account.CssClass = "list-group-item col-md-12 col-xs-2";
+
+            //Navigate URL
+            Account.NavigateUrl = "User.aspx?=" + Session["uid"].ToString() + "";
+        }
+    }
 
     private void Search_Query()
     {

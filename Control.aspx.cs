@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,35 +22,42 @@ public partial class Control : System.Web.UI.Page
 
         if (!Page.IsPostBack)
         {
-            {
-                if (Session["uid"] == null)
-                {
-                    Response.Redirect("404.html");
-                }
-                else
-                {
-                    //Get Session type
-                    string uid = Session["uid"].ToString();
 
-                    //Query string for Administrator
-                    string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=1";
+            Checklogin();
 
-                    //store record in integer i
-                    int i = db.Rownum(mysql, "test", ref uid);
-
-                    if (i > 0)
-                    {
-                        bind();
-                    }
-                    else
-                    {
-                        Response.Redirect("404.html");
-                    }
-                }
-            }
         }
 
     }
+
+    private void Checklogin()
+    {
+        if (Session["uid"] == null)
+        {
+            Response.Redirect("404.html");
+        }
+        else
+        {
+            //Get Session type
+            string uid = Session["uid"].ToString();
+
+            //Query string for Administrator
+            string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=1";
+
+            //store record in integer i
+            int i = db.Rownum(mysql, "test", ref uid);
+
+            if (i > 0)
+            {
+                bind();
+            }
+            else
+            {
+                Response.Redirect("404.html");
+            }
+        }
+    }
+
+
 
 
     protected void Uploader1_FileValidating(object sender, UploaderEventArgs args)
@@ -84,9 +92,11 @@ public partial class Control : System.Web.UI.Page
 
         //Execute the Update string
         db.ExecuteNonQuery(mysql);
-        
+
         //Refresh in 0 sec
         Response.AddHeader("Refresh", "1");
+
+        Response.Write("<script language=javascript>alert('Application icon Updated');</script>");
 
         //refresh page
         bind();
@@ -103,16 +113,69 @@ public partial class Control : System.Web.UI.Page
 
         //Execute the update string
         db.ExecuteNonQuery(mysql);
-       
+
+        string mysqlUpdateRes = "UPDATE TBLRES SET FLDREVIEW='" + AppReview.Text + "',FLDREVIEWER = '" + Session["uid"].ToString() + "' WHERE FLDAPPID=" + appid + "";
+
+        //Update Resource file
+        db.ExecuteNonQuery(mysqlUpdateRes);
+
         //Refresh in 0 sec
         Response.AddHeader("Refresh", "1");
+
+        Response.Write("<script language=javascript>alert('Application data Updated');</script>");
 
         //Refresh the page by calling the bind();
         bind();
     }
 
+    protected void btnScreenshot_Click(object sender, EventArgs e)
+    {
+        //Get the Query String
+        string appid = Request.QueryString["ID"];
+
+        if (ScreenshotU.HasFile)
+        {
+            try
+            {
+                if (ScreenshotU.PostedFile.ContentType == "image/jpeg" || ScreenshotU.PostedFile.ContentType == "image/png")
+                {
+                    if (ScreenshotU.PostedFile.ContentLength < 10485760)
+                    {
+                        string filename = Path.GetFileName(ScreenshotU.FileName);
+                        Session["filename"] = filename;
+                        ScreenshotU.SaveAs(Server.MapPath("~//img//") + filename);
+
+                        StatusLabel.Text = "Success!";
+
+                        string mysqlUpdateRes = "UPDATE TBLRES SET FLDAPPSCREENSHOT='" + filename + "' WHERE FLDAPPID=" + appid + "";
+
+                        //Update Resource file
+                        db.ExecuteNonQuery(mysqlUpdateRes);
+
+                        //Refresh in 0 sec
+                        Response.AddHeader("Refresh", "1");
+
+                        Response.Write("<script language=javascript>alert('Application screenshot Updated');</script>");
+
+                        bind();
+                    }
+                    else
+                        StatusLabel.Text = "Upload status: The file has to be less than 10 mb!";
+                }
+                else
+                    StatusLabel.Text = "Upload status: Only JPEG and PNg files are accepted!";
+            }
+            catch (Exception ex)
+            {
+                StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+            }
+        }
+    }
+
     protected void bind()
     {
+        ds.Clear();
+
         //Get the QueryString
         string appid = Request.QueryString["ID"];
 
@@ -143,7 +206,8 @@ public partial class Control : System.Web.UI.Page
         //Application Price
         AppPrice.Text = ds.Tables["App"].Rows[0][7].ToString();
 
-
+        //Application Review
+        AppReview.Text = ds.Tables["App"].Rows[0][9].ToString();
     }
 
 
