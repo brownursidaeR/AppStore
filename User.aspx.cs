@@ -10,37 +10,42 @@ public partial class User : System.Web.UI.Page
 {
     //Using method CommDB
     CommDB db = new CommDB();
-    string uid;
+    public string appid, uid, orderid;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
+            checkLogin();
+           
+        }
+    }
+
+    private void checkLogin()
+    {
+
+        if (Session["uid"] == null)
+        {
+            Response.Redirect("404.html");
+        }
+        else
+        {
+            //Get Session type
+            string uid = Session["uid"].ToString();
+
+            //Query string for Administrator
+            string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=0";
+
+            //store record in integer i
+            int i = db.Rownum(mysql, "test", ref uid);
+
+            if (i > 0)
             {
-                if (Session["uid"] == null)
-                {
-                    Response.Redirect("404.html");
-                }
-                else
-                {
-                    //Get Session type
-                    string uid = Session["uid"].ToString();
-
-                    //Query string for Administrator
-                    string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=0";
-
-                    //store record in integer i
-                    int i = db.Rownum(mysql, "test", ref uid);
-
-                    if (i > 0)
-                    {
-                        bind();
-                    }
-                    else
-                    {
-                        Response.Redirect("404.html");
-                    }
-                }
+                bind();
+            }
+            else
+            {
+                Response.Redirect("404.html");
             }
         }
     }
@@ -71,6 +76,40 @@ public partial class User : System.Web.UI.Page
         }
     }
 
+    protected void gv_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        //Get index
+        gvOrders.PageIndex = e.NewPageIndex;
+
+        //Call method bind()
+        bind();
+    }
+
+    protected void gv_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        
+        //Get row index as datakey
+        orderid = gvOrders.DataKeys[e.RowIndex].Value.ToString();
+
+        //store orderid as Session["OrdersID"]
+        Session["OrdersID"] = orderid;
+
+        //Calling the Client side script on Confirm deleteing the record
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { DeleteOrders(); });", true);
+    }
+
+    protected void Deleting_Orders(object sender, EventArgs e)
+    {
+        //Delete orders string
+        string mysql = "DELETE FROM TBLPURCHASE WHERE ID=" + Session["OrdersID"].ToString() + "";   //Delete from 2 tables!!!!!!
+
+        //Execute delete string
+        db.ExecuteNonQuery(mysql);
+
+        //Refresh Orders by calling bind();
+        bind();
+    }
+
     private void bind()
     {
         //Get the userid 
@@ -80,8 +119,8 @@ public partial class User : System.Web.UI.Page
         DataSet ds = new DataSet();
 
         //Query orders from 3 tables 
-        //string mysqlO = "SELECT TBLUSER.FLDUSERNAME,TBLAPP.FLDAPPNAME, TBLAPP.ID,TBLAPP.FLDPRICE,TBLITEM.FLDPURCHASEID,TBLPURCHASE.FLDSTATUS FROM TBLUSER INNER JOIN ((TBLAPP INNER JOIN TBLITEM ON TBLAPP.ID = TBLITEM.FLDAPPID) INNER JOIN TBLPURCHASE ON (TBLPURCHASE.ID = TBLITEM.FLDPURCHASEID) AND (TBLAPP.ID = TBLPURCHASE.APPID)) ON (TBLUSER.FLDUSERNAME = TBLPURCHASE.FLDPURCHASEUSERNAME) WHERE FLDUSERNAME='"+ uid +"'";
         string mysqlO = "SELECT DISTINCT TBLUSER.FLDUSERNAME,TBLRES.FLDAPPIMGPATH,TBLAPP.FLDAPPNAME, TBLAPP.ID,TBLAPP.FLDPRICE,TBLITEM.FLDPURCHASEID,TBLPURCHASE.FLDSTATUS, TBLPURCHASE.FLDTIME FROM TBLUSER INNER JOIN(((TBLAPP INNER JOIN tblItem ON TBLAPP.ID = TBLITEM.FLDAPPID) INNER JOIN TBLPURCHASE ON (TBLPURCHASE.ID = TBLITEM.FLDPURCHASEID) AND (TBLAPP.ID = TBLPURCHASE.APPID)) INNER JOIN TBLRES ON (TBLITEM.FLDAPPID = TBLRES.FLDAPPID) AND(TBLAPP.ID = TBLRES.FLDAPPID)) ON (TBLUSER.FLDUSERNAME = TBLPURCHASE.FLDPURCHASEUSERNAME) WHERE FLDPURCHASEUSERNAME ='" + uid + "'";
+        
         //Set up the ds2
         ds = db.ExecuteQuery(mysqlO, "Orders");
 

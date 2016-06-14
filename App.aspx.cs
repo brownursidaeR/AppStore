@@ -25,33 +25,7 @@ public partial class App : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            if (Session["uid"] == null)
-            {
-                //Disabled account function if not login
-                Account.Enabled = false;
-                Account.CssClass = "list-group-item col-md-12 col-xs-2 disabled";
-            }
-
-            else
-            {
-                //Remember user and enable some function
-                LoginLink.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
-
-                //Hide Register link
-                ResigterLink.Text = null;
-
-                //Disable Login function
-                LoginLink.Enabled = false;
-
-                //Enable account session
-                Account.Enabled = true;
-
-                //Adjust Account Css
-                Account.CssClass = "list-group-item col-md-12 col-xs-2";
-
-                //Navigate URL
-                Account.NavigateUrl = "User.aspx?=" + Session["uid"].ToString() + "";
-            }
+            checkLogin();
         }
 
         try {
@@ -63,7 +37,53 @@ public partial class App : System.Web.UI.Page
         }
     }
 
+    private void checkLogin()
+    {
+        if (Session["uid"] == null)
+        {
+            //Disabled account function if not login
+            Account.Enabled = false;
+            Account.CssClass = "list-group-item col-md-12 col-xs-2 disabled";
+        }
 
+        else
+        {
+            uid = Session["uid"].ToString();
+
+            //Remember user and enable some function
+            LoginLink.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
+
+            //Hide Register link
+            ResigterLink.Text = null;
+
+            //Disable Login function
+            LoginLink.Enabled = false;
+
+            //Enable account session
+            Account.Enabled = true;
+
+            //Adjust Account Css
+            Account.CssClass = "list-group-item col-md-12 col-xs-2";
+
+            //Navigate URL
+            Account.NavigateUrl = "User.aspx?=" + Session["uid"].ToString() + "";
+
+            //Query string for Administrator
+            string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=1";
+
+            //store record in integer i
+            int i = db.Rownum(mysql, "test", ref uid);
+
+            if (i > 0)
+            {
+                string style = "<i class=\"material-icons\">build</i> Manage";
+
+                Account.Text = style;
+
+                Account.NavigateUrl = "Manage.aspx";
+            }
+        }
+    }
 
     private void App_Query()
     {

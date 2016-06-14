@@ -63,7 +63,7 @@
         <div class="container-fluid container-mg" style="background-color: #CFD8DC">
             <div class="col-md-2"></div>
             <div class="col-md-8 cardbackground">
-                <asp:GridView ID="gvOrders" runat="server" GridLines="None" CssClass="table table-striped table-hover" Width="100%" AutoGenerateColumns="False" DataKeyNames="fldPurchaseID" OnRowDataBound="gvOrders_RowDataBound">
+                <asp:GridView ID="gvOrders" runat="server" GridLines="None" CssClass="table table-striped table-hover" Width="100%" AutoGenerateColumns="False" DataKeyNames="fldPurchaseID" OnRowDataBound="gvOrders_RowDataBound" OnRowDeleting="gv_RowDeleting">
                     <Columns>
                         <asp:BoundField DataField="fldUsername" HeaderText="User" SortExpression="fldUsername" />
                         <asp:TemplateField HeaderText="Icon">
@@ -77,10 +77,45 @@
                         <asp:BoundField DataField="fldPrice" HeaderText="Price" SortExpression="fldPrice" />
                         <asp:BoundField DataField="fldStatus" HeaderText="Status" SortExpression="fldStatus" />
                         <asp:BoundField DataField="fldTime" HeaderText="Time" SortExpression="fldTime" />
+                        <asp:CommandField DeleteText="Delete" HeaderText="Delete" ShowDeleteButton="True" ControlStyle-CssClass="btn btn-lg btn-danger" />
                     </Columns>
                 </asp:GridView>
             </div>
             <div class="col-md-2"></div>
+        </div>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            function DeleteOrders() {
+                $('#DeletingOrders').modal({
+                    keyboard: false
+                });
+            }
+        </script>
+          <!--Modal-->
+        <div class="modal fade" id="DeletingOrders" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="ModalLabel"><strong>Deleting Orders!</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        By clicking Confirm, I agree to Delete this Order record.
+                    <br />
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <asp:Button ID="btnDeleteOrders" runat="server" Text="Confirm" CssClass="btn btn-primary" OnClick="Deleting_Orders" />
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
         </div>
         
         <footer  style="padding-bottom: 5%">

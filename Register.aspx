@@ -71,10 +71,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-lg-10">
-                            <div class="g-recaptcha col-lg-offset-2" data-sitekey="6Ld5dCETAAAAAEGVZxwc7DhTldNdE_mjfG2SYU9L" runat="server" id="recaptcha"></div>
-                            <asp:Label runat="server" CssClass="col-lg-offset-2" ID="lblForMessage"></asp:Label>
-                            <%--                            <asp:Button OnClick="btnValidateReCaptcha_Click" CssClass="btn btn-success col-md-12 col-lg-offset-2" Text="I AM NOT A ROBOT" ID="btnValidateReCaptcha" runat="server" />--%>
+                        <label class="col-lg-3 control-label"><i class="material-icons">pan_tool</i>  Robotic ?</label>
+                        <div class="col-lg-9">
+                            <div class="g-recaptcha" data-sitekey="6Ld5dCETAAAAAEGVZxwc7DhTldNdE_mjfG2SYU9L" runat="server" id="recaptcha"></div>
+                            <asp:Label runat="server" CssClass="" ID="lblForMessage" style="color:red;font-size:1.5em;"></asp:Label>
                         </div>
                     </div>
                     <div class="form-group">

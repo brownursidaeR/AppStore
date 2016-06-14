@@ -16,7 +16,7 @@ public partial class More : System.Web.UI.Page
 
     OleDbDataAdapter da = new OleDbDataAdapter();
 
-    string mysql;
+    string mysql,uid;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -42,6 +42,8 @@ public partial class More : System.Web.UI.Page
 
         else
         {
+            uid = Session["uid"].ToString();
+
             //Remember user and enable some function
             LoginLink.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
 
@@ -59,6 +61,21 @@ public partial class More : System.Web.UI.Page
 
             //Navigate URL
             Account.NavigateUrl = "User.aspx?=" + Session["uid"].ToString() + "";
+
+            //Query string for Administrator
+            string mysql = "SELECT * FROM TBLUSER WHERE FLDUSERNAME='" + uid + "' AND FLDTYPE=1";
+
+            //store record in integer i
+            int i = db.Rownum(mysql, "test", ref uid);
+
+            if (i > 0)
+            {
+                string style = "<i class=\"material-icons\">build</i> Manage";
+
+                Account.Text = style;
+
+                Account.NavigateUrl = "Manage.aspx";
+            }
         }
     }
 
