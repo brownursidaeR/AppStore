@@ -18,6 +18,17 @@
                 font-size: 0px;
             }
         }
+
+        .app-card {
+            opacity: 1.0;
+            filter: alpha(opacity=100); /* For IE8 and earlier */
+        }
+
+            .app-card:hover {
+                box-shadow: 5px 10px 10px #888888;
+                opacity: 0.7;
+                filter: alpha(opacity=80); /* For IE8 and earlier */
+            }
     </style>
 </head>
 
@@ -44,7 +55,7 @@
                         <li><a href="mailto:brownursidae@gmail.com?Subject=Contact">Contact</a></li>
                         <li><a href="mailto:brownursidae@gmail.com?Subject=I%20need%20help">Help</a></li>
                     </ul>
-                    <div class="col-md-6" role="search">
+                    <div class="col-md-5 col-lg-6" role="search">
                         <div class="form-group" runat="server">
                             <div class="container-fluid">
                                 <div class="col-md-10 col-xs-6" style="margin-top: 20px">
@@ -150,8 +161,8 @@
 
                         <% for (int j = 6; j < ds.Tables["App"].Rows.Count && j < 12; j++)
                             { %>
-                        <div class="app-card col-xs-12">
-                            <img class="app-img click" id="<%=ds.Tables["App"].Rows[j][0].ToString() %>" src="img/<%=ds.Tables["App"].Rows[j][1].ToString() %>" />
+                        <div class="app-card col-xs-12" id="wrapper">
+                            <img class="app-img  click" id="<%=ds.Tables["App"].Rows[j][0].ToString() %>" src="img/<%=ds.Tables["App"].Rows[j][1].ToString() %>" />
                             <small class="col-md-12 col-xs-12 app-name tldr"><%=ds.Tables["App"].Rows[j][4].ToString() %></small>
                             <cite class=" col-md-12 col-xs-12 caption tldr"><%=ds.Tables["App"].Rows[j][5].ToString() %></cite>
                         </div>
@@ -175,7 +186,6 @@
             }
         </script>
         <footer style="padding-bottom: 5%">
-          
         </footer>
     </form>
 </body>

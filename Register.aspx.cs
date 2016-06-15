@@ -27,6 +27,9 @@ public partial class Register : System.Web.UI.Page
 
     protected void btnValidateReCaptcha_Click(object sender, EventArgs e)
     {
+        //if (txbPass.Text != txbConfirm.Text||txbUserID.Text==""||txbPass.Text==""||txbConfirm.Text=="") {
+        //    Response.Write("");
+        //}
         
         //start building recaptch api call
         var sb = new StringBuilder();
@@ -82,10 +85,8 @@ public partial class Register : System.Web.UI.Page
                     {
                         lblForMessage.Text = "Captcha did not pass, please try again.";
                     }
-                    else //---- If successfully verified. Do your rest of logic.
+                    else //---- Successful validation
                     {
-                        
-                        recaptcha.Visible = false;
                         btnSubmit_Click();
                     }
                 }

@@ -34,7 +34,14 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.aspx">Home</a></li>
                 </ul>
+                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <asp:LinkButton runat="server" ID="adminuid"></asp:LinkButton>
+                    <li>
+                        <asp:LinkButton ID="Logout" runat="server" OnClick="Logout_Click">Logout</asp:LinkButton></li>
+                </ul>
             </div>
+            
         </nav>
         <div class="container-fluid">
             <div class="row-fluid">
@@ -139,6 +146,7 @@
             </div>
         </div>
 
+
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" style="width: 670px">
                 <div class="modal-content">
@@ -161,7 +169,6 @@
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-
 
         <CuteWebUI:Uploader runat="server" ManualStartUpload="true" ID="Uploader1" ShowQueueTable="false"
             InsertButtonID="panelbody1" DropZoneID="panelbody1" OnFileValidating="Uploader1_FileValidating">

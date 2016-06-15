@@ -58,7 +58,8 @@ public partial class Add : System.Web.UI.Page
 
             if (i > 0)
             {
-
+                adminuid.Text = "<i class=\"material-icons\">face</i> " + Session["uid"].ToString();
+              
             }
             else
             {
@@ -74,62 +75,69 @@ public partial class Add : System.Web.UI.Page
             Response.Write("<script>alert('Please filled all blank!');</script>");
         }
         else {
-            //Set up the upload path
-            string virpath = "/img/" + args.FileGuid + System.IO.Path.GetExtension(args.FileName);
-
-            //Set up the MapPath
-            string savepath = Server.MapPath(virpath);
-
-            //Substring the image path
-            string imgpath = virpath.Substring(virpath.LastIndexOf("/") + 1, virpath.LastIndexOf(".") - 1);
-
-
-            //TEXT: never override existing file unless it's uploaded by same people.
-            if (System.IO.File.Exists(savepath))
-                return;
-
-            string folder = System.IO.Path.GetDirectoryName(savepath);
-            if (!System.IO.Directory.Exists(folder)) System.IO.Directory.CreateDirectory(folder);
-
-            //now copy the file instead of 
-            args.CopyTo(savepath);
-
-            //send server information to client side.
-            Uploader1.SetValidationServerData(virpath);
-
-
-            //update imgpath
-            string mysql = "INSERT INTO TBLAPP (FLDAPPNAME,FLDAPPINFO,FLDAPPDETAIL,FLDPRICE,FLDTYPE) VALUES ('" + appname + "','" + appinfo + "','" + appdetail + "','" + appprice + "','" + apptype + "')";
-            
-            //Execute the Update string
-            db.ExecuteNonQuery(mysql);
-
-            //The disadvantage of this method is not suitable for high concurrency which I would consider another method later
-            string mysqlqaid = "SELECT MAX(Id) FROM TBLAPP";
-
-            ds = db.ExecuteQuery(mysqlqaid, "Lastindex");
-
-            appid = ds.Tables["Lastindex"].Rows[0][0].ToString();
-
             if (StatusLabel.Text == "Success!")
             {
-                string mysqlRes = "INSERT INTO TBLRES(FLDAPPID,FLDAPPSCREENSHOT,FLDAPPIMGPATH,FLDREVIEW,FLDREVIEWER) VALUES ('" + appid + "','"+ Session["filename"].ToString() +"','" + imgpath + "','" + appreview + "','" + Session["uid"].ToString() + "')";
+                //Set up the upload path
+                string virpath = "/img/" + args.FileGuid + System.IO.Path.GetExtension(args.FileName);
+
+                //Set up the MapPath
+                string savepath = Server.MapPath(virpath);
+
+                //Substring the image path
+                string imgpath = virpath.Substring(virpath.LastIndexOf("/") + 1, virpath.LastIndexOf(".") - 1);
+
+
+                //TEXT: never override existing file unless it's uploaded by same people.
+                if (System.IO.File.Exists(savepath))
+                    return;
+
+                string folder = System.IO.Path.GetDirectoryName(savepath);
+                if (!System.IO.Directory.Exists(folder)) System.IO.Directory.CreateDirectory(folder);
+
+                //now copy the file instead of 
+                args.CopyTo(savepath);
+
+                //send server information to client side.
+                Uploader1.SetValidationServerData(virpath);
+
+                //update imgpath
+                string mysql = "INSERT INTO TBLAPP (FLDAPPNAME,FLDAPPINFO,FLDAPPDETAIL,FLDPRICE,FLDTYPE) VALUES ('" + appname + "','" + appinfo + "','" + appdetail + "','" + appprice + "','" + apptype + "')";
+
+                //Execute the Update string
+                db.ExecuteNonQuery(mysql);
+
+                //The disadvantage of this method is not suitable for high concurrency which I would consider another method later
+                string mysqlqaid = "SELECT MAX(Id) FROM TBLAPP";
+
+                ds = db.ExecuteQuery(mysqlqaid, "Lastindex");
+
+                appid = ds.Tables["Lastindex"].Rows[0][0].ToString();
+
+                string mysqlRes = "INSERT INTO TBLRES(FLDAPPID,FLDAPPSCREENSHOT,FLDAPPIMGPATH,FLDREVIEW,FLDREVIEWER) VALUES ('" + appid + "','" + Session["filename"].ToString() + "','" + imgpath + "','" + appreview + "','" + Session["uid"].ToString() + "')";
 
                 db.ExecuteNonQuery(mysqlRes);
 
                 Response.Write("<script language=javascript>alert('A new app has been added');</script>");
             }
             else {
-                Response.Write("<script language=javascript>alert('You haven't upload an screenshot');</script>");
+                Response.AddHeader("Refresh","1");
+
+                Response.Write("<script language=javascript>alert('You havent upload a screenshot yet');</script>");
             }
 
-           
+
+
+
         }
 
 
     }
 
-
+    protected void Logout_Click(object sender, EventArgs e)
+    {
+        Session["uid"] = null;
+        Response.Redirect("index.aspx");
+    }
 
     protected void btnScreenshot_Click(object sender, EventArgs e)
     {

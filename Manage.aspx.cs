@@ -151,6 +151,8 @@ public partial class Manage : System.Web.UI.Page
 
         //Calling the Client side Script to confirm the deleteing operation
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$(function() { DeleteOrders(); });", true);
+
+
     }
 
     protected void Deleting_Orders(object sender, EventArgs e)
@@ -160,6 +162,9 @@ public partial class Manage : System.Web.UI.Page
 
         //Execute delete string
         db.ExecuteNonQuery(mysql);
+
+        //Refresh page
+        Response.AddHeader("Refresh","1");
 
         //Refresh Orders by calling bind();
         bind();

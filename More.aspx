@@ -18,6 +18,17 @@
                 font-size: 0px;
             }
         }
+
+        .app-card {
+            opacity: 1.0;
+            filter: alpha(opacity=100); /* For IE8 and earlier */
+        }
+
+            .app-card:hover {
+                box-shadow: 5px 10px 10px #888888;
+                opacity: 0.7;
+                filter: alpha(opacity=80); /* For IE8 and earlier */
+            }
     </style>
 </head>
 
@@ -44,7 +55,7 @@
                         <li><a href="mailto:brownursidae@gmail.com?Subject=Contact">Contact</a></li>
                         <li><a href="mailto:brownursidae@gmail.com?Subject=I%20need%20help">Help</a></li>
                     </ul>
-                    <div class="col-md-6" role="search">
+                    <div class="col-md-5" role="search">
                         <div class="form-group" runat="server">
                             <div class="container-fluid">
                                 <div class="col-md-10 col-xs-6" style="margin-top: 15px">

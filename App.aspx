@@ -23,11 +23,23 @@
                 float: left;
             }
         }
+
         @media (max-width:768px) {
             a.list-group-item {
-                font-size:0px;
+                font-size: 0px;
             }
         }
+
+        .app-card {
+            opacity: 1.0;
+            filter: alpha(opacity=100); /* For IE8 and earlier */
+        }
+
+            .app-card:hover {
+                box-shadow: 5px 10px 10px #888888;
+                opacity: 0.7;
+                filter: alpha(opacity=80); /* For IE8 and earlier */
+            }
     </style>
 </head>
 <body style="background-color: #CFD8DC">
@@ -43,7 +55,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Apple store</a>
+                <a class="navbar-brand" href="index.aspx">Apple store</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -195,7 +207,7 @@
                         <h4 class="modal-title" id="Order">Order submit</h4>
                     </div>
                     <div class="modal-body">
-                       <strong>Order submit!</strong> You can check your order on your account page!
+                        <strong>Order submit!</strong> You can check your order on your account page!
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

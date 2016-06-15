@@ -68,7 +68,7 @@
                     <li><a href="index.aspx">Home</a></li>
                     <li><a href="mailto:brownursidae@gmail.com?Subject=Contact">Contact</a></li>
                 </ul>
-                <div class="col-md-6" role="search">
+                <div class="col-md-5" role="search">
                     <div class="form-group" runat="server">
                         <div class="container-fluid">
                             <div class="col-md-2 col-xs-2" style="margin-top: 20px">

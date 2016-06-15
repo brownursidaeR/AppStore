@@ -27,14 +27,8 @@ public partial class App : System.Web.UI.Page
         {
             checkLogin();
         }
-
-        try {
-
+        
             App_Query();
-        }
-        catch (Exception ex) {
-            Response.Write(ex.Message);
-        }
     }
 
     private void checkLogin()

@@ -46,10 +46,14 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <div class="form-group col-md-12 col-xs-12" style="padding-bottom: 10px;">
-                            
                             <asp:Image runat="server" ID="appimg" CssClass="app-img col-xs-12" Style="width: 50%; height: 50%; border: dashed 3px gray; padding: 5px;" />
                             <button id="panelbody1" class="col-xs-12 btn btn-primary btn-lg"><i class="material-icons">insert_emoticon</i> Cick here to change photos</button>
                         </div>
+
+                        <div class="form-group">
+                            <br />
+                        </div>
+
                         <div class="form-group">
                             <div class="col-lg-1"><i class="material-icons">bookmark_border</i></div>
                             <label class="col-lg-2 control-label">Name</label>
@@ -112,7 +116,7 @@
                                 <asp:FileUpload ID="ScreenshotU" CssClass="btn-default" runat="server" />
                             </div>
                             <div class="col-lg-7">
-                                 <asp:button runat="server" CssClass="btn btn-primary btn-lg" style="float:right" Text="upload" OnClick="btnScreenshot_Click"/>
+                                 <asp:button runat="server" CssClass="btn btn-primary btn-lg" style="float:right" Text="upload screenshot" OnClick="btnScreenshot_Click"/>
                             </div>
                             <div class="col-lg-12">
                                 <asp:Label runat="server" ID="StatusLabel"  CssClass="control-label"></asp:Label>
@@ -121,8 +125,8 @@
 
                          <div class="form-group">
                         <div class="col-lg-12">
-                            <asp:Button runat="server" CssClass="btn btn-primary btn-lg" Text="Click" OnClick="Update" />
-                            <a href="Manage.aspx" style="float:right" class="btn btn-default btn-lg" >Close</a>
+                            <a href="Manage.aspx"  class="btn btn-default btn-lg" >Close</a>
+                            <asp:Button runat="server" CssClass="btn btn-primary btn-lg" style="float:right" Text="Update Application data" OnClick="Update" />
                         </div>
                     </div>
 

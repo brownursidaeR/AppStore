@@ -9158,6 +9158,12 @@ input[type="checkbox"],
     background-color: #FAFAFA;
 }
 
+    .app-card:hover {
+        box-shadow: 0px 10px 10px #888888;
+        opacity: 0.6;
+        filter: alpha(opacity=80); /* For IE8 and earlier */
+    }
+
 @media (max-width: 992px) {
 
     .app-card {
@@ -9209,7 +9215,7 @@ input[type="checkbox"],
         height: 150%;
     }
 
-      .table > tbody > tr > td {
+    .table > tbody > tr > td {
         display: block;
     }
 
@@ -9263,8 +9269,6 @@ input[type="checkbox"],
         width: 120%;
         height: 120%;
     }
-
-  
 }
 
 

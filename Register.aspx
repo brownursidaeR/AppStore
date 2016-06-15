@@ -98,31 +98,28 @@
                                    var confirm = document.getElementById("<%=txbConfirm.ClientID%>").value;
                                    if (userName == "" || userName == null) {
                                        strMsg = "username"
+                                       
                                    }
                                    if (password == "" || password == null) {
                                        strMsg += " password"
+                                       
                                    }
                                    if (strMsg != "") {
                                        alert(strMsg + " can not be null");
+                                       return false;
                                    }
                                    if (password != confirm) {
                                        alert("two password don't match");
                                        return false;
+                                   } else
+                                   {
+                                       return true;
                                    }
-                                   else {
-                                       //$(function () {
-
-                                       //    $("#Congrat").modal({
-                                       //        keyboard: false
-                                       //    });
-                                       //});
-                                   }
-
                                }
                             </script>
 
                             <%--RequiredFieldValidation--%>
-                            <asp:Button runat="server" Text="Submit" CssClass="btn btn-primary" OnClientClick="checkInput()" Style="margin-left: 5px; float: right" OnClick="btnValidateReCaptcha_Click" />
+                            <asp:Button runat="server" Text="Submit" CssClass="btn btn-primary" OnClientClick="return checkInput()" Style="margin-left: 5px; float: right" OnClick="btnValidateReCaptcha_Click" />
                             <%--call out the Modal if pass the Validation--%>
                             <button type="button" id="btncancel" class="btn btn-default" style="float: right">Cancel</button>
                         </div>
